@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_BANNERS_SEARCH_IN_TITLE"
+            hint="JSEARCH_FILTER"
+            class="js-stools-search-string"
+        />
+        <field
+            name="ambito"
+            type="list"
+            label="Âmbito"
+            
+        >
+            <option value="">--Selecione--</option>
+            <option value="1">Intraer</option>
+            <option value="2">Internet/Intraer </option>
+            
+        </field>
+        
+        
+        <field
+            name="status"
+            type="list"
+            label="Status"
+            
+        >
+            <option value="">--Selecione--</option>
+            <option value="1">Inscrições Abertas</option>
+            <option value="2">Encerradas </option>
+            <option value="3">Concursos Anteriores </option>
+        </field>
+        
+        <field name="data_inscricoes" 
+               type="calendar" 
+               label="Select a date" 
+               description="" 
+                hint="Data Inscrições"
+               />
+      
+        
+        
+    </fields>
+</form>

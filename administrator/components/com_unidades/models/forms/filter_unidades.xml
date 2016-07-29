@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_BANNERS_SEARCH_IN_TITLE"
+            hint="JSEARCH_FILTER"
+            class="js-stools-search-string"
+        />
+        <field
+            name="categoria"
+            type="list"
+            label="Categoria"
+            description="Categoria"
+            onchange="this.form.submit();"
+        >
+            <option value=''>--Categoria--</option>
+            <option value='Academia'>Academia</option>
+            <option value='Aditância'>Aditância</option>
+            <option value='Assessoria'>Assessoria</option>
+            <option value='Base'>Base</option>
+            <option value='Batalhão'>Batalhão</option>
+            <option value='Caixa'>Caixa</option>
+            <option value='Campo'>Campo</option>
+            <option value='Casa'>Casa</option>
+            <option value='Centro'>Centro</option>
+            <option value='Colégio'>Colégio</option>
+            <option value='Comando'>Comando</option>
+            <option value='Comissão'>Comissão</option>
+            <option value='Consultoria'>Consultoria</option>
+            <option value='Departamento'>Departamento</option>
+            <option value='Depósito'>Depósito</option>
+            <option value='Destacamento'>Destacamento</option>
+            <option value='Diretoria'>Diretoria</option>
+            <option value='Escola'>Escola</option>
+            <option value='Escritório'>Escritório</option>
+            <option value='Esquadrão'>Esquadrão</option>
+            <option value='Estado-Maior'>Estado-Maior</option>
+            <option value='FAE'>FAE</option>
+            <option value='Fazenda'>Fazenda</option>
+            <option value='Gabinete'>Gabinete</option>
+            <option value='Grupamento'>Grupamento</option>
+            <option value='Grupo'>Grupo</option>
+            <option value='Hospital'>Hospital</option>
+            <option value='Instituto'>Instituto</option>
+            <option value='Junta'>Junta</option>
+            <option value='Laboratório'>Laboratório</option>
+            <option value='Ministério'>Ministério</option>
+            <option value='Missão'>Missão</option>
+            <option value='Museu'>Museu</option>
+            <option value='Núcleo'>Núcleo</option>
+            <option value='Odontoclínica'>Odontoclínica</option>
+            <option value='Organização'>Organização</option>
+            <option value='Pagadoria'>Pagadoria</option>
+            <option value='Parque'>Parque</option>
+            <option value='Policlínica'>Policlínica</option>
+            <option value='Prefeitura'>Prefeitura</option>
+            <option value='Presidência'>Presidência</option>
+            <option value='Representação'>Representação</option>
+            <option value='Secretaria'>Secretaria</option>
+            <option value='Serviço'>Serviço</option>
+            <option value='Sociedade'>Sociedade</option>
+            <option value='STM'>STM</option>
+            <option value='Subdiretoria'>Subdiretoria</option>
+            <option value='Universidade'>Universidade</option>
+            <option value='Vice-Presidência'>Vice-Presidência</option>
+        </field>
+        
+        
+        <field
+            name="cidade"
+            type="sql"
+            label="Cidade"
+            description="Pesquisa por cidade"
+            query="SELECT DISTINCT cidade from #__unidades_unidade where cidade!=''"
+            key_field="cidade"
+            value_field="cidade"
+            onchange="this.form.submit();"
+        >
+            <option value="">--Cidade--</option>
+        </field>
+        
+        <field
+            name="uf"
+            type="sql"
+            label="Uf"
+            description="Pesquisa por uf"
+            query="SELECT DISTINCT uf from #__unidades_unidade where uf!=''"
+            key_field="uf"
+            value_field="uf"
+            onchange="this.form.submit();"
+        >
+            <option value="">--UF--</option>
+        </field>
+        
+        <field name="data_inicio" 
+               type="calendar" 
+               label="Select a date" 
+               description="" 
+               hint="Aniversário Início"
+        />
+        <field name="data_termino" 
+               type="calendar" 
+               label="Select a date" 
+               description="" 
+               hint="Aniversário Término"
+                
+        />
+        
+        
+        
+    </fields>
+    
+    <fields name="list">
+		
+		<field
+			name="limit"
+			type="limitbox"
+			label="COM_BANNERS_LIST_LIMIT"
+			description="COM_BANNERS_LIST_LIMIT_DESC"
+			class="input-mini"
+			default="25"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+</form>

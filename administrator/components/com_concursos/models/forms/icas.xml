@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+				name="id"
+				type="hidden"
+				/>
+		<field
+				name="sigla"
+                                id="sigla"
+				type="text"
+				label="Sigla"
+				description="Descrição"
+				required="true"
+                                class="required"
+				/>
+                <field
+				name="arquivo"
+                                id="arquivo"
+				type="media"
+				label="Arquivo"
+				description="DESCRIÇÃO"
+				
+                                
+				/>
+                <field
+				name="descricao"
+                                id="descricao"
+				type="text"
+				label="Descrição"
+				description="Descrição"
+				required="true"
+                                class="required"
+				/>
+                <field
+				name="referencia"
+                                id="referencia"
+				type="list"
+				label="Referência"
+				description="Descrição"
+				required="true"
+                                class="required"
+				>
+                     <option value="">--Selecione--</option>
+                    <option value="1">Inspeção de Saúde</option>
+                    <option value="2">Exames Psicológicos</option>
+                    <option value="3">TACF</option>
+                </field>
+                <field
+				name="ano"
+                                id="ano"
+				type="text"
+				label="Ano"
+				description="Descrição"
+				required="true"
+                                class="required"
+				/>
+               
+	</fieldset>
+</form>

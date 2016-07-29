@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+   
+         
+     <fieldset name="details">
+        <field
+            name="id"
+            type="hidden"
+        />
+        
+         <field
+            name="nome_om"
+            id="nome_om"
+            type="text"
+            label="Nome"
+            description="Descrição"
+            required="true"
+            class="required"
+        />
+       
+        <field
+            name="logo_om"
+            id="logo_om"
+            type="media"
+            label="DOM"
+            description="DESCRIÇÃO"
+            class="required"
+            required="true"
+                                
+        />
+        <field
+            name="sigla"
+            id="sigla"
+            type="text"
+            label="Sigla"
+            description="SIGLA"
+            class="required"
+            required="true"
+                                
+        />
+        <field
+            name="data_aniversario"
+            id="data_aniversario"
+            type="calendar"
+            format="%Y-%m-%d"
+            label="Data de Aniversário"
+            description="DATA DE ANIVERSÁRIO"
+                                
+				
+                                
+        />
+        <field
+            name="comandante"
+            id="comandante"
+            type="text"
+            label="Comandante"
+            description="COMANDANTE"
+				
+                                
+        />
+        <field
+            name="categoria"
+            id="categoria"
+            type="list"
+            label="Categoria"
+            description="CATEGORIA"
+            class="required"
+            required="true"
+        >
+            <option value=''>Selecione</option>
+            <option value='Academia'>Academia</option>
+            <option value='Aditância'>Aditância</option>
+            <option value='Assessoria'>Assessoria</option>
+            <option value='Base'>Base</option>
+            <option value='Batalhão'>Batalhão</option>
+            <option value='Caixa'>Caixa</option>
+            <option value='Campo'>Campo</option>
+            <option value='Casa'>Casa</option>
+            <option value='Centro'>Centro</option>
+            <option value='Colégio'>Colégio</option>
+            <option value='Comando'>Comando</option>
+            <option value='Comissão'>Comissão</option>
+            <option value='Consultoria'>Consultoria</option>
+            <option value='Departamento'>Departamento</option>
+            <option value='Depósito'>Depósito</option>
+            <option value='Destacamento'>Destacamento</option>
+            <option value='Diretoria'>Diretoria</option>
+            <option value='Escola'>Escola</option>
+            <option value='Escritório'>Escritório</option>
+            <option value='Esquadrão'>Esquadrão</option>
+            <option value='Estado-Maior'>Estado-Maior</option>
+            <option value='FAE'>FAE</option>
+            <option value='Fazenda'>Fazenda</option>
+            <option value='Gabinete'>Gabinete</option>
+            <option value='Grupamento'>Grupamento</option>
+            <option value='Grupo'>Grupo</option>
+            <option value='Hospital'>Hospital</option>
+            <option value='Instituto'>Instituto</option>
+            <option value='Junta'>Junta</option>
+            <option value='Laboratório'>Laboratório</option>
+            <option value='Ministério'>Ministério</option>
+            <option value='Missão'>Missão</option>
+            <option value='Museu'>Museu</option>
+            <option value='Núcleo'>Núcleo</option>
+            <option value='Odontoclínica'>Odontoclínica</option>
+            <option value='Organização'>Organização</option>
+            <option value='Pagadoria'>Pagadoria</option>
+            <option value='Parque'>Parque</option>
+            <option value='Policlínica'>Policlínica</option>
+            <option value='Prefeitura'>Prefeitura</option>
+            <option value='Presidência'>Presidência</option>
+            <option value='Representação'>Representação</option>
+            <option value='Secretaria'>Secretaria</option>
+            <option value='Serviço'>Serviço</option>
+            <option value='Sociedade'>Sociedade</option>
+            <option value='STM'>STM</option>
+            <option value='Subdiretoria'>Subdiretoria</option>
+            <option value='Universidade'>Universidade</option>
+            <option value='Vice-Presidência'>Vice-Presidência</option>
+                                    
+        </field> 
+        
+        <field 
+            name="created_by"
+            type="user"
+	    label="Criado Por" 
+            description="Usuário que criou a unidade" 
+        />
+               
+     </fieldset>
+       
+ 
+        
+    <fieldset
+        name="accesscontrol"
+        label="COM_UNIDADES_FIELDSET_RULES"
+    >
+        <field
+            name="asset_id"
+            type="hidden"
+            filter="unset"
+        />
+        <field
+            name="rules"
+            type="rules"
+            label="COM_UNIDADES_FIELD_RULES_LABEL"
+            filter="rules"
+            validate="rules"
+            class="inputbox"
+            component="com_unidades"
+            section="unidade"
+        />
+    </fieldset>
+    
+     <fieldset name="ramais" label="COM_UNIDADES_FIELD_ENDERECO">
+          <field
+            name="lista_ramais"
+            id="lista_ramais"
+            type="editor"
+            filter="safehtml"
+            height="50px"
+            label="Lista de Telefones"
+            description="LISTA DE TELEFONES"
+				
+                                
+        />
+         
+     </fieldset>
+    <fieldset name="endereco">
+        <field
+            name="endereco"
+            id="endereco"
+            type="text"
+            label="Endereço"
+            description="ENDEREÇO"
+				
+                                
+        />
+        <field
+            name="complemento"
+            id="complemento"
+            type="text"
+            label="Complemento"
+            description="COMPLEMENTO"
+				
+                                
+        />
+                
+        <field
+            name="uf"
+            id="uf"
+            type="list"
+            label="UF"
+            description="UF"
+            class="uf required"
+                          
+        >
+            <option value=''>Selecione</option>
+            <option value='AC'>AC</option>
+            <option value='AL'>AL</option>
+            <option value='AM'>AM</option>
+            <option value='AP'>AP</option>
+            <option value='BA'>BA</option>
+            <option value='CE'>CE</option>
+            <option value='DF'>DF</option>
+            <option value='ES'>ES</option>
+            <option value='GO'>GO</option>
+            <option value='MA'>MA</option>
+            <option value='MG'>MG</option>
+            <option value='MS'>MS</option>
+            <option value='MT'>MT</option>
+            <option value='PA'>PA</option>
+            <option value='PB'>PB</option>
+            <option value='PE'>PE</option>
+            <option value='PI'>PI</option>
+            <option value='PR'>PR</option>
+            <option value='RJ'>RJ</option>
+            <option value='RN'>RN</option>
+            <option value='RO'>RO</option>
+            <option value='RR'>RR</option>
+            <option value='RS'>RS</option>
+            <option value='SC'>SC</option>
+            <option value='SE'>SE</option>
+            <option value='SP'>SP</option>
+            <option value='TO'>TO</option>
+                    
+        </field>
+                
+        <field
+            name="cidade"
+            id="cidade"
+            type="sql"
+            label="Cidade"
+            class="cidades required"
+          
+            required="true"
+            description="CIDADE"
+            query="SELECT id, cidade FROM #__unidades_ufs  "
+            key_field="cidade"
+        >
+            <option>--Selecione--</option>
+        </field>
+                
+        <field
+            name="cep"
+            id="cep"
+            class="cep"
+            type="text"
+            label="CEP"
+            description="CEP"
+				
+                                
+        />
+        <field
+            name="pais"
+            id="pais"
+            type="text"
+            label="País"
+            description="PAÍS"
+				
+                                
+        />
+        <field
+            name="site_internet"
+            id="site_internet"
+            type="text"
+            label="Site de Internet"
+            description="SITE DE INTERNET"
+				
+                                
+        />
+        <field
+            name="site_intraer"
+            id="site_intraer"
+            type="text"
+            label="Site de Intraer"
+            description="SITE DE INTRAER"
+				
+                                
+        />
+        <field
+            name="ddd"
+            id="ddd"
+            type="text"
+            label="DDD"
+            description="DDD"
+				
+                                
+        />
+        <field
+            name="caixa_postal"
+            id="caixa_postal"
+            type="text"
+            label="Caixa Postal"
+            description="CAIXA POSTAL"
+				
+                                
+        />
+               
+        <field
+            name="pabx"
+            id="pabx"
+            class="telefone"
+            type="text"
+            label="PABX"
+            description="PABX"
+				
+                                
+        />
+        <field
+            name="fax"
+            id="fax"
+            class="telefone"
+            type="text"
+            label="FAX"
+            description="FAX"
+				
+                                
+        />
+        
+        
+    </fieldset>
+    
+</form>

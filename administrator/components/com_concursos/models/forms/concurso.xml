@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+				name="id"
+				type="hidden"
+				/>
+		<field
+				name="sigla"
+                                id="sigla"
+				type="text"
+				label="Sigla"
+				description="Descrição"
+				required="true"
+                                class="required"
+				/>
+                <field
+				name="nome"
+                                id="nome"
+				type="text"
+				label="Nome"
+				description="DESCRIÇÃO"
+				class="required"
+				required="true"
+                                
+				/>
+                <field
+				name="escola"
+                                id="escola"
+				type="text"
+				label="Escola"
+				description="Descrição"
+				required="true"
+                                class="required"
+				/>
+                <field
+				name="turma"
+                                id="turma"
+				type="text"
+				label="Turma"
+				description="Descrição"
+				required="true"
+                                class="required"
+				/>
+                <field
+				name="data_inicio"
+                                id="data_inicio"
+				type="calendar"
+				label="Início Inscrições"
+				description="Descrição"
+				required="true"
+                                class="required"
+				/>
+                <field
+				name="data_termino"
+                                id="data_termino"
+				type="calendar"
+				label="Término Inscrições"
+				description="Descrição"
+                                
+				required="true"
+                                class="required"
+				/>
+                <field
+				name="ica_inspecao"
+                                id="ica_inspecao"
+				type="sql"
+				label="ICA Inspeção de Saúde"
+				description="DESCRIÇÃO"
+				query="SELECT ID, sigla  FROM #__concursos_icas WHERE referencia=1"
+                                key_field="ID"
+                                value_field="sigla"
+				>
+               
+                 <option value="">--Selecione--</option>
+             </field>
+                <field
+				name="ica_psicologico"
+                                id="ica_psicologico"
+				type="sql"
+				label="ICA Exames Psicológicos"
+				description="Descrição"
+				required="true"
+                                class="required"
+				query="SELECT ID, sigla  FROM #__concursos_icas WHERE referencia=2"
+                                key_field="ID"
+                                value_field="sigla"
+				>
+               
+                 <option value="">--Selecione--</option>
+             </field>
+                <field
+				name="ica_tacf"
+                                id="ica_tacf"
+				type="sql"
+				label="ICA TACF"
+				description="Descrição"
+				query="SELECT ID, sigla  FROM #__concursos_icas WHERE referencia=3"
+                                key_field="ID"
+                                value_field="sigla"
+				>
+               
+                 <option value="">--Selecione--</option>
+             </field>
+                <field
+				name="instrucoes_especificas"
+                                id="instrucoes_especificas"
+				type="file"
+				label="Instruções Específicas"
+				description="Descrição"
+                              	
+				/>
+                 
+                 <field
+				name="veiculo"
+                                id="veiculo"
+				type="list"
+				label="Veículo"
+				description="Descrição"
+				>
+                    <option value="1">Intraer</option>
+                    <option value="2">Internet / Intraer </option>
+                   
+                 </field>
+                <field
+				name="ambito"
+                                id="ambito"
+				type="list"
+				label="Âmbito"
+				description="Descrição"
+				
+				>
+                    <option value="">--Selecione--</option>
+                    <option value="interno">Interno</option>
+                    <option value="externo">Externo</option>
+                </field>
+                 <field
+				name="status"
+                                id="status"
+				type="list"
+				label="Status"
+				description="Descrição"
+				>
+                     <option value="">--Selecione--</option>
+                    <option value="1">Inscrições Abertas</option>
+                    <option value="2">Inscrições Encerradas</option>
+                    <option value="3">Concursos Anteriores</option>
+                 </field>
+                <field
+				name="site"
+                                id="site"
+				type="text"
+				label="Site"
+				description="Descrição"
+				required="true"
+                                class="required"
+				/>
+               
+               
+	</fieldset>
+</form>
