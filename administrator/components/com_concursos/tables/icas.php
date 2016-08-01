@@ -29,22 +29,6 @@ defined('_JEXEC') or die('Restricted access');
 class JTableIcas extends JTable
 {
    
-    var $id = null;
-    
-   
-    var $sigla = '';
-    
-    var $arquivo = '';
-
-    
-    var $descricao = '';
-
-   
-    var $referencia = '';
-
-    
-    var $ano = null;
-
     /**
      * Constructor
      *
@@ -81,4 +65,4 @@ class JTableIcas extends JTable
         return true;
     }
 }
-?>
+

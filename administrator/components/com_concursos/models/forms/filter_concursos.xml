@@ -12,6 +12,7 @@
             name="ambito"
             type="list"
             label="Âmbito"
+            onchange="this.form.submit();"
             
         >
             <option value="">--Selecione--</option>
@@ -25,7 +26,7 @@
             name="status"
             type="list"
             label="Status"
-            
+            onchange="this.form.submit();"
         >
             <option value="">--Selecione--</option>
             <option value="1">Inscrições Abertas</option>

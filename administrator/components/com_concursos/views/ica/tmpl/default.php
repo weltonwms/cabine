@@ -21,14 +21,18 @@ JHtml::_('behavior.formvalidation');
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
-	{       if (task == 'cancel' || document.formvalidator.isValid(document.id('adminForm')))
+	{       if (task == 'ica.cancel' || document.formvalidator.isValid(document.id('adminForm')))
 		{
 			
 			Joomla.submitform(task, document.getElementById('adminForm'));
 		}
 		
 	}
-</script>
+        
+  
+
+ </script>
+
 
 <form action="index.php" method="post" enctype="multipart/form-data" name="adminForm form-validate" id="adminForm">
     <div class="form-horizontal">
@@ -51,9 +55,9 @@ JHtml::_('behavior.formvalidation');
 
    <input type="hidden" name="option" value="com_concursos" />
     <input type="hidden" name="id" value="<?php echo $this->item->id; ?>" />
-    <input type="hidden" name="view" value="icas" />
-    <input type="hidden" name="controller" value="icas" />
-    <input type="hidden" name="task" value="save" />
+
+  
+    <input type="hidden" name="task" value="" />
     <?php echo JHtml::_('form.token'); ?>
 </form>
 

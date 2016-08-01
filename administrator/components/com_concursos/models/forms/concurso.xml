@@ -105,9 +105,10 @@
                 <field
 				name="instrucoes_especificas"
                                 id="instrucoes_especificas"
-				type="file"
+				type="uploadfile"
 				label="Instruções Específicas"
 				description="Descrição"
+                                class="required"
                               	
 				/>
                  

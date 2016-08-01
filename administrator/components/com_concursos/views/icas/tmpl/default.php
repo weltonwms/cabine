@@ -35,7 +35,7 @@ $listDirn = $this->escape($this->filter_order_Dir);
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                         <th width="1%">
+                        <th width="1%">
                             <?php echo JHtml::_('grid.sort', 'Id', 'id', $listDirn, $listOrder); ?>
                         </th>
                         <th width="1%"><?php echo JHtml::_('grid.checkall'); ?></th>
@@ -46,7 +46,7 @@ $listDirn = $this->escape($this->filter_order_Dir);
                         <th><?php echo JText::_('Arquivo'); ?></th>
                     </tr>
                 </thead>
-                 <tfoot>
+                <tfoot>
                     <tr>
                         <td colspan="5">
                             <?php echo $this->pagination->getListFooter(); ?>
@@ -60,8 +60,8 @@ $listDirn = $this->escape($this->filter_order_Dir);
                     $referencia = array('', 'Inspeção de Saúde', 'Exames Psicológicos', 'TACF');
                     JFilterOutput::objectHTMLSafe($row);
                     $checked = JHTML::_('grid.id', $i, $row->id);
-                    $link = JRoute::_('index.php?option=com_concursos&view=icas&task=edit&cid[]=' . $row->id);
-                    $link_arquivo = JUri::root() . "images/$row->arquivo";
+                    $link = JRoute::_('index.php?option=com_concursos&view=ica&task=ica.edit&id=' . $row->id);
+                    $link_arquivo = JUri::root() . "$row->arquivo";
                     ?>
                     <tr class="<?php echo "row$k"; ?>">
                         <td><?php echo $row->id; ?></td>
@@ -72,19 +72,19 @@ $listDirn = $this->escape($this->filter_order_Dir);
                         <td><?php echo $row->ano; ?></td>
                         <td><?php echo "<a target='__blank'  href='$link_arquivo'>" . $row->arquivo . "</a>"; ?></td>
                     </tr>
-        <?php
-        $k = 1 - $k;
-        $i = $i + 1;
-    }
-    ?>
+                    <?php
+                    $k = 1 - $k;
+                    $i = $i + 1;
+                }
+                ?>
             </table>
-            <?php endif; ?>
+        <?php endif; ?>
     </div>
     <input type="hidden" name="task" value=""/>
     <input type="hidden" name="boxchecked" value="0"/>
     <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>"/>
     <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>"/>
-<?php echo JHtml::_('form.token'); ?>
+    <?php echo JHtml::_('form.token'); ?>
 </form>
 </div>
 

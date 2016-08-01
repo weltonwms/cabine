@@ -23,92 +23,11 @@ class ConcursosModelIca extends JModelAdmin {
         parent::__construct();
     }
 
-    public function getTable($type = 'ICAS', $prefix = 'JTable', $config = array()) {
+    public function getTable($type = 'Icas', $prefix = 'JTable', $config = array()) {
         return JTable::getInstance($type, $prefix, $config);
     }
 
    
-   /*
-    public function save() {
-        $row = & $this->getTable('Icas', 'JTable');
-        $data = JRequest::get('post');
-        
-        //script para realizar upload.
-        $arquivo = JRequest::getVar('jform', array(), 'files', 'array');
-        $diretorio = JPATH_SITE."/images/";
-
-        if (is_dir($diretorio)) {
-            $destino = $diretorio . "/" . $arquivo['name']["arquivo"];
-            move_uploaded_file($arquivo['tmp_name']["arquivo"], $destino) ;
-                
-           
-        }
-        
-        if(!$arquivo['name']["arquivo"]){
-            unset($row->arquivo);
-        }
-        
-       
-        if (!$row->bind($data)) {
-            $this->setError($this->_db->getErrorMsg());
-            return false;
-        }
-
-        if (!$row->check()) {
-            $this->setError($row->getError());
-            return false;
-        }
-
-        if (!$row->store()) {
-            $this->setError($this->_db->getErrorMsg());
-            return false;
-        }
-
-        return true;
-    }
-
-   
-    public function delete() {
-        $row = & $this->getTable('Icas', 'JTable');
-        $cids = JRequest::getVar('cid', array(0), 'post', 'array');
-
-        foreach ($cids as $cid) {
-            if (!$row->delete($cid)) {
-                $this->setError($row->getErrorMsg());
-                return false;
-            }
-        }
-        return true;
-    }
- 
-    
-    private function _loadItems() {
-        $query="SELECT * FROM `#__concursos_icas`";
-        $pesquisar= JRequest::getVar('pesquisar');
-         
-        if($pesquisar){
-            $sigla= JRequest::getVar('sigla');
-            $descricao= JRequest::getVar('descricao');
-            $ano= JRequest::getVar('ano');
-            $referencia= JRequest::getVar('referencia');
-           $query.=" WHERE `sigla` LIKE '%$sigla%'";
-           if($descricao){
-                $query.=" AND `descricao` LIKE '%$descricao%'";
-           }
-           if($ano){
-                $query.=" AND `ano` = $ano";
-           }
-            if($referencia){
-               
-                $query.=" AND `referencia` = $referencia";
-           }
-            
-        }
-        //echo "<pre>"; print_r($req); exit();
-        $this->_items = $this->_getList($query);
-        return is_null($this->_items) ? false : true;
-    }
-*/
     public function getForm($data = array(), $loadData = true) {
         // Get the form.
         $form = $this->loadForm(
@@ -121,7 +40,7 @@ class ConcursosModelIca extends JModelAdmin {
         if (empty($form)) {
             return false;
         }
-
+        // echo "<pre>"; print_r($form); exit();
         return $form;
     }
 
@@ -141,7 +60,7 @@ class ConcursosModelIca extends JModelAdmin {
         if (empty($data)) {
             $data = $this->getItem();
         }
-
+       
         return $data;
     }
 

@@ -10,7 +10,6 @@ class ConcursosControllerConcursos extends JControllerAdmin
 	public function getModel($name = 'Concurso', $prefix = 'ConcursosModel', $config = array('ignore_request' => true))
 	{
 		$model = parent::getModel($name, $prefix, $config);
-
 		return $model;
 	}
 }
