@@ -36,7 +36,9 @@ $listDirn = $this->escape($this->filter_order_Dir);
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th width="1%"><?php echo JText::_('#'); ?></th>
+                        <th width="2%">
+                            <?php echo JHtml::_('grid.sort', 'Id', 'id', $listDirn, $listOrder); ?>
+                        </th>
                         <th width="2%">
                             <?php echo JHtml::_('grid.checkall'); ?>
                         </th>
@@ -52,10 +54,10 @@ $listDirn = $this->escape($this->filter_order_Dir);
                         <th width="2%">
                             <?php echo JHtml::_('grid.sort', 'Turma', 'turma', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="5%">
+                        <th width="8%">
                             <?php echo JHtml::_('grid.sort', 'Data Início', 'data_inicio', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="5%">
+                        <th width="8%">
                             <?php echo JHtml::_('grid.sort', 'Data Término', 'data_termino', $listDirn, $listOrder); ?>
                         </th>
                         <th width="2%">
@@ -75,7 +77,7 @@ $listDirn = $this->escape($this->filter_order_Dir);
                 </thead>
                 <tfoot>
                     <tr>
-                        <td colspan="5">
+                        <td colspan="12">
                             <?php echo $this->pagination->getListFooter(); ?>
                         </td>
                     </tr>
@@ -92,7 +94,7 @@ $listDirn = $this->escape($this->filter_order_Dir);
                             $link = JRoute::_('index.php?option=com_concursos&task=concurso.edit&id=' . $row->id);
                             ?>
                             <tr>
-                                <td><?php echo $this->pagination->getRowOffset($i); ?></td>
+                                <td><?php echo $row->id; ?></td>
                                 <td>
                                     <?php echo JHtml::_('grid.id', $i, $row->id); ?>
                                 </td>
@@ -104,8 +106,8 @@ $listDirn = $this->escape($this->filter_order_Dir);
                                 <td><?php echo $row->nome; ?></td>
                                 <td><?php echo $row->escola; ?></td>
                                 <td><?php echo $row->turma; ?></td>
-                                <td><?php echo $row->data_inicio; ?></td>
-                                <td><?php echo $row->data_termino; ?></td>
+                                <td><?php echo JHtml::_('date', $row->data_inicio, JText::_('DATE_FORMAT_LC4')); ?></td>
+                                <td><?php echo JHtml::_('date', $row->data_termino, JText::_('DATE_FORMAT_LC4')); ?></td>
 
                                 <td><?php echo $veiculo["{$row->veiculo}"]; ?></td>
                                 <td><?php echo $status["{$row->status}"]; ?></td>

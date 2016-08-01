@@ -21,7 +21,7 @@ JHtml::_('formbehavior.chosen', 'select');
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
-	{       if (task == 'cancel' || document.formvalidator.isValid(document.id('adminForm')))
+	{       if (task == 'concurso.cancel' || document.formvalidator.isValid(document.id('adminForm')))
 		{
 			
 			Joomla.submitform(task, document.getElementById('adminForm'));
@@ -30,7 +30,7 @@ JHtml::_('formbehavior.chosen', 'select');
 	}
 </script>
 
-<form action="index.php" method="post" enctype="multipart/form-data" name="adminForm form-validate" id="adminForm">
+<form action="index.php?option=com_concursos&view=concurso" method="post" enctype="multipart/form-data" name="adminForm form-validate" id="adminForm">
     <div class="form-horizontal">
         <fieldset class="adminform">
             <legend>Detalhes</legend>
@@ -49,11 +49,9 @@ JHtml::_('formbehavior.chosen', 'select');
 
     <div class="clr"></div>
 
-    <input type="hidden" name="option" value="com_concursos" />
+    
     <input type="hidden" name="id" value="<?php echo $this->item->id; ?>" />
-    <input type="hidden" name="view" value="concurso" />
-    <input type="hidden" name="controller" value="concurso" />
-    <input type="hidden" name="task" value="save" />
+       <input type="hidden" name="task" value="" />
     <?php echo JHtml::_('form.token'); ?>
 </form>
 

@@ -15,9 +15,9 @@
             onchange="this.form.submit();"
             
         >
-            <option value="">--Selecione--</option>
-            <option value="1">Intraer</option>
-            <option value="2">Internet/Intraer </option>
+            <option value="">--Âmbito--</option>
+            <option value="interno">Interno</option>
+             <option value="externo">Externo</option>
             
         </field>
         
@@ -28,7 +28,7 @@
             label="Status"
             onchange="this.form.submit();"
         >
-            <option value="">--Selecione--</option>
+            <option value="">--Status--</option>
             <option value="1">Inscrições Abertas</option>
             <option value="2">Encerradas </option>
             <option value="3">Concursos Anteriores </option>
@@ -44,4 +44,17 @@
         
         
     </fields>
+    
+    <fields name="list">
+		
+		<field
+			name="limit"
+			type="limitbox"
+			label="COM_BANNERS_LIST_LIMIT"
+			description="COM_BANNERS_LIST_LIMIT_DESC"
+			class="input-mini"
+			default="25"
+			onchange="this.form.submit();"
+		/>
+	</fields>
 </form>

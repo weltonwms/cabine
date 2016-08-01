@@ -48,37 +48,33 @@ $listDirn = $this->escape($this->filter_order_Dir);
                 </thead>
                 <tfoot>
                     <tr>
-                        <td colspan="5">
+                        <td colspan="7">
                             <?php echo $this->pagination->getListFooter(); ?>
                         </td>
                     </tr>
                 </tfoot>
-                <?php
-                $k = 0;
-                $i = 0;
-                foreach ($this->items as $row) {
-                    $referencia = array('', 'Inspeção de Saúde', 'Exames Psicológicos', 'TACF');
-                    JFilterOutput::objectHTMLSafe($row);
-                    $checked = JHTML::_('grid.id', $i, $row->id);
-                    $link = JRoute::_('index.php?option=com_concursos&view=ica&task=ica.edit&id=' . $row->id);
-                    $link_arquivo = JUri::root() . "$row->arquivo";
-                    ?>
-                    <tr class="<?php echo "row$k"; ?>">
-                        <td><?php echo $row->id; ?></td>
-                        <td><?php echo $checked; ?></td>
-                        <td><?php echo "<a href='$link'>" . $row->sigla . "</a>"; ?></td>
-                        <td><?php echo $row->descricao; ?></td>
-                        <td><?php echo $referencia[$row->referencia]; ?></td>
-                        <td><?php echo $row->ano; ?></td>
-                        <td><?php echo "<a target='__blank'  href='$link_arquivo'>" . $row->arquivo . "</a>"; ?></td>
-                    </tr>
+                <tbody>
                     <?php
-                    $k = 1 - $k;
-                    $i = $i + 1;
-                }
-                ?>
+                    $referencia = array('', 'Inspeção de Saúde', 'Exames Psicológicos', 'TACF');
+                    foreach ($this->items as $row) :
+                        $checked = JHTML::_('grid.id', $row->id, $row->id);
+                        $link = JRoute::_('index.php?option=com_concursos&view=ica&task=ica.edit&id=' . $row->id);
+                        $link_arquivo = JUri::root() . "$row->arquivo";
+                        ?>
+                        <tr class="">
+                            <td><?php echo $row->id; ?></td>
+                            <td><?php echo $checked; ?></td>
+                            <td><?php echo "<a href='$link'>" . $row->sigla . "</a>"; ?></td>
+                            <td><?php echo $row->descricao; ?></td>
+                            <td><?php echo $referencia[$row->referencia]; ?></td>
+                            <td><?php echo $row->ano; ?></td>
+                            <td><?php echo "<a target='__blank'  href='$link_arquivo'>" . $row->arquivo . "</a>"; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
         <?php endif; ?>
+                        
     </div>
     <input type="hidden" name="task" value=""/>
     <input type="hidden" name="boxchecked" value="0"/>
