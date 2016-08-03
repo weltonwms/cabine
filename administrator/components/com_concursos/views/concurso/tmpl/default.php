@@ -36,7 +36,16 @@ JHtml::_('formbehavior.chosen', 'select');
             <legend>Detalhes</legend>
             <div class="row-fluid">
                 <div class="span6">
-                    <?php foreach ($this->form->getFieldset() as $field): ?>
+                    <?php foreach ($this->form->getFieldset("details1") as $field): ?>
+                        <div class="control-group">
+                            <div class="control-label"><?php echo $field->label; ?></div>
+                            <div class="controls"><?php echo $field->input; ?></div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                
+                <div class="span6">
+                    <?php foreach ($this->form->getFieldset("details2") as $field): ?>
                         <div class="control-group">
                             <div class="control-label"><?php echo $field->label; ?></div>
                             <div class="controls"><?php echo $field->input; ?></div>
