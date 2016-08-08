@@ -30,8 +30,7 @@
             type="text"
             label="Escola"
             description="Descrição"
-            required="true"
-            class="required"
+            
         />
         <field
             name="turma"
@@ -39,8 +38,7 @@
             type="text"
             label="Turma"
             description="Descrição"
-            required="true"
-            class="required"
+            
         />
         <field
             name="data_inicio"
@@ -95,8 +93,6 @@
             type="sql"
             label="ICA Exames Psicológicos"
             description="Descrição"
-            required="true"
-            class="required"
             query="SELECT ID, sigla  FROM #__concursos_icas WHERE referencia=2"
             key_field="ID"
             value_field="sigla"
@@ -125,6 +121,7 @@
             type="list"
             label="Veículo"
             description="Descrição"
+            class="required"
         >
             <option value="1">Intraer</option>
             <option value="2">Internet / Intraer </option>
@@ -148,6 +145,7 @@
             type="list"
             label="Status"
             description="Descrição"
+            class="required"
         >
             <option value="">--Selecione--</option>
             <option value="1">Inscrições Abertas</option>

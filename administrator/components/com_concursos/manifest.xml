@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.2" method="upgrade">
-  <name>concursos</name>
+  <name>com_concursos</name>
   <version>1.0.0</version>
   <creationDate>Dez 2015</creationDate>
   <author>Welton Moreira dos Santos</author>
@@ -23,13 +23,13 @@
     </uninstall>
 
     <languages folder="site/language">
-        <language tag="en-GB">en-GB/en-GB.com_concursos.ini</language>
+        <language tag="pt-BR">pt-BR/pt-BR.com_concursos.ini</language>
     </languages>
 
   <files folder="site">
     <file>controller.php</file>
     <file>concursos.php</file>
-
+    <file>router.php</file>
     <folder>assets</folder>
     <folder>controllers</folder>
     <folder>helpers</folder>
@@ -38,16 +38,17 @@
   </files>
 
     <administration>
-    <menu>Concursos</menu>
+    <menu>com_concursos</menu>
 
     <submenu>
-      <menu link='option=com_concursos&amp;view=icas&amp;layout=list'>icas</menu>
-      <menu link='option=com_concursos&amp;view=concurso&amp;layout=list'>concurso</menu>
+      <menu link='option=com_concursos&amp;view=icas&amp;layout=list'>com_concursos_icas</menu>
+      <menu link='option=com_concursos&amp;view=concurso&amp;layout=list'>com_concursos_concursos</menu>
     </submenu>
 
 
         <languages folder="admin/language">
-            <language tag="en-GB">en-GB/en-GB.com_concursos.ini</language>
+            <language tag="pt-BR">pt-BR/pt-BR.com_concursos.ini</language>
+            <language tag="pt-BR">pt-BR/pt-BR.com_concursos.sys.ini</language>
         </languages>
 
         <files folder="admin">

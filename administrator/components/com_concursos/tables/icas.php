@@ -29,40 +29,19 @@ defined('_JEXEC') or die('Restricted access');
 class JTableIcas extends JTable
 {
    
-    /**
-     * Constructor
-     *
-     * @param object &$db A database connector object
-     *
-     * @return void
-     * @access public
-     * @since  1.0
-     */
+    
     public function __construct(&$db)
     {
         parent::__construct('#__concursos_icas', 'id', $db);
     }
-
-    /**
-     * Overloaded check function
-     *
-     * @return boolean
-     * @access public
-     * @since  1.0
-     * @see    JTable::check
-     */
-    public function check()
-    {
-        // check required fields
-        $required_fields = array('sigla' => 'Sigla', 'descricao' => 'Descricao', 'referencia' => 'Referencia', 'ano' => 'Ano');
-        foreach($required_fields as $field => $description) {
-            if(!$this->get($field)) {
-                $this->setError(JText::_($description.' is required.'));
-                return false;
-            }
+    public function store($updateNulls = false) {
+        $this->ano=JHtml::_('date',  $this->data,'Y');
+        $this->data=JHtml::_('date',  $this->data,'Y-m-d');
+       
+        return parent::store($updateNulls);
         }
+    
 
-        return true;
-    }
+    
 }
 

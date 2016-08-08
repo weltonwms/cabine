@@ -16,6 +16,8 @@ class ConcursosModelConcursos extends JModelList
                             'sigla',
                             'ambito',
                             'status',
+                            'escola',
+                            'turma',
                             'data_inscricoes'
 				
 			);
@@ -58,6 +60,16 @@ class ConcursosModelConcursos extends JModelList
 		if ($ambito)
 		{
                    $query->where("ambito = '$ambito'");
+		}
+                 $escola = $this->getState('filter.escola');
+		if ($escola)
+		{
+                   $query->where("escola = '$escola'");
+		}
+                 $turma = $this->getState('filter.turma');
+		if ($turma)
+		{
+                   $query->where("turma = '$turma'");
 		}
                 
                 $status = $this->getState('filter.status');

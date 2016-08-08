@@ -11,20 +11,19 @@
  * @license   GNU General Public License
  * @link      
  */
-
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 ?>
 
 <p><b><?php echo JText::_('Nome do Concurso'); ?> :</b>
-     <?php echo $this->item->nome; ?>
+    <?php echo $this->item->nome; ?>
 </p>
 
 
 <p><b><?php echo JText::_('Sigla'); ?> :</b> 
     <?php echo $this->item->sigla; ?>
 </p>
-<?php $inscricoes=array('','Abertas','Em Andamento','Encerradas')?>
+<?php $inscricoes = array('', 'Abertas', 'Em Andamento', 'Encerradas') ?>
 <p><b><?php echo JText::_('Inscrições'); ?> :</b> 
     <?php echo $inscricoes[$this->item->status]; ?>
 </p>
@@ -42,33 +41,45 @@ defined('_JEXEC') or die('Restricted access');
 </p>
 
 <p><b><?php echo JText::_('Instruções Específicas'); ?> :</b> <br>
-     <?php 
-   $link_arquivo0 = JUri::root()."images/conc/{$this->item->instrucoes_especificas}";
-   echo "<a target='__blank'  href='$link_arquivo0'>"."Instruções Específicas"."</a>"; 
-   ?>
-    <br>
-   <?php 
-   $link_arquivo = JUri::root()."images/{$this->item->arquivo_inspecao}";
-   echo "<a target='__blank'  href='$link_arquivo'>".$this->item->sigla_inspecao."</a>"; 
-   ?>
-    <br>
-     <?php 
-   $link_arquivo2 = JUri::root()."images/{$this->item->arquivo_psicologico}";
-   echo "<a target='__blank'  href='$link_arquivo2'>".$this->item->sigla_psicologico."</a>"; 
-   ?>
-     <br>
-     <?php 
-   $link_arquivo3 = JUri::root()."images/{$this->item->arquivo_tacf}";
-   echo "<a target='__blank'  href='$link_arquivo3'>".$this->item->sigla_tacf."</a>"; 
-   ?>
-</p>
     <?php
-     //echo "<pre>"; print_r($this->item);
+    $link_arquivo0 = JUri::base() . $this->item->instrucoes_especificas;
+    echo "<a target='__blank'  href='$link_arquivo0'>" . "Edital do Exame" . "</a>";
     ?>
-
-    
-
-
    
+    <?php
+    if ($this->item->arquivo_inspecao):
+        echo ' <br>';
+        $link_arquivo = JUri::base() . $this->item->arquivo_inspecao;
+        echo "<a target='__blank'  href='$link_arquivo'>" . $this->item->descricao_inspecao . "</a>";
+    endif;
+    ?>
+   
+    <?php
+    if ($this->item->arquivo_psicologico):
+        echo ' <br>';
+        $link_arquivo2 = JUri::base() . $this->item->arquivo_psicologico;
+        echo "<a target='__blank'  href='$link_arquivo2'>" . $this->item->descricao_psicologico . "</a>";
+    endif;
+    ?>
+    
+    <?php
+    if ($this->item->arquivo_tacf):
+        echo ' <br>';
+        $link_arquivo3 = JUri::base() . $this->item->arquivo_tacf;
+        echo "<a target='__blank'  href='$link_arquivo3'>" . $this->item->descricao_tacf . "</a>";
+    endif;
+    ?>
+</p>
+<br>
+<br>
+<?php
+$link_voltar = JRoute::_("index.php?option=com_concursos&amp;view=concursos");
+?>
+<a class="btn btn-default" href="<?php echo $link_voltar ?>">Voltar</a>
+
+
+
+
+
 
 

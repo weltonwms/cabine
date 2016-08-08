@@ -17,7 +17,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 
-class ConcursosControllerConcurso extends JControllerLegacy
+class ConcursosControllerConcursos extends JControllerLegacy
 {
     
     public function __construct()

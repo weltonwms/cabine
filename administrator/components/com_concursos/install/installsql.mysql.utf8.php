@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS `#__concursos_icas` (
   `descricao` varchar(255) NOT NULL,
   `referencia` varchar(255) NOT NULL,
   `ano` int(11) NOT NULL,
-  PRIMARY KEY  (`id`)
+  `data` date DEFAULT NULL,
+   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__concursos_concurso` (

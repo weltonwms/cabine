@@ -5,21 +5,10 @@
             name="search"
             type="text"
             label="COM_BANNERS_SEARCH_IN_TITLE"
-            hint="JSEARCH_FILTER"
+            hint="Nome ou Sigla"
             class="js-stools-search-string"
         />
-        <field
-            name="ambito"
-            type="list"
-            label="Âmbito"
-            onchange="this.form.submit();"
-            
-        >
-            <option value="">--Âmbito--</option>
-            <option value="interno">Interno</option>
-             <option value="externo">Externo</option>
-            
-        </field>
+       
         
         
         <field
@@ -27,13 +16,15 @@
             type="list"
             label="Status"
             onchange="this.form.submit();"
+           
         >
             <option value="">--Status--</option>
             <option value="1">Inscrições Abertas</option>
             <option value="2">Encerradas </option>
             <option value="3">Concursos Anteriores </option>
         </field>
-         <field
+        
+        <field
             name="escola"
             type="sql"
             label="Escola"
@@ -45,25 +36,8 @@
         >
             <option value="">--Escola--</option>
         </field>
-         <field
-            name="turma"
-            type="sql"
-            label="Turma"
-            description="Pesquisa por Turma"
-            query="SELECT DISTINCT turma from #__concursos_concurso where turma!=''"
-            key_field="turma"
-            value_field="turma"
-            onchange="this.form.submit();"
-        >
-            <option value="">--Turma--</option>
-        </field>
         
-        <field name="data_inscricoes" 
-               type="calendar" 
-               label="Select a date" 
-               description="" 
-                hint="Data Inscrições"
-               />
+        
       
         
         

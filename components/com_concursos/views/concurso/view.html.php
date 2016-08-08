@@ -39,14 +39,8 @@ class ConcursosViewConcurso extends JViewLegacy
      */
     function display($tpl = null)
     {
-        // Handle different data for different layouts
-        $layout = JRequest::getVar('layout');
-        if($layout == "list") {
-            $this->assign('items', $this->get('Items'));
-        } else {
-            $this->assign('item', $this->get('Item'));
-        }
-
-        parent::display($tpl);
+      $this->setLayout('details');  
+      $this->assign('item', $this->get('Item'));
+      parent::display($tpl);
     }
 }

@@ -13,31 +13,8 @@
  * @link      
  */
 
-// no direct access
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
-/**
- * Require the base controller
- */
-require_once JPATH_COMPONENT.DIRECTORY_SEPARATOR.'controller.php';
-
-// Require specific controller if requested
-jimport('joomla.filesystem.file');
-if($controller = JFile::makeSafe(JRequest::getWord('controller'))) {
-    $path = JPATH_COMPONENT.DIRECTORY_SEPARATOR.'controllers'.DIRECTORY_SEPARATOR.$controller.'.php';
-    if (file_exists($path)) {
-        require_once $path;
-    } else {
-        $controller = '';
-    }
-}
-
-// Create the controller
-$controller_name = 'ConcursosController'.ucfirst($controller);
-$controller	= new $controller_name();
-
-// Perform the Request task
-$controller->execute(JRequest::getCmd('task'));
-
-// Redirect if set by the controller
+$controller = JControllerLegacy::getInstance('Concursos');
+$controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

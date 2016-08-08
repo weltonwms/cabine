@@ -47,12 +47,12 @@
                     <option value="3">TACF</option>
                 </field>
                 <field
-				name="ano"
-                                id="ano"
-				type="text"
-				label="Ano"
-				description="Ano de Publicação da ICA"
-				required="true"
+				name="data"
+                                id="data"
+				type="calendar"
+				label="Data"
+				description="Data de Publicação da ICA"
+                                required="true"
                                 class="required"
 				/>
                 
