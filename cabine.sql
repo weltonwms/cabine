@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 01, 2016 at 04:58 PM
--- Server version: 5.5.50-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.17
+-- Generation Time: Aug 10, 2016 at 04:31 PM
+-- Server version: 5.7.13-0ubuntu0.16.04.2
+-- PHP Version: 7.0.8-0ubuntu0.16.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `cabine`
@@ -26,27 +26,23 @@ SET time_zone = "+00:00";
 -- Table structure for table `b6jei_assets`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_assets` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+CREATE TABLE `b6jei_assets` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key',
   `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set parent.',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `level` int(10) unsigned NOT NULL COMMENT 'The cached level in the nested tree.',
+  `level` int(10) UNSIGNED NOT NULL COMMENT 'The cached level in the nested tree.',
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The unique name for the asset.\n',
   `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The descriptive title for the asset.',
-  `rules` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_asset_name` (`name`),
-  KEY `idx_lft_rgt` (`lft`,`rgt`),
-  KEY `idx_parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=64 ;
+  `rules` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_assets`
 --
 
 INSERT INTO `b6jei_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
-(1, 0, 0, 121, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1,"10":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
+(1, 0, 0, 129, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1,"10":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
 (2, 1, 1, 2, 1, 'com_admin', 'com_admin', '{}'),
 (3, 1, 3, 6, 1, 'com_banners', 'com_banners', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (4, 1, 7, 8, 1, 'com_cache', 'com_cache', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
@@ -98,15 +94,19 @@ INSERT INTO `b6jei_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `t
 (52, 18, 68, 69, 2, 'com_modules.module.79', 'Multilanguage status', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (53, 18, 70, 71, 2, 'com_modules.module.86', 'Joomla Version', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (54, 16, 36, 37, 2, 'com_menus.menu.1', 'Main Menu', '{}'),
-(55, 1, 103, 104, 1, 'com_helloworld', 'COM_HELLOWORLD', '{}'),
-(56, 1, 105, 118, 1, 'com_unidades', 'com_unidades', '{"core.manage":{"10":1},"core.edit.own":{"10":1}}'),
-(57, 1, 119, 120, 1, 'com_concursos', 'concursos', '{}'),
-(58, 56, 106, 107, 2, 'com_unidades.unidade.1', 'BASM', '{"core.delete":[],"core.edit":[]}'),
-(59, 56, 108, 109, 2, 'com_unidades.unidade.2', 'BASC', '{"core.delete":[],"core.edit":[]}'),
-(60, 56, 110, 111, 2, 'com_unidades.unidade.3', 'bacg', '{"core.delete":[],"core.edit":[]}'),
-(61, 56, 112, 113, 2, 'com_unidades.unidade.4', '1GAV', '{"core.delete":[],"core.edit":[]}'),
-(62, 56, 114, 115, 2, 'com_unidades.unidade.5', 'bacc', '{"core.delete":[],"core.edit":[]}'),
-(63, 56, 116, 117, 2, 'com_unidades.unidade.6', 'CCA-BR', '{"core.delete":[],"core.edit":[]}');
+(55, 1, 103, 108, 1, 'com_helloworld', 'COM_HELLOWORLD', '{}'),
+(56, 1, 109, 126, 1, 'com_unidades', 'com_unidades', '{"core.manage":{"10":1},"core.edit.own":{"10":1}}'),
+(57, 1, 127, 128, 1, 'com_concursos', 'concursos', '{"core.admin":[],"core.manage":{"10":1},"core.create":{"10":1},"core.delete":{"10":1},"core.edit":{"10":1}}'),
+(58, 56, 110, 111, 2, 'com_unidades.unidade.1', 'BASM', '{"core.delete":[],"core.edit":[]}'),
+(59, 56, 112, 113, 2, 'com_unidades.unidade.2', 'BASC', '{"core.delete":[],"core.edit":[]}'),
+(60, 56, 114, 115, 2, 'com_unidades.unidade.3', 'bacg', '{"core.delete":[],"core.edit":[]}'),
+(61, 56, 116, 117, 2, 'com_unidades.unidade.4', '1GAV', '{"core.delete":[],"core.edit":[]}'),
+(62, 56, 118, 119, 2, 'com_unidades.unidade.5', 'bacc', '{"core.delete":[],"core.edit":[]}'),
+(63, 56, 120, 121, 2, 'com_unidades.unidade.6', 'CCA-BR', '{"core.delete":[],"core.edit":[]}'),
+(64, 55, 104, 107, 2, 'com_helloworld.category.8', 'cat_hello', '{}'),
+(65, 64, 105, 106, 3, 'com_helloworld.message.2', 'Good bye World!', '{"core.delete":[],"core.edit":[]}'),
+(66, 56, 122, 123, 2, 'com_unidades.unidade.7', 'CCA-RJ', '{"core.delete":[],"core.edit":[]}'),
+(67, 56, 124, 125, 2, 'com_unidades.unidade.8', 'CCA-SJ', '{"core.delete":[],"core.edit":[]}');
 
 -- --------------------------------------------------------
 
@@ -114,12 +114,10 @@ INSERT INTO `b6jei_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `t
 -- Table structure for table `b6jei_associations`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_associations` (
+CREATE TABLE `b6jei_associations` (
   `id` int(11) NOT NULL COMMENT 'A reference to the associated item.',
   `context` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The context of the associated item.',
-  `key` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.',
-  PRIMARY KEY (`context`,`id`),
-  KEY `idx_key` (`key`)
+  `key` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -128,8 +126,8 @@ CREATE TABLE IF NOT EXISTS `b6jei_associations` (
 -- Table structure for table `b6jei_banners`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_banners` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_banners` (
+  `id` int(11) NOT NULL,
   `cid` int(11) NOT NULL DEFAULT '0',
   `type` int(11) NOT NULL DEFAULT '0',
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -139,10 +137,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_banners` (
   `clicks` int(11) NOT NULL DEFAULT '0',
   `clickurl` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `catid` int(10) unsigned NOT NULL DEFAULT '0',
+  `catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `custombannercode` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sticky` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `sticky` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `metakey` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -151,25 +149,19 @@ CREATE TABLE IF NOT EXISTS `b6jei_banners` (
   `purchase_type` tinyint(4) NOT NULL DEFAULT '-1',
   `track_clicks` tinyint(4) NOT NULL DEFAULT '-1',
   `track_impressions` tinyint(4) NOT NULL DEFAULT '-1',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `reset` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `idx_state` (`state`),
-  KEY `idx_own_prefix` (`own_prefix`),
-  KEY `idx_metakey_prefix` (`metakey_prefix`(100)),
-  KEY `idx_banner_catid` (`catid`),
-  KEY `idx_language` (`language`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -177,25 +169,22 @@ CREATE TABLE IF NOT EXISTS `b6jei_banners` (
 -- Table structure for table `b6jei_banner_clients`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_banner_clients` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_banner_clients` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `extrainfo` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `metakey` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `own_prefix` tinyint(4) NOT NULL DEFAULT '0',
   `metakey_prefix` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `purchase_type` tinyint(4) NOT NULL DEFAULT '-1',
   `track_clicks` tinyint(4) NOT NULL DEFAULT '-1',
-  `track_impressions` tinyint(4) NOT NULL DEFAULT '-1',
-  PRIMARY KEY (`id`),
-  KEY `idx_own_prefix` (`own_prefix`),
-  KEY `idx_metakey_prefix` (`metakey_prefix`(100))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `track_impressions` tinyint(4) NOT NULL DEFAULT '-1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -203,15 +192,11 @@ CREATE TABLE IF NOT EXISTS `b6jei_banner_clients` (
 -- Table structure for table `b6jei_banner_tracks`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_banner_tracks` (
+CREATE TABLE `b6jei_banner_tracks` (
   `track_date` datetime NOT NULL,
-  `track_type` int(10) unsigned NOT NULL,
-  `banner_id` int(10) unsigned NOT NULL,
-  `count` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`track_date`,`track_type`,`banner_id`),
-  KEY `idx_track_date` (`track_date`),
-  KEY `idx_track_type` (`track_type`),
-  KEY `idx_banner_id` (`banner_id`)
+  `track_type` int(10) UNSIGNED NOT NULL,
+  `banner_id` int(10) UNSIGNED NOT NULL,
+  `count` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -220,13 +205,13 @@ CREATE TABLE IF NOT EXISTS `b6jei_banner_tracks` (
 -- Table structure for table `b6jei_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `b6jei_categories` (
+  `id` int(11) NOT NULL,
+  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `lft` int(11) NOT NULL DEFAULT '0',
   `rgt` int(11) NOT NULL DEFAULT '0',
-  `level` int(10) unsigned NOT NULL DEFAULT '0',
+  `level` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `path` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -234,41 +219,34 @@ CREATE TABLE IF NOT EXISTS `b6jei_categories` (
   `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `checked_out` int(11) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `metadesc` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The meta description for the page.',
   `metakey` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The meta keywords for the page.',
   `metadata` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded metadata properties.',
-  `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `cat_idx` (`extension`,`published`,`access`),
-  KEY `idx_access` (`access`),
-  KEY `idx_checkout` (`checked_out`),
-  KEY `idx_path` (`path`(100)),
-  KEY `idx_left_right` (`lft`,`rgt`),
-  KEY `idx_alias` (`alias`(100)),
-  KEY `idx_language` (`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=8 ;
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_categories`
 --
 
 INSERT INTO `b6jei_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `extension`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `modified_user_id`, `modified_time`, `hits`, `language`, `version`) VALUES
-(1, 0, 0, 0, 11, 0, '', 'system', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '{}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
+(1, 0, 0, 0, 13, 0, '', 'system', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '{}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
 (2, 27, 1, 1, 2, 1, 'uncategorised', 'com_content', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
 (3, 28, 1, 3, 4, 1, 'uncategorised', 'com_banners', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
 (4, 29, 1, 5, 6, 1, 'uncategorised', 'com_contact', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
 (5, 30, 1, 7, 8, 1, 'uncategorised', 'com_newsfeeds', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
-(7, 32, 1, 9, 10, 1, 'uncategorised', 'com_users', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1);
+(7, 32, 1, 9, 10, 1, 'uncategorised', 'com_users', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
+(8, 64, 1, 11, 12, 1, 'cat-hello', 'com_helloworld', 'cat_hello', 'cat-hello', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":"","image_alt":""}', '', '', '{"author":"","robots":""}', 374, '2016-08-05 16:07:12', 0, '2016-08-05 16:07:12', 0, '*', 1);
 
 -- --------------------------------------------------------
 
@@ -276,8 +254,8 @@ INSERT INTO `b6jei_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `le
 -- Table structure for table `b6jei_concursos_concurso`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_concursos_concurso` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_concursos_concurso` (
+  `id` int(11) NOT NULL,
   `sigla` varchar(255) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `escola` varchar(255) NOT NULL,
@@ -291,17 +269,19 @@ CREATE TABLE IF NOT EXISTS `b6jei_concursos_concurso` (
   `veiculo` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
   `site` varchar(255) NOT NULL,
-  `ambito` varchar(60) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `ambito` varchar(60) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `b6jei_concursos_concurso`
 --
 
 INSERT INTO `b6jei_concursos_concurso` (`id`, `sigla`, `nome`, `escola`, `turma`, `data_inicio`, `data_termino`, `ica_inspecao`, `ica_psicologico`, `ica_tacf`, `instrucoes_especificas`, `veiculo`, `status`, `site`, `ambito`) VALUES
-(2, 'CAMAR', 'Curso de Aperfeiçoamento', 'ESCOLA DE COMANDO E ESTADO MAIOR', '1', '2016-07-01', '2016-07-29', 1, 2, 3, 'images/concursos/testenotimp.pdf', '1', 1, 'http://www.gav.aer.mil.br', 'interno'),
-(3, 'Cerjo', 'Concurso de Erpro', 'ESCOLA DE COMANDO E ESTADO MAIOR', '2', '2016-08-01', '2016-08-26', 1, 2, 3, 'images/concursos/CONC03_Manter_ICAs.doc', '1', 1, 'http://www.g1.com', 'interno');
+(2, 'CAMAR', 'Curso de Aperfeiçoamento', 'ESCOLA DE COMANDO E ESTADO MAIOR', '1', '2016-07-01', '2016-07-29', 1, 2, 3, 'images/concursos/testenotimp.pdf', '1', 2, 'http://www.gav.aer.mil.br', 'externo'),
+(3, 'Cerjo', 'Concurso de Erpro', 'ESCOLA DE COMANDO E ESTADO MAIOR', '2', '2016-08-01', '2016-08-26', 1, 2, 3, 'images/concursos/CONC03_Manter_ICAs.doc', '1', 1, 'http://www.g1.com', 'interno'),
+(6, 'CFS', 'Curso de Formação de Sargentos', 'EEAR', '2/2010', '2016-08-01', '2016-08-26', 1, 2, 9, 'images/concursos/signo_curso3.jpg', '1', 1, 'http://www.g2.com', ''),
+(7, 'CFS', 'Curso de Formação de Sargentos', 'Escola de Especialista de Aeronáutica', '2/1017', '2016-08-09', '2016-08-31', 11, 2, 9, 'images/concursos/signo_curso5.jpg', '1', 1, 'http://www.g2.com', 'interno'),
+(8, 'EAGSii', 'joomla', '', '', '2016-08-24', '2016-08-25', 0, 0, 0, 'image/concursos/OS-28-CCABR-2016.PDF', '1', 1, 'www.g1.com', '');
 
 -- --------------------------------------------------------
 
@@ -309,26 +289,25 @@ INSERT INTO `b6jei_concursos_concurso` (`id`, `sigla`, `nome`, `escola`, `turma`
 -- Table structure for table `b6jei_concursos_icas`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_concursos_icas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_concursos_icas` (
+  `id` int(11) NOT NULL,
   `sigla` varchar(255) NOT NULL,
   `arquivo` varchar(60) DEFAULT NULL,
   `descricao` varchar(255) NOT NULL,
   `referencia` varchar(255) NOT NULL,
   `ano` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+  `data` date DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `b6jei_concursos_icas`
 --
 
-INSERT INTO `b6jei_concursos_icas` (`id`, `sigla`, `arquivo`, `descricao`, `referencia`, `ano`) VALUES
-(1, 'ICA 54-2', 'images/ICA 54-2_ABR_2012.pdf', 'ICA de Saúde', '1', 2012),
-(2, 'ICA 160ab', 'images/ICA_160_6_REED_FEV_2015.pdf', 'ICA de Psicologia', '2', 2015),
-(3, 'ICA 38-13', 'images/NSCA_38_13.pdf', 'ICA DE TACF', '3', 2014),
-(6, 'ICA 8744', 'images/icas/CONC02_Manter_Curso.doc', 'ICA de Psicologia', '2', 2014),
-(5, 'ICA 16023', 'images/icas/copia/logoccabr.png', 'ICA de Psicologia', '2', 2012);
+INSERT INTO `b6jei_concursos_icas` (`id`, `sigla`, `arquivo`, `descricao`, `referencia`, `ano`, `data`) VALUES
+(1, 'ICA 54-2', 'images/ICA 54-2_ABR_2012.pdf', 'ICA de Saúde', '1', 2012, NULL),
+(2, 'ICA 160ab', 'images/ICA_160_6_REED_FEV_2015.pdf', 'ICA de Psicologia', '2', 2015, NULL),
+(9, 'ICA39', 'images/icas/OS-28-CCABR-2016.PDF', 'ICA DE TACF', '3', 1998, '1998-02-09'),
+(11, 'ICA 100-3', 'images/vanessa/g1.jpg', 'ICA 100-3 de Saúde', '1', 2016, '2016-08-01');
 
 -- --------------------------------------------------------
 
@@ -336,8 +315,8 @@ INSERT INTO `b6jei_concursos_icas` (`id`, `sigla`, `arquivo`, `descricao`, `refe
 -- Table structure for table `b6jei_contact_details`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_contact_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_contact_details` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `con_position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -351,15 +330,15 @@ CREATE TABLE IF NOT EXISTS `b6jei_contact_details` (
   `misc` mediumtext COLLATE utf8mb4_unicode_ci,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_to` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `default_con` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `default_con` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `catid` int(11) NOT NULL DEFAULT '0',
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `webpage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `sortname1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -367,29 +346,20 @@ CREATE TABLE IF NOT EXISTS `b6jei_contact_details` (
   `sortname3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `metakey` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `metadata` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
+  `featured` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
   `xreference` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `idx_access` (`access`),
-  KEY `idx_checkout` (`checked_out`),
-  KEY `idx_state` (`published`),
-  KEY `idx_catid` (`catid`),
-  KEY `idx_createdby` (`created_by`),
-  KEY `idx_featured_catid` (`featured`,`catid`),
-  KEY `idx_language` (`language`),
-  KEY `idx_xreference` (`xreference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -397,47 +367,38 @@ CREATE TABLE IF NOT EXISTS `b6jei_contact_details` (
 -- Table structure for table `b6jei_content`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_content` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
+CREATE TABLE `b6jei_content` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `introtext` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `fulltext` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `catid` int(10) unsigned NOT NULL DEFAULT '0',
+  `catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `urls` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `attribs` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `metakey` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `metadata` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
+  `featured` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
   `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The language code for the article.',
-  `xreference` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
-  PRIMARY KEY (`id`),
-  KEY `idx_access` (`access`),
-  KEY `idx_checkout` (`checked_out`),
-  KEY `idx_state` (`state`),
-  KEY `idx_catid` (`catid`),
-  KEY `idx_createdby` (`created_by`),
-  KEY `idx_featured_catid` (`featured`,`catid`),
-  KEY `idx_language` (`language`),
-  KEY `idx_xreference` (`xreference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `xreference` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'A reference to enable linkages to external data sets.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -445,17 +406,13 @@ CREATE TABLE IF NOT EXISTS `b6jei_content` (
 -- Table structure for table `b6jei_contentitem_tag_map`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_contentitem_tag_map` (
+CREATE TABLE `b6jei_contentitem_tag_map` (
   `type_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
+  `core_content_id` int(10) UNSIGNED NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',
-  `tag_id` int(10) unsigned NOT NULL COMMENT 'PK from the tag table',
+  `tag_id` int(10) UNSIGNED NOT NULL COMMENT 'PK from the tag table',
   `tag_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Date of most recent save for this tag-item',
-  `type_id` mediumint(8) NOT NULL COMMENT 'PK from the content_type table',
-  UNIQUE KEY `uc_ItemnameTagid` (`type_id`,`content_item_id`,`tag_id`),
-  KEY `idx_tag_type` (`tag_id`,`type_id`),
-  KEY `idx_date_id` (`tag_date`,`tag_id`),
-  KEY `idx_core_content_id` (`core_content_id`)
+  `type_id` mediumint(8) NOT NULL COMMENT 'PK from the content_type table'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Maps items from content tables to tags';
 
 -- --------------------------------------------------------
@@ -464,10 +421,9 @@ CREATE TABLE IF NOT EXISTS `b6jei_contentitem_tag_map` (
 -- Table structure for table `b6jei_content_frontpage`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_content_frontpage` (
+CREATE TABLE `b6jei_content_frontpage` (
   `content_id` int(11) NOT NULL DEFAULT '0',
-  `ordering` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`content_id`)
+  `ordering` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -476,12 +432,11 @@ CREATE TABLE IF NOT EXISTS `b6jei_content_frontpage` (
 -- Table structure for table `b6jei_content_rating`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_content_rating` (
+CREATE TABLE `b6jei_content_rating` (
   `content_id` int(11) NOT NULL DEFAULT '0',
-  `rating_sum` int(10) unsigned NOT NULL DEFAULT '0',
-  `rating_count` int(10) unsigned NOT NULL DEFAULT '0',
-  `lastip` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`content_id`)
+  `rating_sum` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `rating_count` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `lastip` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -490,18 +445,16 @@ CREATE TABLE IF NOT EXISTS `b6jei_content_rating` (
 -- Table structure for table `b6jei_content_types`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_content_types` (
-  `type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_content_types` (
+  `type_id` int(10) UNSIGNED NOT NULL,
   `type_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `type_alias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `table` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `rules` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `field_mappings` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `router` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `content_history_options` varchar(5120) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'JSON string for com_contenthistory options',
-  PRIMARY KEY (`type_id`),
-  KEY `idx_alias` (`type_alias`(100))
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=14 ;
+  `content_history_options` varchar(5120) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'JSON string for com_contenthistory options'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_content_types`
@@ -528,9 +481,9 @@ INSERT INTO `b6jei_content_types` (`type_id`, `type_title`, `type_alias`, `table
 -- Table structure for table `b6jei_core_log_searches`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_core_log_searches` (
+CREATE TABLE `b6jei_core_log_searches` (
   `search_term` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0'
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -539,29 +492,25 @@ CREATE TABLE IF NOT EXISTS `b6jei_core_log_searches` (
 -- Table structure for table `b6jei_extensions`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_extensions` (
-  `extension_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_extensions` (
+  `extension_id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `element` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `folder` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `client_id` tinyint(3) NOT NULL,
   `enabled` tinyint(3) NOT NULL DEFAULT '1',
-  `access` int(10) unsigned NOT NULL DEFAULT '1',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `protected` tinyint(3) NOT NULL DEFAULT '0',
   `manifest_cache` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `custom_data` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `system_data` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) DEFAULT '0',
-  `state` int(11) DEFAULT '0',
-  PRIMARY KEY (`extension_id`),
-  KEY `element_clientid` (`element`,`client_id`),
-  KEY `element_folder_clientid` (`element`,`folder`,`client_id`),
-  KEY `extension` (`type`,`element`,`folder`,`client_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=10003 ;
+  `state` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_extensions`
@@ -580,7 +529,7 @@ INSERT INTO `b6jei_extensions` (`extension_id`, `name`, `type`, `element`, `fold
 (10, 'com_installer', 'component', 'com_installer', '', 1, 1, 1, 1, '{"name":"com_installer","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_INSTALLER_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (11, 'com_languages', 'component', 'com_languages', '', 1, 1, 1, 1, '{"name":"com_languages","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_LANGUAGES_XML_DESCRIPTION","group":""}', '{"administrator":"en-GB","site":"en-GB"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (12, 'com_login', 'component', 'com_login', '', 1, 1, 1, 1, '{"name":"com_login","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_LOGIN_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(13, 'com_media', 'component', 'com_media', '', 1, 1, 0, 1, '{"name":"com_media","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_MEDIA_XML_DESCRIPTION","group":"","filename":"media"}', '{"upload_extensions":"bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS","upload_maxsize":"10","file_path":"images","image_path":"images","restrict_uploads":"1","allowed_media_usergroup":"3","check_mime":"1","image_extensions":"bmp,gif,jpg,png","ignore_extensions":"","upload_mime":"image\\/jpeg,image\\/gif,image\\/png,image\\/bmp,application\\/x-shockwave-flash,application\\/msword,application\\/excel,application\\/pdf,application\\/powerpoint,text\\/plain,application\\/x-zip","upload_mime_illegal":"text\\/html"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(13, 'com_media', 'component', 'com_media', '', 1, 1, 0, 1, '{"name":"com_media","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_MEDIA_XML_DESCRIPTION","group":"","filename":"media"}', '{"upload_extensions":"bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS","upload_maxsize":"10","file_path":"images","image_path":"images","restrict_uploads":"1","check_mime":"1","image_extensions":"bmp,gif,jpg,png","ignore_extensions":"","upload_mime":"image\\/jpeg,image\\/gif,image\\/png,image\\/bmp,application\\/x-shockwave-flash,application\\/msword,application\\/excel,application\\/pdf,application\\/powerpoint,text\\/plain,application\\/x-zip","upload_mime_illegal":"text\\/html"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (14, 'com_menus', 'component', 'com_menus', '', 1, 1, 1, 1, '{"name":"com_menus","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_MENUS_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (15, 'com_messages', 'component', 'com_messages', '', 1, 1, 1, 1, '{"name":"com_messages","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_MESSAGES_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (16, 'com_modules', 'component', 'com_modules', '', 1, 1, 1, 1, '{"name":"com_modules","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_MODULES_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -693,7 +642,7 @@ INSERT INTO `b6jei_extensions` (`extension_id`, `name`, `type`, `element`, `fold
 (449, 'plg_authentication_cookie', 'plugin', 'cookie', 'authentication', 0, 1, 1, 0, '{"name":"plg_authentication_cookie","type":"plugin","creationDate":"July 2013","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_AUTH_COOKIE_XML_DESCRIPTION","group":"","filename":"cookie"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (450, 'plg_twofactorauth_yubikey', 'plugin', 'yubikey', 'twofactorauth', 0, 0, 1, 0, '{"name":"plg_twofactorauth_yubikey","type":"plugin","creationDate":"September 2013","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.2.0","description":"PLG_TWOFACTORAUTH_YUBIKEY_XML_DESCRIPTION","group":"","filename":"yubikey"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (451, 'plg_search_tags', 'plugin', 'tags', 'search', 0, 1, 1, 0, '{"name":"plg_search_tags","type":"plugin","creationDate":"March 2014","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_SEARCH_TAGS_XML_DESCRIPTION","group":"","filename":"tags"}', '{"search_limit":"50","show_tagged_items":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(452, 'plg_system_updatenotification', 'plugin', 'updatenotification', 'system', 0, 1, 1, 0, '{"name":"plg_system_updatenotification","type":"plugin","creationDate":"May 2015","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.5.0","description":"PLG_SYSTEM_UPDATENOTIFICATION_XML_DESCRIPTION","group":"","filename":"updatenotification"}', '{"lastrun":1470076313}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(452, 'plg_system_updatenotification', 'plugin', 'updatenotification', 'system', 0, 1, 1, 0, '{"name":"plg_system_updatenotification","type":"plugin","creationDate":"May 2015","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.5.0","description":"PLG_SYSTEM_UPDATENOTIFICATION_XML_DESCRIPTION","group":"","filename":"updatenotification"}', '{"lastrun":1470847647}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (453, 'plg_editors-xtd_module', 'plugin', 'module', 'editors-xtd', 0, 1, 1, 0, '{"name":"plg_editors-xtd_module","type":"plugin","creationDate":"October 2015","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.5.0","description":"PLG_MODULE_XML_DESCRIPTION","group":"","filename":"module"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (454, 'plg_system_stats', 'plugin', 'stats', 'system', 0, 1, 1, 0, '{"name":"plg_system_stats","type":"plugin","creationDate":"November 2013","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.5.0","description":"PLG_SYSTEM_STATS_XML_DESCRIPTION","group":"","filename":"stats"}', '{"mode":3,"lastrun":1468523652,"unique_id":"ccda23639cc3617ec05ae11199f78cb294a177e5","interval":12}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (455, 'plg_installer_packageinstaller', 'plugin', 'packageinstaller', 'installer', 0, 1, 1, 1, '{"name":"plg_installer_packageinstaller","type":"plugin","creationDate":"May 2016","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.6.0","description":"PLG_INSTALLER_PACKAGEINSTALLER_PLUGIN_XML_DESCRIPTION","group":"","filename":"packageinstaller"}', '', '', '', 0, '0000-00-00 00:00:00', 1, 0),
@@ -717,23 +666,22 @@ INSERT INTO `b6jei_extensions` (`extension_id`, `name`, `type`, `element`, `fold
 -- Table structure for table `b6jei_finder_filters`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_filters` (
-  `filter_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_finder_filters` (
+  `filter_id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) unsigned NOT NULL,
+  `created_by` int(10) UNSIGNED NOT NULL,
   `created_by_alias` varchar(255) NOT NULL,
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `map_count` int(10) unsigned NOT NULL DEFAULT '0',
+  `map_count` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `data` text NOT NULL,
-  `params` mediumtext,
-  PRIMARY KEY (`filter_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
+  `params` mediumtext
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -741,8 +689,8 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_filters` (
 -- Table structure for table `b6jei_finder_links`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links` (
-  `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_finder_links` (
+  `link_id` int(10) UNSIGNED NOT NULL,
   `url` varchar(255) NOT NULL,
   `route` varchar(255) NOT NULL,
   `title` varchar(400) DEFAULT NULL,
@@ -757,18 +705,11 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links` (
   `publish_end_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `start_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `list_price` double unsigned NOT NULL DEFAULT '0',
-  `sale_price` double unsigned NOT NULL DEFAULT '0',
+  `list_price` double UNSIGNED NOT NULL DEFAULT '0',
+  `sale_price` double UNSIGNED NOT NULL DEFAULT '0',
   `type_id` int(11) NOT NULL,
-  `object` mediumblob NOT NULL,
-  PRIMARY KEY (`link_id`),
-  KEY `idx_type` (`type_id`),
-  KEY `idx_title` (`title`(100)),
-  KEY `idx_md5` (`md5sum`),
-  KEY `idx_url` (`url`(75)),
-  KEY `idx_published_list` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`list_price`),
-  KEY `idx_published_sale` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`sale_price`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
+  `object` mediumblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -776,13 +717,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links` (
 -- Table structure for table `b6jei_finder_links_terms0`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms0` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms0` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -791,13 +729,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms0` (
 -- Table structure for table `b6jei_finder_links_terms1`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms1` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms1` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -806,13 +741,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms1` (
 -- Table structure for table `b6jei_finder_links_terms2`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms2` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms2` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -821,13 +753,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms2` (
 -- Table structure for table `b6jei_finder_links_terms3`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms3` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms3` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -836,13 +765,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms3` (
 -- Table structure for table `b6jei_finder_links_terms4`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms4` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms4` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -851,13 +777,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms4` (
 -- Table structure for table `b6jei_finder_links_terms5`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms5` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms5` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -866,13 +789,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms5` (
 -- Table structure for table `b6jei_finder_links_terms6`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms6` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms6` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -881,13 +801,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms6` (
 -- Table structure for table `b6jei_finder_links_terms7`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms7` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms7` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -896,13 +813,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms7` (
 -- Table structure for table `b6jei_finder_links_terms8`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms8` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms8` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -911,13 +825,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms8` (
 -- Table structure for table `b6jei_finder_links_terms9`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms9` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_terms9` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -926,13 +837,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_terms9` (
 -- Table structure for table `b6jei_finder_links_termsa`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsa` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_termsa` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -941,13 +849,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsa` (
 -- Table structure for table `b6jei_finder_links_termsb`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsb` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_termsb` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -956,13 +861,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsb` (
 -- Table structure for table `b6jei_finder_links_termsc`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsc` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_termsc` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -971,13 +873,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsc` (
 -- Table structure for table `b6jei_finder_links_termsd`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsd` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_termsd` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -986,13 +885,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsd` (
 -- Table structure for table `b6jei_finder_links_termse`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termse` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_termse` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -1001,13 +897,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termse` (
 -- Table structure for table `b6jei_finder_links_termsf`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsf` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`term_id`),
-  KEY `idx_term_weight` (`term_id`,`weight`),
-  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+CREATE TABLE `b6jei_finder_links_termsf` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -1016,20 +909,14 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_links_termsf` (
 -- Table structure for table `b6jei_finder_taxonomy`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_taxonomy` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `b6jei_finder_taxonomy` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
-  `state` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `access` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `ordering` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `parent_id` (`parent_id`),
-  KEY `state` (`state`),
-  KEY `ordering` (`ordering`),
-  KEY `access` (`access`),
-  KEY `idx_parent_published` (`parent_id`,`state`,`access`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=2 ;
+  `state` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `access` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `ordering` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `b6jei_finder_taxonomy`
@@ -1044,12 +931,9 @@ INSERT INTO `b6jei_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `acces
 -- Table structure for table `b6jei_finder_taxonomy_map`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_taxonomy_map` (
-  `link_id` int(10) unsigned NOT NULL,
-  `node_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`link_id`,`node_id`),
-  KEY `link_id` (`link_id`),
-  KEY `node_id` (`node_id`)
+CREATE TABLE `b6jei_finder_taxonomy_map` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `node_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -1058,22 +942,17 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_taxonomy_map` (
 -- Table structure for table `b6jei_finder_terms`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_terms` (
-  `term_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_finder_terms` (
+  `term_id` int(10) UNSIGNED NOT NULL,
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
-  `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `phrase` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `weight` float unsigned NOT NULL DEFAULT '0',
+  `common` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `phrase` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `weight` float UNSIGNED NOT NULL DEFAULT '0',
   `soundex` varchar(75) NOT NULL,
   `links` int(10) NOT NULL DEFAULT '0',
-  `language` char(3) NOT NULL DEFAULT '',
-  PRIMARY KEY (`term_id`),
-  UNIQUE KEY `idx_term` (`term`),
-  KEY `idx_term_phrase` (`term`,`phrase`),
-  KEY `idx_stem_phrase` (`stem`,`phrase`),
-  KEY `idx_soundex_phrase` (`soundex`,`phrase`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
+  `language` char(3) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -1081,11 +960,9 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_terms` (
 -- Table structure for table `b6jei_finder_terms_common`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_terms_common` (
+CREATE TABLE `b6jei_finder_terms_common` (
   `term` varchar(75) NOT NULL,
-  `language` varchar(3) NOT NULL,
-  KEY `idx_word_lang` (`term`,`language`),
-  KEY `idx_lang` (`language`)
+  `language` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1104,7 +981,7 @@ INSERT INTO `b6jei_finder_terms_common` (`term`, `language`) VALUES
 ('ani', 'en'),
 ('any', 'en'),
 ('are', 'en'),
-('aren''t', 'en'),
+('aren\'t', 'en'),
 ('as', 'en'),
 ('at', 'en'),
 ('be', 'en'),
@@ -1119,7 +996,7 @@ INSERT INTO `b6jei_finder_terms_common` (`term`, `language`) VALUES
 ('in', 'en'),
 ('into', 'en'),
 ('is', 'en'),
-('isn''t', 'en'),
+('isn\'t', 'en'),
 ('it', 'en'),
 ('its', 'en'),
 ('me', 'en'),
@@ -1215,16 +1092,14 @@ INSERT INTO `b6jei_finder_terms_common` (`term`, `language`) VALUES
 -- Table structure for table `b6jei_finder_tokens`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_tokens` (
+CREATE TABLE `b6jei_finder_tokens` (
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
-  `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `phrase` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `weight` float unsigned NOT NULL DEFAULT '1',
-  `context` tinyint(1) unsigned NOT NULL DEFAULT '2',
-  `language` char(3) NOT NULL DEFAULT '',
-  KEY `idx_word` (`term`),
-  KEY `idx_context` (`context`)
+  `common` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `phrase` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `weight` float UNSIGNED NOT NULL DEFAULT '1',
+  `context` tinyint(1) UNSIGNED NOT NULL DEFAULT '2',
+  `language` char(3) NOT NULL DEFAULT ''
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -1233,20 +1108,18 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_tokens` (
 -- Table structure for table `b6jei_finder_tokens_aggregate`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_tokens_aggregate` (
-  `term_id` int(10) unsigned NOT NULL,
+CREATE TABLE `b6jei_finder_tokens_aggregate` (
+  `term_id` int(10) UNSIGNED NOT NULL,
   `map_suffix` char(1) NOT NULL,
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
-  `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `phrase` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `term_weight` float unsigned NOT NULL,
-  `context` tinyint(1) unsigned NOT NULL DEFAULT '2',
-  `context_weight` float unsigned NOT NULL,
-  `total_weight` float unsigned NOT NULL,
-  `language` char(3) NOT NULL DEFAULT '',
-  KEY `token` (`term`),
-  KEY `keyword_id` (`term_id`)
+  `common` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `phrase` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `term_weight` float UNSIGNED NOT NULL,
+  `context` tinyint(1) UNSIGNED NOT NULL DEFAULT '2',
+  `context_weight` float UNSIGNED NOT NULL,
+  `total_weight` float UNSIGNED NOT NULL,
+  `language` char(3) NOT NULL DEFAULT ''
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -1255,13 +1128,11 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_tokens_aggregate` (
 -- Table structure for table `b6jei_finder_types`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_finder_types` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_finder_types` (
+  `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(100) NOT NULL,
-  `mime` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `title` (`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
+  `mime` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -1269,23 +1140,22 @@ CREATE TABLE IF NOT EXISTS `b6jei_finder_types` (
 -- Table structure for table `b6jei_helloworld`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_helloworld` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_helloworld` (
+  `id` int(11) NOT NULL,
   `asset_id` int(10) NOT NULL DEFAULT '0',
   `greeting` varchar(25) NOT NULL,
   `published` tinyint(4) NOT NULL,
   `catid` int(11) NOT NULL DEFAULT '0',
-  `params` varchar(1024) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `params` varchar(1024) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `b6jei_helloworld`
 --
 
 INSERT INTO `b6jei_helloworld` (`id`, `asset_id`, `greeting`, `published`, `catid`, `params`) VALUES
-(1, 0, 'Hello World!', 0, 0, ''),
-(2, 0, 'Good bye World!', 0, 0, '');
+(1, 0, 'Hello World!', 1, 0, ''),
+(2, 65, 'Good bye World!', 1, 8, '{"show_category":"1"}');
 
 -- --------------------------------------------------------
 
@@ -1293,8 +1163,8 @@ INSERT INTO `b6jei_helloworld` (`id`, `asset_id`, `greeting`, `published`, `cati
 -- Table structure for table `b6jei_languages`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_languages` (
-  `lang_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_languages` (
+  `lang_id` int(11) UNSIGNED NOT NULL,
   `asset_id` int(11) NOT NULL,
   `lang_code` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1306,15 +1176,9 @@ CREATE TABLE IF NOT EXISTS `b6jei_languages` (
   `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `sitename` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `published` int(11) NOT NULL DEFAULT '0',
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
-  `ordering` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`lang_id`),
-  UNIQUE KEY `idx_sef` (`sef`),
-  UNIQUE KEY `idx_image` (`image`),
-  UNIQUE KEY `idx_langcode` (`lang_code`),
-  KEY `idx_access` (`access`),
-  KEY `idx_ordering` (`ordering`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=2 ;
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `ordering` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_languages`
@@ -1329,8 +1193,8 @@ INSERT INTO `b6jei_languages` (`lang_id`, `asset_id`, `lang_code`, `title`, `tit
 -- Table structure for table `b6jei_menu`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_menu` (
+  `id` int(11) NOT NULL,
   `menutype` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The display title of the menu item.',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'The SEF alias of the menu item.',
@@ -1339,37 +1203,29 @@ CREATE TABLE IF NOT EXISTS `b6jei_menu` (
   `link` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The actually link the menu item refers to.',
   `type` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The type of link: Component, URL, Alias, Separator',
   `published` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'The published state of the menu link.',
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'The parent menu item in the menu tree.',
-  `level` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'The relative level in the tree.',
-  `component_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to #__extensions.id',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to #__users.id',
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '1' COMMENT 'The parent menu item in the menu tree.',
+  `level` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The relative level in the tree.',
+  `component_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to #__extensions.id',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to #__users.id',
   `checked_out_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'The time the menu item was checked out.',
   `browserNav` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'The click behaviour of the link.',
-  `access` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'The access level required to view the menu item.',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The access level required to view the menu item.',
   `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The image of the menu item.',
-  `template_style_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `template_style_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `params` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded data for the menu item.',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `home` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Indicates if this menu item is the home or default page.',
+  `home` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Indicates if this menu item is the home or default page.',
   `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `client_id` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_client_id_parent_id_alias_language` (`client_id`,`parent_id`,`alias`(100),`language`),
-  KEY `idx_componentid` (`component_id`,`menutype`,`published`,`access`),
-  KEY `idx_menutype` (`menutype`),
-  KEY `idx_left_right` (`lft`,`rgt`),
-  KEY `idx_alias` (`alias`(100)),
-  KEY `idx_path` (`path`(100)),
-  KEY `idx_language` (`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=109 ;
+  `client_id` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_menu`
 --
 
 INSERT INTO `b6jei_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 57, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 65, 0, '*', 0),
 (2, 'menu', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 0, 1, 1, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 1, 10, 0, '*', 1),
 (3, 'menu', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 0, 2, 2, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 2, 3, 0, '*', 1),
 (4, 'menu', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 0, 2, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 4, 5, 0, '*', 1),
@@ -1396,7 +1252,11 @@ INSERT INTO `b6jei_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 (105, 'main', 'passagemcomando', 'passagemcomando', '', 'unidades/passagemcomando', 'index.php?option=com_unidades&view=passagemcomando&layout=list', 'component', 0, 103, 2, 10001, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 48, 49, 0, '', 1),
 (106, 'main', 'Concursos', 'concursos', '', 'concursos', 'index.php?option=com_concursos', 'component', 0, 1, 1, 10002, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 51, 56, 0, '', 1),
 (107, 'main', 'icas', 'icas', '', 'concursos/icas', 'index.php?option=com_concursos&view=icas&layout=list', 'component', 0, 106, 2, 10002, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 52, 53, 0, '', 1),
-(108, 'main', 'concurso', 'concurso', '', 'concursos/concurso', 'index.php?option=com_concursos&view=concurso&layout=list', 'component', 0, 106, 2, 10002, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 54, 55, 0, '', 1);
+(108, 'main', 'concurso', 'concurso', '', 'concursos/concurso', 'index.php?option=com_concursos&view=concurso&layout=list', 'component', 0, 106, 2, 10002, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 54, 55, 0, '', 1),
+(109, 'mainmenu', 'Concursos', 'concursos', '', 'concursos', 'index.php?option=com_concursos&view=concursos', 'component', 1, 1, 1, 10002, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 57, 58, 0, '*', 0),
+(110, 'mainmenu', 'helloworld', 'helloworld', '', 'helloworld', 'index.php?option=com_helloworld&view=helloworld&id=2', 'component', 1, 1, 1, 10000, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 59, 60, 0, '*', 0),
+(111, 'mainmenu', 'Passagem de Comando', 'passagem-de-comando', '', 'passagem-de-comando', 'index.php?option=com_unidades&view=passagemcomando&layout=list', 'component', 1, 1, 1, 10001, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 61, 62, 0, '*', 0),
+(112, 'mainmenu', 'unidades', 'unidades', '', 'unidades', 'index.php?option=com_unidades&view=unidades', 'component', 1, 1, 1, 10001, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 63, 64, 0, '*', 0);
 
 -- --------------------------------------------------------
 
@@ -1404,15 +1264,13 @@ INSERT INTO `b6jei_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 -- Table structure for table `b6jei_menu_types`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_menu_types` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_menu_types` (
+  `id` int(10) UNSIGNED NOT NULL,
   `asset_id` int(11) NOT NULL,
   `menutype` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(48) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_menutype` (`menutype`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=2 ;
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_menu_types`
@@ -1427,19 +1285,17 @@ INSERT INTO `b6jei_menu_types` (`id`, `asset_id`, `menutype`, `title`, `descript
 -- Table structure for table `b6jei_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_messages` (
-  `message_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id_from` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_id_to` int(10) unsigned NOT NULL DEFAULT '0',
-  `folder_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `b6jei_messages` (
+  `message_id` int(10) UNSIGNED NOT NULL,
+  `user_id_from` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `user_id_to` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `folder_id` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `date_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `state` tinyint(1) NOT NULL DEFAULT '0',
-  `priority` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `priority` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`message_id`),
-  KEY `useridto_state` (`user_id_to`,`state`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1447,11 +1303,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_messages` (
 -- Table structure for table `b6jei_messages_cfg`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_messages_cfg` (
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `b6jei_messages_cfg` (
+  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `cfg_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `cfg_value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  UNIQUE KEY `idx_user_var_name` (`user_id`,`cfg_name`)
+  `cfg_value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1460,30 +1315,26 @@ CREATE TABLE IF NOT EXISTS `b6jei_messages_cfg` (
 -- Table structure for table `b6jei_modules`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_modules` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
+CREATE TABLE `b6jei_modules` (
+  `id` int(11) NOT NULL,
+  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `ordering` int(11) NOT NULL DEFAULT '0',
   `position` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `module` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
-  `showtitle` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `showtitle` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
   `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `client_id` tinyint(4) NOT NULL DEFAULT '0',
-  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `published` (`published`,`access`),
-  KEY `newsfeeds` (`module`,`published`),
-  KEY `idx_language` (`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=87 ;
+  `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_modules`
@@ -1512,10 +1363,9 @@ INSERT INTO `b6jei_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orde
 -- Table structure for table `b6jei_modules_menu`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_modules_menu` (
+CREATE TABLE `b6jei_modules_menu` (
   `moduleid` int(11) NOT NULL DEFAULT '0',
-  `menuid` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`moduleid`,`menuid`)
+  `menuid` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1547,27 +1397,27 @@ INSERT INTO `b6jei_modules_menu` (`moduleid`, `menuid`) VALUES
 -- Table structure for table `b6jei_newsfeeds`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_newsfeeds` (
+CREATE TABLE `b6jei_newsfeeds` (
   `catid` int(11) NOT NULL DEFAULT '0',
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `link` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `numarticles` int(10) unsigned NOT NULL DEFAULT '1',
-  `cache_time` int(10) unsigned NOT NULL DEFAULT '3600',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `numarticles` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `cache_time` int(10) UNSIGNED NOT NULL DEFAULT '3600',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `rtl` tinyint(4) NOT NULL DEFAULT '0',
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `metakey` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `metadata` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1575,18 +1425,10 @@ CREATE TABLE IF NOT EXISTS `b6jei_newsfeeds` (
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
-  `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_access` (`access`),
-  KEY `idx_checkout` (`checked_out`),
-  KEY `idx_state` (`published`),
-  KEY `idx_catid` (`catid`),
-  KEY `idx_createdby` (`created_by`),
-  KEY `idx_language` (`language`),
-  KEY `idx_xreference` (`xreference`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `images` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1594,13 +1436,12 @@ CREATE TABLE IF NOT EXISTS `b6jei_newsfeeds` (
 -- Table structure for table `b6jei_overrider`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_overrider` (
-  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+CREATE TABLE `b6jei_overrider` (
+  `id` int(10) NOT NULL COMMENT 'Primary Key',
   `constant` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `string` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1608,8 +1449,8 @@ CREATE TABLE IF NOT EXISTS `b6jei_overrider` (
 -- Table structure for table `b6jei_postinstall_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_postinstall_messages` (
-  `postinstall_message_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_postinstall_messages` (
+  `postinstall_message_id` bigint(20) UNSIGNED NOT NULL,
   `extension_id` bigint(20) NOT NULL DEFAULT '700' COMMENT 'FK to #__extensions',
   `title_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for the title',
   `description_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Lang key for description',
@@ -1622,9 +1463,8 @@ CREATE TABLE IF NOT EXISTS `b6jei_postinstall_messages` (
   `condition_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'RAD URI to file holding display condition method',
   `condition_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Display condition method, must return boolean',
   `version_introduced` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '3.2.0' COMMENT 'Version when this message was introduced',
-  `enabled` tinyint(3) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`postinstall_message_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=4 ;
+  `enabled` tinyint(3) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_postinstall_messages`
@@ -1641,21 +1481,18 @@ INSERT INTO `b6jei_postinstall_messages` (`postinstall_message_id`, `extension_i
 -- Table structure for table `b6jei_redirect_links`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_redirect_links` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_redirect_links` (
+  `id` int(10) UNSIGNED NOT NULL,
   `old_url` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
   `new_url` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `referer` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `published` tinyint(4) NOT NULL,
   `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `header` smallint(3) NOT NULL DEFAULT '301',
-  PRIMARY KEY (`id`),
-  KEY `idx_old_url` (`old_url`(100)),
-  KEY `idx_link_modifed` (`modified_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `header` smallint(3) NOT NULL DEFAULT '301'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1663,10 +1500,9 @@ CREATE TABLE IF NOT EXISTS `b6jei_redirect_links` (
 -- Table structure for table `b6jei_schemas`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_schemas` (
+CREATE TABLE `b6jei_schemas` (
   `extension_id` int(11) NOT NULL,
-  `version_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`extension_id`,`version_id`)
+  `version_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1683,17 +1519,14 @@ INSERT INTO `b6jei_schemas` (`extension_id`, `version_id`) VALUES
 -- Table structure for table `b6jei_session`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_session` (
+CREATE TABLE `b6jei_session` (
   `session_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `client_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `guest` tinyint(4) unsigned DEFAULT '1',
+  `client_id` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `guest` tinyint(4) UNSIGNED DEFAULT '1',
   `time` varchar(14) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `data` mediumtext COLLATE utf8mb4_unicode_ci,
   `userid` int(11) DEFAULT '0',
-  `username` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  PRIMARY KEY (`session_id`),
-  KEY `userid` (`userid`),
-  KEY `time` (`time`)
+  `username` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1701,7 +1534,8 @@ CREATE TABLE IF NOT EXISTS `b6jei_session` (
 --
 
 INSERT INTO `b6jei_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('0upf3n5lhc2e2f8nk93p0rrip1', 1, 0, '1470080597', 'joomla|s:2104:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo1OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aToxMDA7czo1OiJ0b2tlbiI7czozMjoiOVNRcmFsQm5VYlRJVkJ4d1BvREtyWnJtZm91WnFNOHoiO3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTQ3MDA3ODcxMztzOjQ6Imxhc3QiO2k6MTQ3MDA4MDU5NztzOjM6Im5vdyI7aToxNDcwMDgwNTk3O319czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjI6e3M6MTM6ImNvbV9jb25jdXJzb3MiO086ODoic3RkQ2xhc3MiOjM6e3M6NDoiZWRpdCI7Tzo4OiJzdGRDbGFzcyI6Mjp7czozOiJpY2EiO086ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2E6MDp7fXM6NDoiZGF0YSI7Tjt9czo4OiJjb25jdXJzbyI7Tzo4OiJzdGRDbGFzcyI6Mjp7czoyOiJpZCI7YTowOnt9czo0OiJkYXRhIjtOO319czo0OiJpY2FzIjtPOjg6InN0ZENsYXNzIjo0OntzOjg6Im9yZGVyY29sIjtOO3M6NDoibGlzdCI7YToxOntzOjEyOiJmdWxsb3JkZXJpbmciO3M6ODoibnVsbCBBU0MiO31zOjY6ImZpbHRlciI7YTozOntzOjY6InNlYXJjaCI7czowOiIiO3M6MTA6InJlZmVyZW5jaWEiO3M6MDoiIjtzOjM6ImFubyI7czowOiIiO31zOjEwOiJsaW1pdHN0YXJ0IjtpOjA7fXM6OToiY29uY3Vyc29zIjtPOjg6InN0ZENsYXNzIjo0OntzOjg6Im9yZGVyY29sIjtOO3M6NDoibGlzdCI7YToxOntzOjEyOiJmdWxsb3JkZXJpbmciO3M6ODoibnVsbCBBU0MiO31zOjY6ImZpbHRlciI7YTo0OntzOjY6InNlYXJjaCI7czowOiIiO3M6NjoiYW1iaXRvIjtzOjA6IiI7czo2OiJzdGF0dXMiO3M6MDoiIjtzOjE1OiJkYXRhX2luc2NyaWNvZXMiO3M6MDoiIjt9czoxMDoibGltaXRzdGFydCI7aTowO319czo5OiJjb25jdXJzb3MiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoibGlzdCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJhZG1pbiI7Tzo4OiJzdGRDbGFzcyI6NDp7czoxNjoiaWNhc2ZpbHRlcl9vcmRlciI7czoyOiJpZCI7czoyMDoiaWNhc2ZpbHRlcl9vcmRlcl9EaXIiO3M6MzoiYXNjIjtzOjIxOiJjb25jdXJzb3NmaWx0ZXJfb3JkZXIiO3M6NDoibm9tZSI7czoyNToiY29uY3Vyc29zZmlsdGVyX29yZGVyX0RpciI7czozOiJhc2MiO319fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjU6IkpVc2VyIjoxOntzOjI6ImlkIjtzOjM6IjM3NCI7fXM6MTE6ImFwcGxpY2F0aW9uIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6InF1ZXVlIjtOO31zOjEzOiJjb21fY29uY3Vyc29zIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJyZXR1cm5fdXJsIjtzOjk0OiJpbmRleC5waHA/b3B0aW9uPWNvbV9jb25jdXJzb3Mmdmlldz11cGxvYWQmdG1wbD1jb21wb25lbnQmZmllbGRpZD1qZm9ybV9pbnN0cnVjb2VzX2VzcGVjaWZpY2FzIjt9fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9";', 374, 'admin');
+('hv0a4gm7tiqa83faq5tsmacd31', 1, 0, '1470856589', 'joomla|s:1860:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTozMTtzOjU6InRva2VuIjtzOjMyOiJ3R0VoM21kYVhYamw5ell1T0tDOWRzNHVQUFlEZXBBMiI7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNDcwODU1NzgwO3M6NDoibGFzdCI7aToxNDcwODU2NTg5O3M6Mzoibm93IjtpOjE0NzA4NTY1ODk7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6NDp7czoxMjoiY29tX3VuaWRhZGVzIjtPOjg6InN0ZENsYXNzIjoxOntzOjg6InVuaWRhZGVzIjtPOjg6InN0ZENsYXNzIjoyOntzOjg6Im9yZGVyY29sIjtOO3M6NDoibGlzdCI7YTo0OntzOjk6ImRpcmVjdGlvbiI7TjtzOjU6ImxpbWl0IjtzOjI6IjIwIjtzOjg6Im9yZGVyaW5nIjtOO3M6NToic3RhcnQiO2Q6MDt9fX1zOjEwOiJjb21fY29uZmlnIjtPOjg6InN0ZENsYXNzIjoxOntzOjY6ImNvbmZpZyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo2OiJnbG9iYWwiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoiZGF0YSI7Tjt9fX1zOjEzOiJjb21faW5zdGFsbGVyIjtPOjg6InN0ZENsYXNzIjoyOntzOjc6Im1lc3NhZ2UiO3M6MDoiIjtzOjE3OiJleHRlbnNpb25fbWVzc2FnZSI7czowOiIiO31zOjEzOiJjb21fY29uY3Vyc29zIjtPOjg6InN0ZENsYXNzIjozOntzOjQ6ImVkaXQiO086ODoic3RkQ2xhc3MiOjI6e3M6ODoiY29uY3Vyc28iO086ODoic3RkQ2xhc3MiOjI6e3M6NDoiZGF0YSI7TjtzOjI6ImlkIjthOjA6e319czozOiJpY2EiO086ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2E6MDp7fXM6NDoiZGF0YSI7Tjt9fXM6OToiY29uY3Vyc29zIjtPOjg6InN0ZENsYXNzIjoyOntzOjg6Im9yZGVyY29sIjtOO3M6NDoibGlzdCI7YTo0OntzOjk6ImRpcmVjdGlvbiI7TjtzOjU6ImxpbWl0IjtzOjI6IjIwIjtzOjg6Im9yZGVyaW5nIjtOO3M6NToic3RhcnQiO2Q6MDt9fXM6NDoiaWNhcyI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo4OiJvcmRlcmNvbCI7TjtzOjQ6Imxpc3QiO2E6NDp7czo5OiJkaXJlY3Rpb24iO047czo1OiJsaW1pdCI7czoyOiIyMCI7czo4OiJvcmRlcmluZyI7TjtzOjU6InN0YXJ0IjtkOjA7fX19fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086NToiSlVzZXIiOjE6e3M6MjoiaWQiO3M6MzoiMzc0Ijt9czoxMToiYXBwbGljYXRpb24iO086ODoic3RkQ2xhc3MiOjE6e3M6NToicXVldWUiO047fX19czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fQ==";', 374, 'admin'),
+('pjt2b12gbkvlq3u1ftii518ki1', 0, 1, '1470856602', 'joomla|s:1908:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aToxNzc7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNDcwODQ3NjQyO3M6NDoibGFzdCI7aToxNDcwODU2MTYzO3M6Mzoibm93IjtpOjE0NzA4NTY2MDI7fXM6NToidG9rZW4iO3M6MzI6ImgzNVNvN1ZvOE05RkhsZWJmVWk1SWVKR21GNkttTWI2Ijt9czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjU6e3M6MTM6ImNvbV9pbnN0YWxsZXIiO086ODoic3RkQ2xhc3MiOjI6e3M6NzoibWVzc2FnZSI7czowOiIiO3M6MTc6ImV4dGVuc2lvbl9tZXNzYWdlIjtzOjA6IiI7fXM6MTI6ImNvbV91bmlkYWRlcyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo4OiJ1bmlkYWRlcyI7Tzo4OiJzdGRDbGFzcyI6NDp7czo4OiJvcmRlcmNvbCI7TjtzOjQ6Imxpc3QiO2E6Mjp7czo1OiJsaW1pdCI7czoxOiI1IjtzOjEyOiJmdWxsb3JkZXJpbmciO3M6ODoibnVsbCBBU0MiO31zOjY6ImZpbHRlciI7YTozOntzOjY6InNlYXJjaCI7czowOiIiO3M6OToiY2F0ZWdvcmlhIjtzOjA6IiI7czoyOiJ1ZiI7czowOiIiO31zOjEwOiJsaW1pdHN0YXJ0IjtpOjA7fX1zOjk6ImNvbmN1cnNvcyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJsaXN0IjtPOjg6InN0ZENsYXNzIjoxOntzOjU6ImFkbWluIjtPOjg6InN0ZENsYXNzIjoyOntzOjIxOiJjb25jdXJzb3NmaWx0ZXJfb3JkZXIiO3M6Nzoibm9tZV9vbSI7czoyNToiY29uY3Vyc29zZmlsdGVyX29yZGVyX0RpciI7czozOiJhc2MiO319fXM6ODoidW5pZGFkZXMiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoibGlzdCI7Tzo4OiJzdGRDbGFzcyI6Mjp7czoyMDoidW5pZGFkZXNmaWx0ZXJfb3JkZXIiO3M6MjoiaWQiO3M6MjQ6InVuaWRhZGVzZmlsdGVyX29yZGVyX0RpciI7czozOiJhc2MiO319czoxMzoiY29tX2NvbmN1cnNvcyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo5OiJjb25jdXJzb3MiO086ODoic3RkQ2xhc3MiOjQ6e3M6ODoib3JkZXJjb2wiO047czo0OiJsaXN0IjthOjI6e3M6NToibGltaXQiO3M6MjoiMjAiO3M6MTI6ImZ1bGxvcmRlcmluZyI7czo4OiJudWxsIEFTQyI7fXM6NjoiZmlsdGVyIjthOjM6e3M6Njoic2VhcmNoIjtzOjA6IiI7czo2OiJzdGF0dXMiO3M6MDoiIjtzOjY6ImVzY29sYSI7czowOiIiO31zOjEwOiJsaW1pdHN0YXJ0IjtpOjA7fX19czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6MTp7czoyOiJpZCI7aTowO319fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=";', 0, '');
 
 -- --------------------------------------------------------
 
@@ -1709,46 +1543,38 @@ INSERT INTO `b6jei_session` (`session_id`, `client_id`, `guest`, `time`, `data`,
 -- Table structure for table `b6jei_tags`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_tags` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `b6jei_tags` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `lft` int(11) NOT NULL DEFAULT '0',
   `rgt` int(11) NOT NULL DEFAULT '0',
-  `level` int(10) unsigned NOT NULL DEFAULT '0',
+  `level` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `path` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `checked_out` int(11) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `metadesc` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The meta description for the page.',
   `metakey` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The meta keywords for the page.',
   `metadata` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded metadata properties.',
-  `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `modified_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `urls` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  KEY `tag_idx` (`published`,`access`),
-  KEY `idx_access` (`access`),
-  KEY `idx_checkout` (`checked_out`),
-  KEY `idx_path` (`path`(100)),
-  KEY `idx_left_right` (`lft`,`rgt`),
-  KEY `idx_alias` (`alias`(100)),
-  KEY `idx_language` (`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=2 ;
+  `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_tags`
@@ -1763,17 +1589,14 @@ INSERT INTO `b6jei_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `tit
 -- Table structure for table `b6jei_template_styles`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_template_styles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_template_styles` (
+  `id` int(10) UNSIGNED NOT NULL,
   `template` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `client_id` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `client_id` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `home` char(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_template` (`template`),
-  KEY `idx_home` (`home`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=9 ;
+  `params` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_template_styles`
@@ -1782,7 +1605,7 @@ CREATE TABLE IF NOT EXISTS `b6jei_template_styles` (
 INSERT INTO `b6jei_template_styles` (`id`, `template`, `client_id`, `home`, `title`, `params`) VALUES
 (4, 'beez3', 0, '0', 'Beez3 - Default', '{"wrapperSmall":"53","wrapperLarge":"72","logo":"images\\/joomla_black.png","sitetitle":"Joomla!","sitedescription":"Open Source Content Management","navposition":"left","templatecolor":"personal","html5":"0"}'),
 (5, 'hathor', 1, '0', 'Hathor - Default', '{"showSiteName":"0","colourChoice":"","boldText":"0"}'),
-(7, 'protostar', 0, '1', 'protostar - Default', '{"templateColor":"","logoFile":"","googleFont":"1","googleFontName":"Open+Sans","fluidContainer":"0"}'),
+(7, 'protostar', 0, '1', 'protostar - Default', '{"templateColor":"#0088cc","templateBackgroundColor":"#f4f6f7","logoFile":"","sitetitle":"","sitedescription":"","googleFont":"0","googleFontName":"Open+Sans","fluidContainer":"0"}'),
 (8, 'isis', 1, '1', 'isis - Default', '{"templateColor":"","logoFile":""}');
 
 -- --------------------------------------------------------
@@ -1791,15 +1614,11 @@ INSERT INTO `b6jei_template_styles` (`id`, `template`, `client_id`, `home`, `tit
 -- Table structure for table `b6jei_ucm_base`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_ucm_base` (
-  `ucm_id` int(10) unsigned NOT NULL,
+CREATE TABLE `b6jei_ucm_base` (
+  `ucm_id` int(10) UNSIGNED NOT NULL,
   `ucm_item_id` int(10) NOT NULL,
   `ucm_type_id` int(11) NOT NULL,
-  `ucm_language_id` int(11) NOT NULL,
-  PRIMARY KEY (`ucm_id`),
-  KEY `idx_ucm_item_id` (`ucm_item_id`),
-  KEY `idx_ucm_type_id` (`ucm_type_id`),
-  KEY `idx_ucm_language_id` (`ucm_language_id`)
+  `ucm_language_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1808,53 +1627,40 @@ CREATE TABLE IF NOT EXISTS `b6jei_ucm_base` (
 -- Table structure for table `b6jei_ucm_content`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_ucm_content` (
-  `core_content_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_ucm_content` (
+  `core_content_id` int(10) UNSIGNED NOT NULL,
   `core_type_alias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
   `core_title` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
   `core_alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `core_body` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `core_state` tinyint(1) NOT NULL DEFAULT '0',
   `core_checked_out_time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `core_checked_out_user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `core_access` int(10) unsigned NOT NULL DEFAULT '0',
+  `core_checked_out_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `core_access` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `core_params` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `core_featured` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `core_featured` tinyint(4) UNSIGNED NOT NULL DEFAULT '0',
   `core_metadata` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded metadata properties.',
-  `core_created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `core_created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `core_created_by_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `core_created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `core_modified_user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Most recent user that modified',
+  `core_modified_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Most recent user that modified',
   `core_modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `core_language` char(7) COLLATE utf8mb4_unicode_ci NOT NULL,
   `core_publish_up` datetime NOT NULL,
   `core_publish_down` datetime NOT NULL,
-  `core_content_item_id` int(10) unsigned DEFAULT NULL COMMENT 'ID from the individual type table',
-  `asset_id` int(10) unsigned DEFAULT NULL COMMENT 'FK to the #__assets table.',
+  `core_content_item_id` int(10) UNSIGNED DEFAULT NULL COMMENT 'ID from the individual type table',
+  `asset_id` int(10) UNSIGNED DEFAULT NULL COMMENT 'FK to the #__assets table.',
   `core_images` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `core_urls` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `core_hits` int(10) unsigned NOT NULL DEFAULT '0',
-  `core_version` int(10) unsigned NOT NULL DEFAULT '1',
+  `core_hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `core_version` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `core_ordering` int(11) NOT NULL DEFAULT '0',
   `core_metakey` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `core_metadesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `core_catid` int(10) unsigned NOT NULL DEFAULT '0',
+  `core_catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `core_xreference` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
-  `core_type_id` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`core_content_id`),
-  KEY `tag_idx` (`core_state`,`core_access`),
-  KEY `idx_access` (`core_access`),
-  KEY `idx_alias` (`core_alias`(100)),
-  KEY `idx_language` (`core_language`),
-  KEY `idx_title` (`core_title`(100)),
-  KEY `idx_modified_time` (`core_modified_time`),
-  KEY `idx_created_time` (`core_created_time`),
-  KEY `idx_content_type` (`core_type_alias`(100)),
-  KEY `idx_core_modified_user_id` (`core_modified_user_id`),
-  KEY `idx_core_checked_out_user_id` (`core_checked_out_user_id`),
-  KEY `idx_core_created_user_id` (`core_created_user_id`),
-  KEY `idx_core_type_id` (`core_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Contains core content data in name spaced fields' AUTO_INCREMENT=1 ;
+  `core_type_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Contains core content data in name spaced fields';
 
 -- --------------------------------------------------------
 
@@ -1862,21 +1668,18 @@ CREATE TABLE IF NOT EXISTS `b6jei_ucm_content` (
 -- Table structure for table `b6jei_ucm_history`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_ucm_history` (
-  `version_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ucm_item_id` int(10) unsigned NOT NULL,
-  `ucm_type_id` int(10) unsigned NOT NULL,
+CREATE TABLE `b6jei_ucm_history` (
+  `version_id` int(10) UNSIGNED NOT NULL,
+  `ucm_item_id` int(10) UNSIGNED NOT NULL,
+  `ucm_type_id` int(10) UNSIGNED NOT NULL,
   `version_note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Optional version name',
   `save_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `editor_user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `character_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Number of characters in this version.',
+  `editor_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `character_count` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Number of characters in this version.',
   `sha1_hash` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'SHA1 hash of the version_data column.',
   `version_data` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'json-encoded string of version data',
-  `keep_forever` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=auto delete; 1=keep',
-  PRIMARY KEY (`version_id`),
-  KEY `idx_ucm_item_id` (`ucm_type_id`,`ucm_item_id`),
-  KEY `idx_save_date` (`save_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `keep_forever` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=auto delete; 1=keep'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1884,15 +1687,22 @@ CREATE TABLE IF NOT EXISTS `b6jei_ucm_history` (
 -- Table structure for table `b6jei_unidades_passagemcomando`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_unidades_passagemcomando` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_unidades_passagemcomando` (
+  `id` int(11) NOT NULL,
   `id_unidade` int(11) NOT NULL,
   `titular` varchar(255) NOT NULL,
   `substituto` varchar(255) NOT NULL,
   `data` date NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `b6jei_unidades_passagemcomando`
+--
+
+INSERT INTO `b6jei_unidades_passagemcomando` (`id`, `id_unidade`, `titular`, `substituto`, `data`, `status`) VALUES
+(1, 1, 'Paulo Aguiar', 'João da Silva', '2016-01-26', 1),
+(2, 1, 'hkjhj', 'kjhkj', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -1900,12 +1710,11 @@ CREATE TABLE IF NOT EXISTS `b6jei_unidades_passagemcomando` (
 -- Table structure for table `b6jei_unidades_ufs`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_unidades_ufs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_unidades_ufs` (
+  `id` int(11) NOT NULL,
   `cidade` varchar(100) NOT NULL,
-  `uf` char(2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9725 ;
+  `uf` char(2) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `b6jei_unidades_ufs`
@@ -2036,10 +1845,10 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (122, 'MURICI', 'AL'),
 (123, 'NOVO LINO', 'AL'),
 (124, 'OLHO D AGUA GRANDE', 'AL'),
-(125, 'OLHO D''AGUA DAS FLORES', 'AL'),
-(126, 'OLHO D''AGUA DE CIMA', 'AL'),
-(127, 'OLHO D''AGUA DO CASADO', 'AL'),
-(128, 'OLHO D''AGUA DOS DANDANHAS', 'AL'),
+(125, 'OLHO D\'AGUA DAS FLORES', 'AL'),
+(126, 'OLHO D\'AGUA DE CIMA', 'AL'),
+(127, 'OLHO D\'AGUA DO CASADO', 'AL'),
+(128, 'OLHO D\'AGUA DOS DANDANHAS', 'AL'),
 (129, 'OLIVENCA', 'AL'),
 (130, 'OURO BRANCO', 'AL'),
 (131, 'PALESTINA', 'AL'),
@@ -2049,7 +1858,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (135, 'PARICONHA', 'AL'),
 (136, 'PARIPUEIRA', 'AL'),
 (137, 'PASSO DE CAMARAGIBE', 'AL'),
-(138, 'PAU D''ARCO', 'AL'),
+(138, 'PAU D\'ARCO', 'AL'),
 (139, 'PAU FERRO', 'AL'),
 (140, 'PAULO JACINTO', 'AL'),
 (141, 'PENEDO', 'AL'),
@@ -2089,7 +1898,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (175, 'SERRA DO SAO JOSE', 'AL'),
 (176, 'TABOLEIRO DO PINTO', 'AL'),
 (177, 'TABOQUINHA', 'AL'),
-(178, 'TANQUE D''ARCA', 'AL'),
+(178, 'TANQUE D\'ARCA', 'AL'),
 (179, 'TAQUARANA', 'AL'),
 (180, 'TATUAMUNHA', 'AL'),
 (181, 'TEOTONIO VILELA', 'AL'),
@@ -2787,8 +2596,8 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (873, 'NOVO TRIUNFO', 'BA'),
 (874, 'NUCLEO RESIDENCIAL PILAR', 'BA'),
 (875, 'NUGUACU', 'BA'),
-(876, 'OLHOS D''AGUA DO SECO', 'BA'),
-(877, 'OLHOS D''AGUA DO SERAFIM', 'BA'),
+(876, 'OLHOS D\'AGUA DO SECO', 'BA'),
+(877, 'OLHOS D\'AGUA DO SERAFIM', 'BA'),
 (878, 'OLINDINA', 'BA'),
 (879, 'OLIVEIRA DOS BREJINHOS', 'BA'),
 (880, 'OLIVENCA', 'BA'),
@@ -3431,8 +3240,8 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (1517, 'NOVO ORIENTE', 'CE'),
 (1518, 'OCARA', 'CE'),
 (1519, 'OITICICA', 'CE'),
-(1520, 'OLHO D''AGUA', 'CE'),
-(1521, 'OLHO D''AGUA DA BICA', 'CE'),
+(1520, 'OLHO D\'AGUA', 'CE'),
+(1521, 'OLHO D\'AGUA DA BICA', 'CE'),
 (1522, 'OLIVEIRAS', 'CE'),
 (1523, 'OROS', 'CE'),
 (1524, 'PACAJUS', 'CE'),
@@ -4128,7 +3937,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (2213, 'NOVO GAMA', 'GO'),
 (2214, 'NOVO PLANALTO', 'GO'),
 (2215, 'OLARIA DO ANGICO', 'GO'),
-(2216, 'OLHOS D''AGUA', 'GO'),
+(2216, 'OLHOS D\'AGUA', 'GO'),
 (2217, 'ORIZONA', 'GO'),
 (2218, 'OURO VERDE DE GOIAS', 'GO'),
 (2219, 'OUROANA', 'GO'),
@@ -4158,7 +3967,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (2243, 'PORTEIRAO', 'GO'),
 (2244, 'PORTELANDIA', 'GO'),
 (2245, 'POSSE', 'GO'),
-(2246, 'POSSE D''ABADIA', 'GO'),
+(2246, 'POSSE D\'ABADIA', 'GO'),
 (2247, 'PROFESSOR JAMIL', 'GO'),
 (2248, 'QUIRINOPOLIS', 'GO'),
 (2249, 'REGISTRO DO ARAGUAIA', 'GO'),
@@ -4191,7 +4000,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (2276, 'SAO FRANCISCO DE GOIAS', 'GO'),
 (2277, 'SAO GABRIEL DE GOIAS', 'GO'),
 (2278, 'SAO JOAO', 'GO'),
-(2279, 'SAO JOAO D''ALIANCA', 'GO'),
+(2279, 'SAO JOAO D\'ALIANCA', 'GO'),
 (2280, 'SAO JOAO DA PARAUNA', 'GO'),
 (2281, 'SAO LUIS DE MONTES BELOS', 'GO'),
 (2282, 'SAO LUIZ DO NORTE', 'GO'),
@@ -4208,7 +4017,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (2293, 'SERRANOPOLIS', 'GO'),
 (2294, 'SILVANIA', 'GO'),
 (2295, 'SIMOLANDIA', 'GO'),
-(2296, 'SITIO D''ABADIA', 'GO'),
+(2296, 'SITIO D\'ABADIA', 'GO'),
 (2297, 'SOUSANIA', 'GO'),
 (2298, 'TAQUARAL DE GOIAS', 'GO'),
 (2299, 'TAVEIRA', 'GO'),
@@ -4387,7 +4196,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (2472, 'NOVA COLINAS', 'MA'),
 (2473, 'NOVA IORQUE', 'MA'),
 (2474, 'NOVA OLINDA DO MARANHAO', 'MA'),
-(2475, 'OLHO D''AGUA DAS CUNHAS', 'MA'),
+(2475, 'OLHO D\'AGUA DAS CUNHAS', 'MA'),
 (2476, 'OLINDA NOVA DO MARANHAO', 'MA'),
 (2477, 'PACO DO LUMIAR', 'MA'),
 (2478, 'PALMEIRANDIA', 'MA'),
@@ -5211,7 +5020,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (3296, 'LEVINOPOLIS', 'MG'),
 (3297, 'LIBERDADE', 'MG'),
 (3298, 'LIMA DUARTE', 'MG'),
-(3299, 'LIMEIRA D''OESTE', 'MG'),
+(3299, 'LIMEIRA D\'OESTE', 'MG'),
 (3300, 'LIMEIRA DE MANTENA', 'MG'),
 (3301, 'LOBO LEITE', 'MG'),
 (3302, 'LONTRA', 'MG'),
@@ -5359,8 +5168,8 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (3444, 'OCIDENTE', 'MG'),
 (3445, 'OLARIA', 'MG'),
 (3446, 'OLEGARIO MACIEL', 'MG'),
-(3447, 'OLHOS D''AGUA DO OESTE', 'MG'),
-(3448, 'OLHOS D''AGUA', 'MG'),
+(3447, 'OLHOS D\'AGUA DO OESTE', 'MG'),
+(3448, 'OLHOS D\'AGUA', 'MG'),
 (3449, 'OLIMPIO CAMPOS', 'MG'),
 (3450, 'OLIMPIO NORONHA', 'MG'),
 (3451, 'OLIVEIRA', 'MG'),
@@ -5467,7 +5276,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (3552, 'PILAR', 'MG'),
 (3553, 'PIMENTA', 'MG'),
 (3554, 'PINDAIBAS', 'MG'),
-(3555, 'PINGO D''AGUA', 'MG'),
+(3555, 'PINGO D\'AGUA', 'MG'),
 (3556, 'PINHEIRINHOS', 'MG'),
 (3557, 'PINHEIROS ALTOS', 'MG'),
 (3558, 'PINHOTIBA', 'MG'),
@@ -6223,7 +6032,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (4307, 'FONTANILHAS', 'MT'),
 (4308, 'GAUCHA DO NORTE', 'MT'),
 (4309, 'GENERAL CARNEIRO', 'MT'),
-(4310, 'GLORIA D''OESTE', 'MT'),
+(4310, 'GLORIA D\'OESTE', 'MT'),
 (4311, 'GUARANTA DO NORTE', 'MT'),
 (4312, 'GUARITA', 'MT'),
 (4313, 'GUIRATINGA', 'MT'),
@@ -6244,7 +6053,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (4328, 'JUINA', 'MT'),
 (4329, 'JURUENA', 'MT'),
 (4330, 'JUSCIMEIRA', 'MT'),
-(4331, 'LAMBARI D''OESTE', 'MT'),
+(4331, 'LAMBARI D\'OESTE', 'MT'),
 (4332, 'LAVOURAS', 'MT'),
 (4333, 'LUCAS DO RIO VERDE', 'MT'),
 (4334, 'LUCIALVA', 'MT'),
@@ -6255,7 +6064,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (4339, 'MATA DENTRO', 'MT'),
 (4340, 'MATUPA', 'MT'),
 (4341, 'MIMOSO', 'MT'),
-(4342, 'MIRASSOL D''OESTE', 'MT'),
+(4342, 'MIRASSOL D\'OESTE', 'MT'),
 (4343, 'NOBRES', 'MT'),
 (4344, 'NONOAI DO NORTE', 'MT'),
 (4345, 'NORTELANDIA', 'MT'),
@@ -6586,7 +6395,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (4670, 'PARAGOMINAS', 'PA'),
 (4671, 'PARATINS', 'PA'),
 (4672, 'PARAUAPEBAS', 'PA'),
-(4673, 'PAU D''ARCO', 'PA'),
+(4673, 'PAU D\'ARCO', 'PA'),
 (4674, 'PEDREIRA', 'PA'),
 (4675, 'PEIXE_BOI', 'PA'),
 (4676, 'PENHALONGA', 'PA'),
@@ -6831,7 +6640,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (4915, 'LIVRAMENTO', 'PB'),
 (4916, 'LOGRADOURO', 'PB'),
 (4917, 'LUCENA', 'PB'),
-(4918, 'MAE D''AGUA', 'PB'),
+(4918, 'MAE D\'AGUA', 'PB'),
 (4919, 'MAIA', 'PB'),
 (4920, 'MALTA', 'PB'),
 (4921, 'MAMANGUAPE', 'PB'),
@@ -6864,7 +6673,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (4948, 'NUCLEO N NULL', 'PB'),
 (4949, 'NUCLEO N NULL', 'PB'),
 (4950, 'ODILANDIA', 'PB'),
-(4951, 'OLHO D''AGUA', 'PB'),
+(4951, 'OLHO D\'AGUA', 'PB'),
 (4952, 'OLIVEDOS', 'PB'),
 (4953, 'OURO VELHO', 'PB'),
 (4954, 'PARARI', 'PB'),
@@ -7083,7 +6892,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (5167, 'CONDADO', 'PE'),
 (5168, 'CORRENTES', 'PE'),
 (5169, 'CORTES', 'PE'),
-(5170, 'COURO D''ANTAS', 'PE'),
+(5170, 'COURO D\'ANTAS', 'PE'),
 (5171, 'CRISTALIA', 'PE'),
 (5172, 'CRUANJI', 'PE'),
 (5173, 'CRUZES', 'PE'),
@@ -7210,7 +7019,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (5294, 'NOSSA SENHORA DO CARMO', 'PE'),
 (5295, 'NOSSA SENHORA DO O', 'PE'),
 (5296, 'NOVA CRUZ', 'PE'),
-(5297, 'OLHO D''AGUA DE DENTRO', 'PE'),
+(5297, 'OLHO D\'AGUA DE DENTRO', 'PE'),
 (5298, 'OLINDA', 'PE'),
 (5299, 'ORATORIO', 'PE'),
 (5300, 'ORI', 'PE'),
@@ -7373,7 +7182,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (5457, 'ASSUNCAO DO PIAUI', 'PI'),
 (5458, 'AVELINO LOPES', 'PI'),
 (5459, 'BAIXA GRANDE DO RIBEIRO', 'PI'),
-(5460, 'BARRA D''ALCANTARA', 'PI'),
+(5460, 'BARRA D\'ALCANTARA', 'PI'),
 (5461, 'BARRAS', 'PI'),
 (5462, 'BARREIRAS DO PIAUI', 'PI'),
 (5463, 'BARRO DURO', 'PI'),
@@ -7499,7 +7308,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (5582, 'NOVO ORIENTE DO PIAUI', 'PI'),
 (5583, 'NOVO SANTO ANTONIO', 'PI'),
 (5584, 'OEIRAS', 'PI'),
-(5585, 'OLHO D''AGUA DO PIAUI', 'PI'),
+(5585, 'OLHO D\'AGUA DO PIAUI', 'PI'),
 (5586, 'PADRE MARCOS', 'PI'),
 (5587, 'PAES LANDIM', 'PI'),
 (5588, 'PAJEU DO PIAUI', 'PI'),
@@ -7653,7 +7462,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (5736, 'BAIRRO LIMOEIRO', 'PR'),
 (5737, 'BALSA NOVA', 'PR'),
 (5738, 'BANDEIRANTES', 'PR'),
-(5739, 'BANDEIRANTES D''OESTE', 'PR'),
+(5739, 'BANDEIRANTES D\'OESTE', 'PR'),
 (5740, 'BANHADO', 'PR'),
 (5741, 'BARAO DE LUCENA', 'PR'),
 (5742, 'BARBOSA FERRAZ', 'PR'),
@@ -7846,7 +7655,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (5929, 'DESPRAIADO', 'PR'),
 (5930, 'DEZ DE MAIO', 'PR'),
 (5931, 'DIAMANTE', 'PR'),
-(5932, 'DIAMANTE D''OESTE', 'PR'),
+(5932, 'DIAMANTE D\'OESTE', 'PR'),
 (5933, 'DIAMANTE DO NORTE', 'PR'),
 (5934, 'DIAMANTE DO SUL', 'PR'),
 (5935, 'DOCE GRANDE', 'PR'),
@@ -7864,7 +7673,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (5947, 'EDUARDO XAVIER DA SILVA', 'PR'),
 (5948, 'EMBOGUACU', 'PR'),
 (5949, 'EMBOQUE', 'PR'),
-(5950, 'ENCANTADO D''OESTE', 'PR'),
+(5950, 'ENCANTADO D\'OESTE', 'PR'),
 (5951, 'ENCRUZILHADA', 'PR'),
 (5952, 'ENEAS MARQUES', 'PR'),
 (5953, 'ENGENHEIRO BELTRAO', 'PR'),
@@ -8002,7 +7811,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (6085, 'ITAMBE', 'PR'),
 (6086, 'ITAPANHACANGA', 'PR'),
 (6087, 'ITAPARA', 'PR'),
-(6088, 'ITAPEJARA D''OESTE', 'PR'),
+(6088, 'ITAPEJARA D\'OESTE', 'PR'),
 (6089, 'ITAPERUCU', 'PR'),
 (6090, 'ITAQUI', 'PR'),
 (6091, 'ITAUNA DO SUL', 'PR'),
@@ -8188,7 +7997,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (6271, 'NOVO TRES PASSOS', 'PR'),
 (6272, 'OLARIA', 'PR'),
 (6273, 'OLHO AGUDO', 'PR'),
-(6274, 'OLHO D''AGUA', 'PR'),
+(6274, 'OLHO D\'AGUA', 'PR'),
 (6275, 'OROITE', 'PR'),
 (6276, 'ORTIGUEIRA', 'PR'),
 (6277, 'OURILANDIA', 'PR'),
@@ -8212,7 +8021,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (6295, 'PANGARE', 'PR'),
 (6296, 'PAPAGAIOS NOVOS', 'PR'),
 (6297, 'PARAISO DO NORTE', 'PR'),
-(6298, 'PARANA D''OESTE', 'PR'),
+(6298, 'PARANA D\'OESTE', 'PR'),
 (6299, 'PARANACITY', 'PR'),
 (6300, 'PARANAGI', 'PR'),
 (6301, 'PARANAGUA', 'PR'),
@@ -8226,7 +8035,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (6309, 'PATO BRAGADO', 'PR'),
 (6310, 'PATO BRANCO', 'PR'),
 (6311, 'PATOS VELHOS', 'PR'),
-(6312, 'PAU D''ALHO DO SUL', 'PR'),
+(6312, 'PAU D\'ALHO DO SUL', 'PR'),
 (6313, 'PAULA FREITAS', 'PR'),
 (6314, 'PAULISTANIA', 'PR'),
 (6315, 'PAULO FRONTIN', 'PR'),
@@ -8304,7 +8113,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (6387, 'QUITANDINHA', 'PR'),
 (6388, 'RAMILANDIA', 'PR'),
 (6389, 'RANCHO ALEGRE', 'PR'),
-(6390, 'RANCHO ALEGRE D''OESTE', 'PR'),
+(6390, 'RANCHO ALEGRE D\'OESTE', 'PR'),
 (6391, 'REALEZA', 'PR'),
 (6392, 'REBOUCAS', 'PR'),
 (6393, 'REGIAO DOS VALOS', 'PR'),
@@ -8411,7 +8220,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (6494, 'SAO GOTARDO', 'PR'),
 (6495, 'SAO JERONIMO DA SERRA', 'PR'),
 (6496, 'SAO JOAO', 'PR'),
-(6497, 'SAO JOAO D''OESTE', 'PR'),
+(6497, 'SAO JOAO D\'OESTE', 'PR'),
 (6498, 'SAO JOAO DA BOA VISTA', 'PR'),
 (6499, 'SAO JOAO DO CAIUA', 'PR'),
 (6500, 'SAO JOAO DO IVAI', 'PR'),
@@ -8419,7 +8228,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (6502, 'SAO JOAO DO TRIUNFO', 'PR'),
 (6503, 'SAO JOAQUIM', 'PR'),
 (6504, 'SAO JOAQUIM DO PONTAL', 'PR'),
-(6505, 'SAO JORGE D''OESTE', 'PR'),
+(6505, 'SAO JORGE D\'OESTE', 'PR'),
 (6506, 'SAO JORGE DO IVAI', 'PR'),
 (6507, 'SAO JORGE DO PATROCINIO', 'PR'),
 (6508, 'SAO JOSE', 'PR'),
@@ -8464,7 +8273,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (6547, 'SAUDADE DO IGUACU', 'PR'),
 (6548, 'SEDE ALVORADA', 'PR'),
 (6549, 'SEDE CHAPARRAL', 'PR'),
-(6550, 'SEDE NOVA SANT''ANA', 'PR'),
+(6550, 'SEDE NOVA SANT\'ANA', 'PR'),
 (6551, 'SEDE PROGRESSO', 'PR'),
 (6552, 'SELVA', 'PR'),
 (6553, 'SENGES', 'PR'),
@@ -8940,7 +8749,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (7023, 'JOSE DA PENHA', 'RN'),
 (7024, 'JUCURUTU', 'RN'),
 (7025, 'JUNDIA DE CIMA', 'RN'),
-(7026, 'LAGOA D''ANTA', 'RN'),
+(7026, 'LAGOA D\'ANTA', 'RN'),
 (7027, 'LAGOA DE PEDRAS', 'RN'),
 (7028, 'LAGOA DE VELHOS', 'RN'),
 (7029, 'LAGOA NOVA', 'RN'),
@@ -8965,7 +8774,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (7048, 'NATAL', 'RN'),
 (7049, 'NISIA FLORESTA', 'RN'),
 (7050, 'NOVA CRUZ', 'RN'),
-(7051, 'OLHO D''AGUA DO BORGES', 'RN'),
+(7051, 'OLHO D\'AGUA DO BORGES', 'RN'),
 (7052, 'OURO BRANCO', 'RN'),
 (7053, 'PARANA', 'RN'),
 (7054, 'PARAZINHO', 'RN'),
@@ -9071,19 +8880,19 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (7154, 'CORUMBIARA', 'RO'),
 (7155, 'COSTA MARQUES', 'RO'),
 (7156, 'CUJUBIM', 'RO'),
-(7157, 'ESPIGAO D''OESTE', 'RO'),
+(7157, 'ESPIGAO D\'OESTE', 'RO'),
 (7158, 'GOVERNADOR JORGE TEIXEIRA', 'RO'),
 (7159, 'GUAJARA_MIRIM', 'RO'),
 (7160, 'JACI PARANA', 'RO'),
 (7161, 'JAMARI', 'RO'),
 (7162, 'JARU', 'RO'),
 (7163, 'JI PARANA', 'RO'),
-(7164, 'MACHADINHO D''OESTE', 'RO'),
+(7164, 'MACHADINHO D\'OESTE', 'RO'),
 (7165, 'MARCO RONDON', 'RO'),
 (7166, 'MINISTRO ANDREAZZA', 'RO'),
 (7167, 'MIRANTE DA SERRA', 'RO'),
 (7168, 'MONTE NEGRO', 'RO'),
-(7169, 'NOVA BRASILANDIA D''OESTE', 'RO'),
+(7169, 'NOVA BRASILANDIA D\'OESTE', 'RO'),
 (7170, 'NOVA MAMORE', 'RO'),
 (7171, 'NOVA UNIAO', 'RO'),
 (7172, 'NOVA VIDA', 'RO'),
@@ -9101,7 +8910,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (7184, 'RIOZINHO', 'RO'),
 (7185, 'ROLIM DE MOURA', 'RO'),
 (7186, 'SANTA LUZIA DO OESTE', 'RO'),
-(7187, 'SAO FELIPE D''OESTE', 'RO'),
+(7187, 'SAO FELIPE D\'OESTE', 'RO'),
 (7188, 'SAO FRANCISCO DO GUAPORE', 'RO'),
 (7189, 'SAO MIGUEL DO GUAPORE', 'RO'),
 (7190, 'SERINGUEIRAS', 'RO'),
@@ -10163,7 +9972,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (8245, 'GUATAMBU', 'SC'),
 (8246, 'HERCILIO LUZ', 'SC'),
 (8247, 'HERCILIOPOLIS', 'SC'),
-(8248, 'HERVAL D''OESTE', 'SC'),
+(8248, 'HERVAL D\'OESTE', 'SC'),
 (8249, 'IBIAM', 'SC'),
 (8250, 'IBICARE', 'SC'),
 (8251, 'IBICUI', 'SC'),
@@ -10327,7 +10136,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (8409, 'RIBEIRAO PEQUENO', 'SC'),
 (8410, 'RIO ANTINHA', 'SC'),
 (8411, 'RIO BONITO', 'SC'),
-(8412, 'RIO D''UNA', 'SC'),
+(8412, 'RIO D\'UNA', 'SC'),
 (8413, 'RIO DA ANTA', 'SC'),
 (8414, 'RIO DA LUZ', 'SC'),
 (8415, 'RIO DAS ANTAS', 'SC'),
@@ -10390,7 +10199,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (8472, 'SAO LOURENCO DO OESTE', 'SC'),
 (8473, 'SAO LUDGERO', 'SC'),
 (8474, 'SAO MARTINHO', 'SC'),
-(8475, 'SAO MIGUEL D''OESTE', 'SC'),
+(8475, 'SAO MIGUEL D\'OESTE', 'SC'),
 (8476, 'SAO MIGUEL DA BOA VISTA', 'SC'),
 (8477, 'SAO MIGUEL DA SERRA', 'SC'),
 (8478, 'SAO PEDRO DE ALCANTARA', 'SC'),
@@ -10480,7 +10289,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (8562, 'ITABAIANA', 'SE'),
 (8563, 'ITABAIANINHA', 'SE'),
 (8564, 'ITABI', 'SE'),
-(8565, 'ITAPORANGA D''AJUDA', 'SE'),
+(8565, 'ITAPORANGA D\'AJUDA', 'SE'),
 (8566, 'JAPARATUBA', 'SE'),
 (8567, 'JAPOATA', 'SE'),
 (8568, 'LAGARTO', 'SE'),
@@ -10577,7 +10386,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (8659, 'ANHEMBI', 'SP'),
 (8660, 'ANHUMAS', 'SP'),
 (8661, 'APARECIDA', 'SP'),
-(8662, 'APARECIDA D''OESTE', 'SP'),
+(8662, 'APARECIDA D\'OESTE', 'SP'),
 (8663, 'APARECIDA DE MONTE ALTO', 'SP'),
 (8664, 'APARECIDA DE SAO MANUEL', 'SP'),
 (8665, 'APARECIDA DO BONITO', 'SP'),
@@ -10623,7 +10432,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (8705, 'BALBINOS', 'SP'),
 (8706, 'BALSAMO', 'SP'),
 (8707, 'BANANAL', 'SP'),
-(8708, 'BANDEIRANTES D''OESTE', 'SP'),
+(8708, 'BANDEIRANTES D\'OESTE', 'SP'),
 (8709, 'BARAO ATALIBA NOGUEIRA', 'SP'),
 (8710, 'BARAO DE ANTONINA', 'SP'),
 (8711, 'BARAO DE GERALDO', 'SP'),
@@ -10801,12 +10610,12 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (8883, 'ENGENHEIRO MAIA', 'SP'),
 (8884, 'ENGENHEIRO SCHMIDT', 'SP'),
 (8885, 'ESMERALDA', 'SP'),
-(8886, 'ESPERANCA D''OESTE', 'SP'),
+(8886, 'ESPERANCA D\'OESTE', 'SP'),
 (8887, 'ESPIGAO', 'SP'),
 (8888, 'ESPIRITO SANTO DO PINHAL', 'SP'),
 (8889, 'ESPIRITO SANTO DO TURVO', 'SP'),
 (8890, 'ESTIVA GERBI', 'SP'),
-(8891, 'ESTRELA D''OESTE', 'SP'),
+(8891, 'ESTRELA D\'OESTE', 'SP'),
 (8892, 'ESTRELA DO NORTE', 'SP'),
 (8893, 'EUCLIDES DA CUNHA PAULISTA', 'SP'),
 (8894, 'EUGENIO DE MELO', 'SP'),
@@ -10849,8 +10658,8 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (8931, 'GUARA', 'SP'),
 (8932, 'GUARACAI', 'SP'),
 (8933, 'GUARACI', 'SP'),
-(8934, 'GUARACIABA D''OESTE', 'SP'),
-(8935, 'GUARANI D''OESTE', 'SP'),
+(8934, 'GUARACIABA D\'OESTE', 'SP'),
+(8935, 'GUARANI D\'OESTE', 'SP'),
 (8936, 'GUARANTA', 'SP'),
 (8937, 'GUARAPIRANGA', 'SP'),
 (8938, 'GUARAPUA', 'SP'),
@@ -11124,7 +10933,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (9205, 'PADRE NOBREGA', 'SP'),
 (9206, 'PALESTINA', 'SP'),
 (9207, 'PALMARES PAULISTA', 'SP'),
-(9208, 'PALMEIRA D''OESTE', 'SP'),
+(9208, 'PALMEIRA D\'OESTE', 'SP'),
 (9209, 'PALMEIRAS DE SAO PAULO', 'SP'),
 (9210, 'PALMITAL', 'SP'),
 (9211, 'PANORAMA', 'SP'),
@@ -11275,9 +11084,9 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (9356, 'SANTA ADELIA', 'SP'),
 (9357, 'SANTA ALBERTINA', 'SP'),
 (9358, 'SANTA AMERICA', 'SP'),
-(9359, 'SANTA BARBARA D''OESTE', 'SP'),
+(9359, 'SANTA BARBARA D\'OESTE', 'SP'),
 (9360, 'SANTA BRANCA', 'SP'),
-(9361, 'SANTA CLARA D''OESTE', 'SP'),
+(9361, 'SANTA CLARA D\'OESTE', 'SP'),
 (9362, 'SANTA CRUZ DA CONCEICAO', 'SP'),
 (9363, 'SANTA CRUZ DA ESPERANCA', 'SP'),
 (9364, 'SANTA CRUZ DA ESTRELA', 'SP'),
@@ -11295,7 +11104,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (9376, 'SANTA MARIA DA SERRA', 'SP'),
 (9377, 'SANTA MARIA DO GURUPA', 'SP'),
 (9378, 'SANTA MERCEDES', 'SP'),
-(9379, 'SANTA RITA D''OESTE', 'SP'),
+(9379, 'SANTA RITA D\'OESTE', 'SP'),
 (9380, 'SANTA RITA DO PASSA QUATRO', 'SP'),
 (9381, 'SANTA RITA DO RIBEIRA', 'SP'),
 (9382, 'SANTA ROSA DE VITERBO', 'SP'),
@@ -11332,7 +11141,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (9413, 'SAO JOAO DE IRACEMA', 'SP'),
 (9414, 'SAO JOAO DE ITAGUACU', 'SP'),
 (9415, 'SAO JOAO DO MARINHEIRO', 'SP'),
-(9416, 'SAO JOAO DO PAU D''ALHO', 'SP'),
+(9416, 'SAO JOAO DO PAU D\'ALHO', 'SP'),
 (9417, 'SAO JOAO NOVO', 'SP'),
 (9418, 'SAO JOAQUIM DA BARRA', 'SP'),
 (9419, 'SAO JOSE DA BELA VISTA', 'SP'),
@@ -11346,7 +11155,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (9427, 'SAO LUIS DO PARAITINGA', 'SP'),
 (9428, 'SAO LUIZ DO GUARICANGA', 'SP'),
 (9429, 'SAO MANUEL', 'SP'),
-(9430, 'SAO MARTINHO D''OESTE', 'SP'),
+(9430, 'SAO MARTINHO D\'OESTE', 'SP'),
 (9431, 'SAO MIGUEL ARCANJO', 'SP'),
 (9432, 'SAO PAULO', 'SP'),
 (9433, 'SAO PEDRO', 'SP'),
@@ -11411,7 +11220,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (9492, 'TEJUPA', 'SP'),
 (9493, 'TEODORO SAMPAIO', 'SP'),
 (9494, 'TERMAS DE IBIRA', 'SP'),
-(9495, 'TERRA NOVA D''OESTE', 'SP'),
+(9495, 'TERRA NOVA D\'OESTE', 'SP'),
 (9496, 'TERRA ROXA', 'SP'),
 (9497, 'TIBIRICA', 'SP'),
 (9498, 'TIBIRICA DO PARANAPANEMA', 'SP'),
@@ -11584,7 +11393,7 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 (9665, 'PALMEIROPOLIS', 'TO'),
 (9666, 'PARAISO DO TOCANTINS', 'TO'),
 (9667, 'PARANA', 'TO'),
-(9668, 'PAU D''ARCO', 'TO'),
+(9668, 'PAU D\'ARCO', 'TO'),
 (9669, 'PE DA SERRA', 'TO'),
 (9670, 'PEDRO AFONSO', 'TO'),
 (9671, 'PEDRO LUDOVICO', 'TO'),
@@ -11648,44 +11457,44 @@ INSERT INTO `b6jei_unidades_ufs` (`id`, `cidade`, `uf`) VALUES
 -- Table structure for table `b6jei_unidades_unidade`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_unidades_unidade` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `asset_id` int(255) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `b6jei_unidades_unidade` (
+  `id` int(11) NOT NULL,
+  `asset_id` int(255) UNSIGNED NOT NULL DEFAULT '0',
   `nome_om` varchar(255) NOT NULL,
   `logo_om` varchar(255) NOT NULL,
   `sigla` varchar(11) NOT NULL,
-  `data_aniversario` date NOT NULL,
-  `comandante` varchar(50) NOT NULL,
+  `data_aniversario` date DEFAULT NULL,
+  `comandante` varchar(50) DEFAULT NULL,
   `categoria` varchar(50) NOT NULL,
-  `endereco` varchar(100) NOT NULL,
-  `complemento` varchar(50) NOT NULL,
+  `endereco` varchar(100) DEFAULT NULL,
+  `complemento` varchar(50) DEFAULT NULL,
   `cidade` varchar(50) NOT NULL,
   `uf` varchar(5) NOT NULL,
-  `cep` varchar(25) NOT NULL,
-  `pais` varchar(25) NOT NULL,
-  `site_internet` varchar(100) NOT NULL,
-  `site_intraer` varchar(100) NOT NULL,
-  `ddd` int(5) NOT NULL,
-  `caixa_postal` varchar(60) NOT NULL,
-  `pabx` varchar(45) NOT NULL,
-  `fax` varchar(45) NOT NULL,
-  `lista_ramais` mediumtext NOT NULL,
-  `secao` varchar(60) NOT NULL,
-  `created_by` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+  `cep` varchar(25) DEFAULT NULL,
+  `pais` varchar(25) DEFAULT NULL,
+  `site_internet` varchar(100) DEFAULT NULL,
+  `site_intraer` varchar(100) DEFAULT NULL,
+  `ddd` int(5) DEFAULT NULL,
+  `caixa_postal` varchar(60) DEFAULT NULL,
+  `pabx` varchar(45) DEFAULT NULL,
+  `fax` varchar(45) DEFAULT NULL,
+  `lista_ramais` mediumtext,
+  `created_by` int(10) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `b6jei_unidades_unidade`
 --
 
-INSERT INTO `b6jei_unidades_unidade` (`id`, `asset_id`, `nome_om`, `logo_om`, `sigla`, `data_aniversario`, `comandante`, `categoria`, `endereco`, `complemento`, `cidade`, `uf`, `cep`, `pais`, `site_internet`, `site_intraer`, `ddd`, `caixa_postal`, `pabx`, `fax`, `lista_ramais`, `secao`, `created_by`) VALUES
-(1, 58, 'Base Aérea de Santa Maria', 'images/sampledata/1_1gavca.jpg', 'BASM', '0000-00-00', '', 'Base', '', '', 'BRASÍLIA', 'DF', '', '', '', '', 0, '', '', '', '<p><strong>Oficial de Dia</strong>: 1654564<br /><strong>Pedreiro de dia</strong>: 46546455</p>', '', 375),
-(2, 59, 'Base Aérea de Santa Cruz', 'images/sampledata/1_1gavca.jpg', 'BASC', '0000-00-00', '', 'Base', '', '', 'ABAIRA', 'BA', '', '', '', '', 0, '', '', '', '', '', 374),
-(3, 60, 'Base aérea de Campo Grande', 'images/joomla_black.png', 'bacg', '0000-00-00', '', 'Base', '', '', 'ASSIS BRASIL', 'AC', '', '', '', '', 0, '', '', '', '', '', 374),
-(4, 61, 'Primeiro Grupo de Aviação', 'images/sampledata/1_1gavca.jpg', '1GAV', '0000-00-00', '', 'Grupo', '', '', 'ALVARAES', 'AM', '', '', '', '', 0, '', '', '', '', '', 374),
-(5, 62, 'Base Aérea de Campo', 'images/joomla_black.png', 'bacc', '0000-00-00', '', 'Academia', '', '', 'BUJARI', 'AC', '', '', '', '', 0, '', '', '', '', '', 374),
-(6, 63, 'Centro de Computação da Aeronáutica', 'images/sampledata/1_1gavca.jpg', 'CCA-BR', '0000-00-00', '', 'Centro', '', '', 'BRASILEIA', 'AC', '', '', '', '', 0, '', '', '', '', '', 374);
+INSERT INTO `b6jei_unidades_unidade` (`id`, `asset_id`, `nome_om`, `logo_om`, `sigla`, `data_aniversario`, `comandante`, `categoria`, `endereco`, `complemento`, `cidade`, `uf`, `cep`, `pais`, `site_internet`, `site_intraer`, `ddd`, `caixa_postal`, `pabx`, `fax`, `lista_ramais`, `created_by`) VALUES
+(1, 58, 'Base Aérea de Santa Maria', 'images/sampledata/1_1gavca.jpg', 'BASM', '2016-09-02', '', 'Base', '', '', 'BRASÍLIA', 'DF', '', '', '', '', 0, '', '', '', '<p><strong>Oficial de Dia</strong>: 1654564<br /><strong>Pedreiro de dia</strong>: 46546455</p>', 375),
+(2, 59, 'Base Aérea de Santa Cruz', 'images/sampledata/1_1gavca.jpg', 'BASC', '2016-09-02', '', 'Base', '', '', 'ABAIRA', 'BA', '', '', '', '', 0, '', '', '', '', 374),
+(3, 60, 'Base aérea de Campo Grande', 'images/joomla_black.png', 'bacg', '2016-09-02', '', 'Base', '', '', 'ASSIS BRASIL', 'AC', '', '', '', '', 0, '', '', '', '', 374),
+(4, 61, 'Primeiro Grupo de Aviação', 'images/sampledata/1_1gavca.jpg', '1GAV', '2016-09-02', '', 'Grupo', '', '', 'ALVARAES', 'AM', '', '', '', '', 0, '', '', '', '', 374),
+(5, 62, 'Base Aérea de Campo', 'images/joomla_black.png', 'bacc', '2016-09-02', '', 'Academia', '', '', 'BUJARI', 'AC', '', '', '', '', 0, '', '', '', '', 374),
+(6, 63, 'Centro de Computação da Aeronáutica', 'images/sampledata/1_1gavca.jpg', 'CCA-BR', '2016-09-02', 'Robson Augusto', 'Centro', '', '', 'BRASÍLIA', 'DF', '', '', '', '', 0, '', '', '', '<p><strong>SAI</strong>: 1709<br /><strong>SGR</strong>: 1714</p>', 374),
+(7, 66, 'Centro de Computação do Rio de Janeiro', 'images/g1.jpg', 'CCA-RJ', '1993-08-03', 'César Augusto UI', 'Centro', 'Esplanada dos Ministerios', 'complentoneto 2', 'RIO DE JANEIRO', 'RJ', '89.999-999', 'Brasil', '', '', 61, '', '(61) 77777-7777', '', '', 374),
+(8, 67, 'Centro de Computação de São José', 'images/g1.jpg', 'CCA-SJ', NULL, 'César Augusto', 'Centro', '', '', 'SAO JOSE DOS CAMPOS', 'SP', '', '', '', '', 0, '', '', '', '', 374);
 
 -- --------------------------------------------------------
 
@@ -11693,8 +11502,8 @@ INSERT INTO `b6jei_unidades_unidade` (`id`, `asset_id`, `nome_om`, `logo_om`, `s
 -- Table structure for table `b6jei_updates`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_updates` (
-  `update_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_updates` (
+  `update_id` int(11) NOT NULL,
   `update_site_id` int(11) DEFAULT '0',
   `extension_id` int(11) DEFAULT '0',
   `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT '',
@@ -11707,9 +11516,88 @@ CREATE TABLE IF NOT EXISTS `b6jei_updates` (
   `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `detailsurl` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `infourl` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `extra_query` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  PRIMARY KEY (`update_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Available Updates' AUTO_INCREMENT=1 ;
+  `extra_query` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Available Updates';
+
+--
+-- Dumping data for table `b6jei_updates`
+--
+
+INSERT INTO `b6jei_updates` (`update_id`, `update_site_id`, `extension_id`, `name`, `description`, `element`, `type`, `folder`, `client_id`, `version`, `data`, `detailsurl`, `infourl`, `extra_query`) VALUES
+(1, 1, 700, 'Joomla', '', 'joomla', 'file', '', 0, '3.6.2', '', 'https://update.joomla.org/core/sts/extension_sts.xml', '', ''),
+(2, 3, 0, 'Armenian', '', 'pkg_hy-AM', 'package', '', 0, '3.4.4.1', '', 'https://update.joomla.org/language/details3/hy-AM_details.xml', '', ''),
+(3, 3, 0, 'Malay', '', 'pkg_ms-MY', 'package', '', 0, '3.4.1.2', '', 'https://update.joomla.org/language/details3/ms-MY_details.xml', '', ''),
+(4, 3, 0, 'Romanian', '', 'pkg_ro-RO', 'package', '', 0, '3.6.0.1', '', 'https://update.joomla.org/language/details3/ro-RO_details.xml', '', ''),
+(5, 3, 0, 'Flemish', '', 'pkg_nl-BE', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/nl-BE_details.xml', '', ''),
+(6, 3, 0, 'Chinese Traditional', '', 'pkg_zh-TW', 'package', '', 0, '3.6.0.1', '', 'https://update.joomla.org/language/details3/zh-TW_details.xml', '', ''),
+(7, 3, 0, 'French', '', 'pkg_fr-FR', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/fr-FR_details.xml', '', ''),
+(8, 3, 0, 'Galician', '', 'pkg_gl-ES', 'package', '', 0, '3.3.1.2', '', 'https://update.joomla.org/language/details3/gl-ES_details.xml', '', ''),
+(9, 3, 0, 'Georgian', '', 'pkg_ka-GE', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/ka-GE_details.xml', '', ''),
+(10, 3, 0, 'Greek', '', 'pkg_el-GR', 'package', '', 0, '3.4.2.1', '', 'https://update.joomla.org/language/details3/el-GR_details.xml', '', ''),
+(11, 3, 0, 'Japanese', '', 'pkg_ja-JP', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/ja-JP_details.xml', '', ''),
+(12, 3, 0, 'Hebrew', '', 'pkg_he-IL', 'package', '', 0, '3.1.1.1', '', 'https://update.joomla.org/language/details3/he-IL_details.xml', '', ''),
+(13, 3, 0, 'Hungarian', '', 'pkg_hu-HU', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/hu-HU_details.xml', '', ''),
+(14, 3, 0, 'Afrikaans', '', 'pkg_af-ZA', 'package', '', 0, '3.6.1.1', '', 'https://update.joomla.org/language/details3/af-ZA_details.xml', '', ''),
+(15, 3, 0, 'Arabic Unitag', '', 'pkg_ar-AA', 'package', '', 0, '3.6.1.1', '', 'https://update.joomla.org/language/details3/ar-AA_details.xml', '', ''),
+(16, 3, 0, 'Belarusian', '', 'pkg_be-BY', 'package', '', 0, '3.2.1.1', '', 'https://update.joomla.org/language/details3/be-BY_details.xml', '', ''),
+(17, 3, 0, 'Bulgarian', '', 'pkg_bg-BG', 'package', '', 0, '3.4.4.2', '', 'https://update.joomla.org/language/details3/bg-BG_details.xml', '', ''),
+(18, 3, 0, 'Catalan', '', 'pkg_ca-ES', 'package', '', 0, '3.6.0.1', '', 'https://update.joomla.org/language/details3/ca-ES_details.xml', '', ''),
+(19, 3, 0, 'Chinese Simplified', '', 'pkg_zh-CN', 'package', '', 0, '3.4.1.1', '', 'https://update.joomla.org/language/details3/zh-CN_details.xml', '', ''),
+(20, 3, 0, 'Croatian', '', 'pkg_hr-HR', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/hr-HR_details.xml', '', ''),
+(21, 3, 0, 'Czech', '', 'pkg_cs-CZ', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/cs-CZ_details.xml', '', ''),
+(22, 3, 0, 'Danish', '', 'pkg_da-DK', 'package', '', 0, '3.6.0.1', '', 'https://update.joomla.org/language/details3/da-DK_details.xml', '', ''),
+(23, 3, 0, 'Dutch', '', 'pkg_nl-NL', 'package', '', 0, '3.6.0.1', '', 'https://update.joomla.org/language/details3/nl-NL_details.xml', '', ''),
+(24, 3, 0, 'Estonian', '', 'pkg_et-EE', 'package', '', 0, '3.6.0.1', '', 'https://update.joomla.org/language/details3/et-EE_details.xml', '', ''),
+(25, 3, 0, 'Italian', '', 'pkg_it-IT', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/it-IT_details.xml', '', ''),
+(26, 3, 0, 'Khmer', '', 'pkg_km-KH', 'package', '', 0, '3.4.5.1', '', 'https://update.joomla.org/language/details3/km-KH_details.xml', '', ''),
+(27, 3, 0, 'Korean', '', 'pkg_ko-KR', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/ko-KR_details.xml', '', ''),
+(28, 3, 0, 'Latvian', '', 'pkg_lv-LV', 'package', '', 0, '3.4.3.1', '', 'https://update.joomla.org/language/details3/lv-LV_details.xml', '', ''),
+(29, 3, 0, 'Macedonian', '', 'pkg_mk-MK', 'package', '', 0, '3.6.2.2', '', 'https://update.joomla.org/language/details3/mk-MK_details.xml', '', ''),
+(30, 3, 0, 'Norwegian Bokmal', '', 'pkg_nb-NO', 'package', '', 0, '3.5.1.1', '', 'https://update.joomla.org/language/details3/nb-NO_details.xml', '', ''),
+(31, 3, 0, 'Norwegian Nynorsk', '', 'pkg_nn-NO', 'package', '', 0, '3.4.2.1', '', 'https://update.joomla.org/language/details3/nn-NO_details.xml', '', ''),
+(32, 3, 0, 'Persian', '', 'pkg_fa-IR', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/fa-IR_details.xml', '', ''),
+(33, 3, 0, 'Polish', '', 'pkg_pl-PL', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/pl-PL_details.xml', '', ''),
+(34, 3, 0, 'Portuguese', '', 'pkg_pt-PT', 'package', '', 0, '3.5.1.4', '', 'https://update.joomla.org/language/details3/pt-PT_details.xml', '', ''),
+(35, 3, 0, 'Russian', '', 'pkg_ru-RU', 'package', '', 0, '3.5.0.6', '', 'https://update.joomla.org/language/details3/ru-RU_details.xml', '', ''),
+(36, 3, 0, 'English AU', '', 'pkg_en-AU', 'package', '', 0, '3.6.2.2', '', 'https://update.joomla.org/language/details3/en-AU_details.xml', '', ''),
+(37, 3, 0, 'Slovak', '', 'pkg_sk-SK', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/sk-SK_details.xml', '', ''),
+(38, 3, 0, 'English US', '', 'pkg_en-US', 'package', '', 0, '3.6.2.2', '', 'https://update.joomla.org/language/details3/en-US_details.xml', '', ''),
+(39, 3, 0, 'Swedish', '', 'pkg_sv-SE', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/sv-SE_details.xml', '', ''),
+(40, 3, 0, 'Syriac', '', 'pkg_sy-IQ', 'package', '', 0, '3.4.5.1', '', 'https://update.joomla.org/language/details3/sy-IQ_details.xml', '', ''),
+(41, 3, 0, 'Tamil', '', 'pkg_ta-IN', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/ta-IN_details.xml', '', ''),
+(42, 3, 0, 'Thai', '', 'pkg_th-TH', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/th-TH_details.xml', '', ''),
+(43, 3, 0, 'Turkish', '', 'pkg_tr-TR', 'package', '', 0, '3.5.1.1', '', 'https://update.joomla.org/language/details3/tr-TR_details.xml', '', ''),
+(44, 3, 0, 'Ukrainian', '', 'pkg_uk-UA', 'package', '', 0, '3.5.1.1', '', 'https://update.joomla.org/language/details3/uk-UA_details.xml', '', ''),
+(45, 3, 0, 'Uyghur', '', 'pkg_ug-CN', 'package', '', 0, '3.3.0.1', '', 'https://update.joomla.org/language/details3/ug-CN_details.xml', '', ''),
+(46, 3, 0, 'Albanian', '', 'pkg_sq-AL', 'package', '', 0, '3.1.1.1', '', 'https://update.joomla.org/language/details3/sq-AL_details.xml', '', ''),
+(47, 3, 0, 'Basque', '', 'pkg_eu-ES', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/eu-ES_details.xml', '', ''),
+(48, 3, 0, 'Hindi', '', 'pkg_hi-IN', 'package', '', 0, '3.3.6.1', '', 'https://update.joomla.org/language/details3/hi-IN_details.xml', '', ''),
+(49, 3, 0, 'German DE', '', 'pkg_de-DE', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/de-DE_details.xml', '', ''),
+(50, 3, 0, 'Portuguese Brazil', '', 'pkg_pt-BR', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/pt-BR_details.xml', '', ''),
+(51, 3, 0, 'Serbian Latin', '', 'pkg_sr-YU', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/sr-YU_details.xml', '', ''),
+(52, 3, 0, 'Spanish', '', 'pkg_es-ES', 'package', '', 0, '3.6.0.1', '', 'https://update.joomla.org/language/details3/es-ES_details.xml', '', ''),
+(53, 3, 0, 'Bosnian', '', 'pkg_bs-BA', 'package', '', 0, '3.4.8.1', '', 'https://update.joomla.org/language/details3/bs-BA_details.xml', '', ''),
+(54, 3, 0, 'Serbian Cyrillic', '', 'pkg_sr-RS', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/sr-RS_details.xml', '', ''),
+(55, 3, 0, 'Vietnamese', '', 'pkg_vi-VN', 'package', '', 0, '3.2.1.1', '', 'https://update.joomla.org/language/details3/vi-VN_details.xml', '', ''),
+(56, 3, 0, 'Bahasa Indonesia', '', 'pkg_id-ID', 'package', '', 0, '3.3.0.2', '', 'https://update.joomla.org/language/details3/id-ID_details.xml', '', ''),
+(57, 3, 0, 'Finnish', '', 'pkg_fi-FI', 'package', '', 0, '3.5.1.1', '', 'https://update.joomla.org/language/details3/fi-FI_details.xml', '', ''),
+(58, 3, 0, 'Swahili', '', 'pkg_sw-KE', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/sw-KE_details.xml', '', ''),
+(59, 3, 0, 'Montenegrin', '', 'pkg_srp-ME', 'package', '', 0, '3.3.1.1', '', 'https://update.joomla.org/language/details3/srp-ME_details.xml', '', ''),
+(60, 3, 0, 'English CA', '', 'pkg_en-CA', 'package', '', 0, '3.6.2.2', '', 'https://update.joomla.org/language/details3/en-CA_details.xml', '', ''),
+(61, 3, 0, 'French CA', '', 'pkg_fr-CA', 'package', '', 0, '3.5.1.2', '', 'https://update.joomla.org/language/details3/fr-CA_details.xml', '', ''),
+(62, 3, 0, 'Welsh', '', 'pkg_cy-GB', 'package', '', 0, '3.3.0.2', '', 'https://update.joomla.org/language/details3/cy-GB_details.xml', '', ''),
+(63, 3, 0, 'Sinhala', '', 'pkg_si-LK', 'package', '', 0, '3.3.1.1', '', 'https://update.joomla.org/language/details3/si-LK_details.xml', '', ''),
+(64, 3, 0, 'Dari Persian', '', 'pkg_prs-AF', 'package', '', 0, '3.4.4.1', '', 'https://update.joomla.org/language/details3/prs-AF_details.xml', '', ''),
+(65, 3, 0, 'Turkmen', '', 'pkg_tk-TM', 'package', '', 0, '3.5.0.1', '', 'https://update.joomla.org/language/details3/tk-TM_details.xml', '', ''),
+(66, 3, 0, 'Irish', '', 'pkg_ga-IE', 'package', '', 0, '3.6.0.1', '', 'https://update.joomla.org/language/details3/ga-IE_details.xml', '', ''),
+(67, 3, 0, 'Dzongkha', '', 'pkg_dz-BT', 'package', '', 0, '3.4.5.1', '', 'https://update.joomla.org/language/details3/dz-BT_details.xml', '', ''),
+(68, 3, 0, 'Slovenian', '', 'pkg_sl-SI', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/sl-SI_details.xml', '', ''),
+(69, 3, 0, 'Spanish CO', '', 'pkg_es-CO', 'package', '', 0, '3.6.1.1', '', 'https://update.joomla.org/language/details3/es-CO_details.xml', '', ''),
+(70, 3, 0, 'German CH', '', 'pkg_de-CH', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/de-CH_details.xml', '', ''),
+(71, 3, 0, 'German AT', '', 'pkg_de-AT', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/de-AT_details.xml', '', ''),
+(72, 3, 0, 'German LI', '', 'pkg_de-LI', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/de-LI_details.xml', '', ''),
+(73, 3, 0, 'German LU', '', 'pkg_de-LU', 'package', '', 0, '3.6.2.1', '', 'https://update.joomla.org/language/details3/de-LU_details.xml', '', ''),
+(74, 4, 28, 'Joomla! Update Component Update', 'Joomla Update Component', 'com_joomlaupdate', 'component', '', 1, '3.6.1', '', 'https://update.joomla.org/core/extensions/com_joomlaupdate.xml', 'https://www.joomla.org/', '');
 
 -- --------------------------------------------------------
 
@@ -11717,26 +11605,25 @@ CREATE TABLE IF NOT EXISTS `b6jei_updates` (
 -- Table structure for table `b6jei_update_sites`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_update_sites` (
-  `update_site_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_update_sites` (
+  `update_site_id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `type` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `location` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `enabled` int(11) DEFAULT '0',
   `last_check_timestamp` bigint(20) DEFAULT '0',
-  `extra_query` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  PRIMARY KEY (`update_site_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Update Sites' AUTO_INCREMENT=5 ;
+  `extra_query` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Update Sites';
 
 --
 -- Dumping data for table `b6jei_update_sites`
 --
 
 INSERT INTO `b6jei_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla! Core', 'collection', 'https://update.joomla.org/core/list.xml', 1, 1470076328, ''),
-(2, 'Joomla! Extension Directory', 'collection', 'https://update.joomla.org/jed/list.xml', 1, 1470076339, ''),
-(3, 'Accredited Joomla! Translations', 'collection', 'https://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
-(4, 'Joomla! Update Component Update Site', 'extension', 'https://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 0, '');
+(1, 'Joomla! Core', 'collection', 'https://update.joomla.org/core/list.xml', 1, 1470856256, ''),
+(2, 'Joomla! Extension Directory', 'collection', 'https://update.joomla.org/jed/list.xml', 1, 1470856257, ''),
+(3, 'Accredited Joomla! Translations', 'collection', 'https://update.joomla.org/language/translationlist_3.xml', 1, 1470856266, ''),
+(4, 'Joomla! Update Component Update Site', 'extension', 'https://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1470856268, '');
 
 -- --------------------------------------------------------
 
@@ -11744,10 +11631,9 @@ INSERT INTO `b6jei_update_sites` (`update_site_id`, `name`, `type`, `location`, 
 -- Table structure for table `b6jei_update_sites_extensions`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_update_sites_extensions` (
+CREATE TABLE `b6jei_update_sites_extensions` (
   `update_site_id` int(11) NOT NULL DEFAULT '0',
-  `extension_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`update_site_id`,`extension_id`)
+  `extension_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Links extensions to update sites';
 
 --
@@ -11766,18 +11652,13 @@ INSERT INTO `b6jei_update_sites_extensions` (`update_site_id`, `extension_id`) V
 -- Table structure for table `b6jei_usergroups`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_usergroups` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
+CREATE TABLE `b6jei_usergroups` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key',
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`),
-  KEY `idx_usergroup_title_lookup` (`title`),
-  KEY `idx_usergroup_adjacency_lookup` (`parent_id`),
-  KEY `idx_usergroup_nested_set_lookup` (`lft`,`rgt`) USING BTREE
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=11 ;
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_usergroups`
@@ -11801,8 +11682,8 @@ INSERT INTO `b6jei_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 -- Table structure for table `b6jei_users`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_users` (
+  `id` int(11) NOT NULL,
   `name` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `username` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -11817,21 +11698,16 @@ CREATE TABLE IF NOT EXISTS `b6jei_users` (
   `resetCount` int(11) NOT NULL DEFAULT '0' COMMENT 'Count of password resets since lastResetTime',
   `otpKey` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'Two factor authentication encrypted keys',
   `otep` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'One time emergency passwords',
-  `requireReset` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Require user to reset password on next login',
-  PRIMARY KEY (`id`),
-  KEY `idx_name` (`name`(100)),
-  KEY `idx_block` (`block`),
-  KEY `username` (`username`),
-  KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=376 ;
+  `requireReset` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Require user to reset password on next login'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_users`
 --
 
 INSERT INTO `b6jei_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(374, 'Super User', 'admin', 'cabine@gmail.com', '$2y$10$x5MOfsrLtJipFDzMRLHUFumUWkJ2Kzv367dWH/gkNxBHLV8T79fLi', 0, 1, '2016-07-14 18:08:18', '2016-08-01 19:11:53', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
-(375, 'teste1', 'teste1', 'teste_user111@gmail.com', '$2y$10$06EolUn8JwYN7OsAQhDIt.Zt19OIHvM4Ewy/UAZn6hCddiAMHpiRO', 0, 0, '2016-07-29 19:16:17', '2016-07-29 19:39:02', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
+(374, 'Super User', 'admin', 'cabine@gmail.com', '$2y$10$x5MOfsrLtJipFDzMRLHUFumUWkJ2Kzv367dWH/gkNxBHLV8T79fLi', 0, 1, '2016-07-14 18:08:18', '2016-08-10 19:03:00', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
+(375, 'teste1', 'teste1', 'teste_user111@gmail.com', '$2y$10$06EolUn8JwYN7OsAQhDIt.Zt19OIHvM4Ewy/UAZn6hCddiAMHpiRO', 0, 0, '2016-07-29 19:16:17', '2016-08-09 11:49:02', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -11839,20 +11715,15 @@ INSERT INTO `b6jei_users` (`id`, `name`, `username`, `email`, `password`, `block
 -- Table structure for table `b6jei_user_keys`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_user_keys` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `b6jei_user_keys` (
+  `id` int(10) UNSIGNED NOT NULL,
   `user_id` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `series` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `invalid` tinyint(4) NOT NULL,
   `time` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `uastring` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `series` (`series`),
-  UNIQUE KEY `series_2` (`series`),
-  UNIQUE KEY `series_3` (`series`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `uastring` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -11860,26 +11731,23 @@ CREATE TABLE IF NOT EXISTS `b6jei_user_keys` (
 -- Table structure for table `b6jei_user_notes`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_user_notes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `catid` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `b6jei_user_notes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `subject` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_user_id` int(10) unsigned NOT NULL,
+  `modified_user_id` int(10) UNSIGNED NOT NULL,
   `modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `review_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  KEY `idx_user_id` (`user_id`),
-  KEY `idx_category_id` (`catid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -11887,12 +11755,11 @@ CREATE TABLE IF NOT EXISTS `b6jei_user_notes` (
 -- Table structure for table `b6jei_user_profiles`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_user_profiles` (
+CREATE TABLE `b6jei_user_profiles` (
   `user_id` int(11) NOT NULL,
   `profile_key` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `profile_value` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ordering` int(11) NOT NULL DEFAULT '0',
-  UNIQUE KEY `idx_user_id_profile_key` (`user_id`,`profile_key`)
+  `ordering` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Simple user profile storage table';
 
 -- --------------------------------------------------------
@@ -11901,10 +11768,9 @@ CREATE TABLE IF NOT EXISTS `b6jei_user_profiles` (
 -- Table structure for table `b6jei_user_usergroup_map`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_user_usergroup_map` (
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__users.id',
-  `group_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__usergroups.id',
-  PRIMARY KEY (`user_id`,`group_id`)
+CREATE TABLE `b6jei_user_usergroup_map` (
+  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__users.id',
+  `group_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__usergroups.id'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -11921,7 +11787,7 @@ INSERT INTO `b6jei_user_usergroup_map` (`user_id`, `group_id`) VALUES
 -- Table structure for table `b6jei_utf8_conversion`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_utf8_conversion` (
+CREATE TABLE `b6jei_utf8_conversion` (
   `converted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -11938,14 +11804,12 @@ INSERT INTO `b6jei_utf8_conversion` (`converted`) VALUES
 -- Table structure for table `b6jei_viewlevels`
 --
 
-CREATE TABLE IF NOT EXISTS `b6jei_viewlevels` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+CREATE TABLE `b6jei_viewlevels` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key',
   `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `ordering` int(11) NOT NULL DEFAULT '0',
-  `rules` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_assetgroup_title_lookup` (`title`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=7 ;
+  `rules` varchar(5120) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'JSON encoded access control.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `b6jei_viewlevels`
@@ -11958,6 +11822,807 @@ INSERT INTO `b6jei_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 (5, 'Guest', 1, '[9]'),
 (6, 'Super Users', 4, '[8]');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `b6jei_assets`
+--
+ALTER TABLE `b6jei_assets`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_asset_name` (`name`),
+  ADD KEY `idx_lft_rgt` (`lft`,`rgt`),
+  ADD KEY `idx_parent_id` (`parent_id`);
+
+--
+-- Indexes for table `b6jei_associations`
+--
+ALTER TABLE `b6jei_associations`
+  ADD PRIMARY KEY (`context`,`id`),
+  ADD KEY `idx_key` (`key`);
+
+--
+-- Indexes for table `b6jei_banners`
+--
+ALTER TABLE `b6jei_banners`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_state` (`state`),
+  ADD KEY `idx_own_prefix` (`own_prefix`),
+  ADD KEY `idx_metakey_prefix` (`metakey_prefix`(100)),
+  ADD KEY `idx_banner_catid` (`catid`),
+  ADD KEY `idx_language` (`language`);
+
+--
+-- Indexes for table `b6jei_banner_clients`
+--
+ALTER TABLE `b6jei_banner_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_own_prefix` (`own_prefix`),
+  ADD KEY `idx_metakey_prefix` (`metakey_prefix`(100));
+
+--
+-- Indexes for table `b6jei_banner_tracks`
+--
+ALTER TABLE `b6jei_banner_tracks`
+  ADD PRIMARY KEY (`track_date`,`track_type`,`banner_id`),
+  ADD KEY `idx_track_date` (`track_date`),
+  ADD KEY `idx_track_type` (`track_type`),
+  ADD KEY `idx_banner_id` (`banner_id`);
+
+--
+-- Indexes for table `b6jei_categories`
+--
+ALTER TABLE `b6jei_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cat_idx` (`extension`,`published`,`access`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_path` (`path`(100)),
+  ADD KEY `idx_left_right` (`lft`,`rgt`),
+  ADD KEY `idx_alias` (`alias`(100)),
+  ADD KEY `idx_language` (`language`);
+
+--
+-- Indexes for table `b6jei_concursos_concurso`
+--
+ALTER TABLE `b6jei_concursos_concurso`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `b6jei_concursos_icas`
+--
+ALTER TABLE `b6jei_concursos_icas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `b6jei_contact_details`
+--
+ALTER TABLE `b6jei_contact_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_state` (`published`),
+  ADD KEY `idx_catid` (`catid`),
+  ADD KEY `idx_createdby` (`created_by`),
+  ADD KEY `idx_featured_catid` (`featured`,`catid`),
+  ADD KEY `idx_language` (`language`),
+  ADD KEY `idx_xreference` (`xreference`);
+
+--
+-- Indexes for table `b6jei_content`
+--
+ALTER TABLE `b6jei_content`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_state` (`state`),
+  ADD KEY `idx_catid` (`catid`),
+  ADD KEY `idx_createdby` (`created_by`),
+  ADD KEY `idx_featured_catid` (`featured`,`catid`),
+  ADD KEY `idx_language` (`language`),
+  ADD KEY `idx_xreference` (`xreference`);
+
+--
+-- Indexes for table `b6jei_contentitem_tag_map`
+--
+ALTER TABLE `b6jei_contentitem_tag_map`
+  ADD UNIQUE KEY `uc_ItemnameTagid` (`type_id`,`content_item_id`,`tag_id`),
+  ADD KEY `idx_tag_type` (`tag_id`,`type_id`),
+  ADD KEY `idx_date_id` (`tag_date`,`tag_id`),
+  ADD KEY `idx_core_content_id` (`core_content_id`);
+
+--
+-- Indexes for table `b6jei_content_frontpage`
+--
+ALTER TABLE `b6jei_content_frontpage`
+  ADD PRIMARY KEY (`content_id`);
+
+--
+-- Indexes for table `b6jei_content_rating`
+--
+ALTER TABLE `b6jei_content_rating`
+  ADD PRIMARY KEY (`content_id`);
+
+--
+-- Indexes for table `b6jei_content_types`
+--
+ALTER TABLE `b6jei_content_types`
+  ADD PRIMARY KEY (`type_id`),
+  ADD KEY `idx_alias` (`type_alias`(100));
+
+--
+-- Indexes for table `b6jei_extensions`
+--
+ALTER TABLE `b6jei_extensions`
+  ADD PRIMARY KEY (`extension_id`),
+  ADD KEY `element_clientid` (`element`,`client_id`),
+  ADD KEY `element_folder_clientid` (`element`,`folder`,`client_id`),
+  ADD KEY `extension` (`type`,`element`,`folder`,`client_id`);
+
+--
+-- Indexes for table `b6jei_finder_filters`
+--
+ALTER TABLE `b6jei_finder_filters`
+  ADD PRIMARY KEY (`filter_id`);
+
+--
+-- Indexes for table `b6jei_finder_links`
+--
+ALTER TABLE `b6jei_finder_links`
+  ADD PRIMARY KEY (`link_id`),
+  ADD KEY `idx_type` (`type_id`),
+  ADD KEY `idx_title` (`title`(100)),
+  ADD KEY `idx_md5` (`md5sum`),
+  ADD KEY `idx_url` (`url`(75)),
+  ADD KEY `idx_published_list` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`list_price`),
+  ADD KEY `idx_published_sale` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`sale_price`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms0`
+--
+ALTER TABLE `b6jei_finder_links_terms0`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms1`
+--
+ALTER TABLE `b6jei_finder_links_terms1`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms2`
+--
+ALTER TABLE `b6jei_finder_links_terms2`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms3`
+--
+ALTER TABLE `b6jei_finder_links_terms3`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms4`
+--
+ALTER TABLE `b6jei_finder_links_terms4`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms5`
+--
+ALTER TABLE `b6jei_finder_links_terms5`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms6`
+--
+ALTER TABLE `b6jei_finder_links_terms6`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms7`
+--
+ALTER TABLE `b6jei_finder_links_terms7`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms8`
+--
+ALTER TABLE `b6jei_finder_links_terms8`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_terms9`
+--
+ALTER TABLE `b6jei_finder_links_terms9`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_termsa`
+--
+ALTER TABLE `b6jei_finder_links_termsa`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_termsb`
+--
+ALTER TABLE `b6jei_finder_links_termsb`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_termsc`
+--
+ALTER TABLE `b6jei_finder_links_termsc`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_termsd`
+--
+ALTER TABLE `b6jei_finder_links_termsd`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_termse`
+--
+ALTER TABLE `b6jei_finder_links_termse`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_links_termsf`
+--
+ALTER TABLE `b6jei_finder_links_termsf`
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+
+--
+-- Indexes for table `b6jei_finder_taxonomy`
+--
+ALTER TABLE `b6jei_finder_taxonomy`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent_id` (`parent_id`),
+  ADD KEY `state` (`state`),
+  ADD KEY `ordering` (`ordering`),
+  ADD KEY `access` (`access`),
+  ADD KEY `idx_parent_published` (`parent_id`,`state`,`access`);
+
+--
+-- Indexes for table `b6jei_finder_taxonomy_map`
+--
+ALTER TABLE `b6jei_finder_taxonomy_map`
+  ADD PRIMARY KEY (`link_id`,`node_id`),
+  ADD KEY `link_id` (`link_id`),
+  ADD KEY `node_id` (`node_id`);
+
+--
+-- Indexes for table `b6jei_finder_terms`
+--
+ALTER TABLE `b6jei_finder_terms`
+  ADD PRIMARY KEY (`term_id`),
+  ADD UNIQUE KEY `idx_term` (`term`),
+  ADD KEY `idx_term_phrase` (`term`,`phrase`),
+  ADD KEY `idx_stem_phrase` (`stem`,`phrase`),
+  ADD KEY `idx_soundex_phrase` (`soundex`,`phrase`);
+
+--
+-- Indexes for table `b6jei_finder_terms_common`
+--
+ALTER TABLE `b6jei_finder_terms_common`
+  ADD KEY `idx_word_lang` (`term`,`language`),
+  ADD KEY `idx_lang` (`language`);
+
+--
+-- Indexes for table `b6jei_finder_tokens`
+--
+ALTER TABLE `b6jei_finder_tokens`
+  ADD KEY `idx_word` (`term`),
+  ADD KEY `idx_context` (`context`);
+
+--
+-- Indexes for table `b6jei_finder_tokens_aggregate`
+--
+ALTER TABLE `b6jei_finder_tokens_aggregate`
+  ADD KEY `token` (`term`),
+  ADD KEY `keyword_id` (`term_id`);
+
+--
+-- Indexes for table `b6jei_finder_types`
+--
+ALTER TABLE `b6jei_finder_types`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `title` (`title`);
+
+--
+-- Indexes for table `b6jei_helloworld`
+--
+ALTER TABLE `b6jei_helloworld`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `b6jei_languages`
+--
+ALTER TABLE `b6jei_languages`
+  ADD PRIMARY KEY (`lang_id`),
+  ADD UNIQUE KEY `idx_sef` (`sef`),
+  ADD UNIQUE KEY `idx_image` (`image`),
+  ADD UNIQUE KEY `idx_langcode` (`lang_code`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_ordering` (`ordering`);
+
+--
+-- Indexes for table `b6jei_menu`
+--
+ALTER TABLE `b6jei_menu`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_client_id_parent_id_alias_language` (`client_id`,`parent_id`,`alias`(100),`language`),
+  ADD KEY `idx_componentid` (`component_id`,`menutype`,`published`,`access`),
+  ADD KEY `idx_menutype` (`menutype`),
+  ADD KEY `idx_left_right` (`lft`,`rgt`),
+  ADD KEY `idx_alias` (`alias`(100)),
+  ADD KEY `idx_path` (`path`(100)),
+  ADD KEY `idx_language` (`language`);
+
+--
+-- Indexes for table `b6jei_menu_types`
+--
+ALTER TABLE `b6jei_menu_types`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_menutype` (`menutype`);
+
+--
+-- Indexes for table `b6jei_messages`
+--
+ALTER TABLE `b6jei_messages`
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `useridto_state` (`user_id_to`,`state`);
+
+--
+-- Indexes for table `b6jei_messages_cfg`
+--
+ALTER TABLE `b6jei_messages_cfg`
+  ADD UNIQUE KEY `idx_user_var_name` (`user_id`,`cfg_name`);
+
+--
+-- Indexes for table `b6jei_modules`
+--
+ALTER TABLE `b6jei_modules`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `published` (`published`,`access`),
+  ADD KEY `newsfeeds` (`module`,`published`),
+  ADD KEY `idx_language` (`language`);
+
+--
+-- Indexes for table `b6jei_modules_menu`
+--
+ALTER TABLE `b6jei_modules_menu`
+  ADD PRIMARY KEY (`moduleid`,`menuid`);
+
+--
+-- Indexes for table `b6jei_newsfeeds`
+--
+ALTER TABLE `b6jei_newsfeeds`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_state` (`published`),
+  ADD KEY `idx_catid` (`catid`),
+  ADD KEY `idx_createdby` (`created_by`),
+  ADD KEY `idx_language` (`language`),
+  ADD KEY `idx_xreference` (`xreference`);
+
+--
+-- Indexes for table `b6jei_overrider`
+--
+ALTER TABLE `b6jei_overrider`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `b6jei_postinstall_messages`
+--
+ALTER TABLE `b6jei_postinstall_messages`
+  ADD PRIMARY KEY (`postinstall_message_id`);
+
+--
+-- Indexes for table `b6jei_redirect_links`
+--
+ALTER TABLE `b6jei_redirect_links`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_old_url` (`old_url`(100)),
+  ADD KEY `idx_link_modifed` (`modified_date`);
+
+--
+-- Indexes for table `b6jei_schemas`
+--
+ALTER TABLE `b6jei_schemas`
+  ADD PRIMARY KEY (`extension_id`,`version_id`);
+
+--
+-- Indexes for table `b6jei_session`
+--
+ALTER TABLE `b6jei_session`
+  ADD PRIMARY KEY (`session_id`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `time` (`time`);
+
+--
+-- Indexes for table `b6jei_tags`
+--
+ALTER TABLE `b6jei_tags`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tag_idx` (`published`,`access`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_path` (`path`(100)),
+  ADD KEY `idx_left_right` (`lft`,`rgt`),
+  ADD KEY `idx_alias` (`alias`(100)),
+  ADD KEY `idx_language` (`language`);
+
+--
+-- Indexes for table `b6jei_template_styles`
+--
+ALTER TABLE `b6jei_template_styles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_template` (`template`),
+  ADD KEY `idx_home` (`home`);
+
+--
+-- Indexes for table `b6jei_ucm_base`
+--
+ALTER TABLE `b6jei_ucm_base`
+  ADD PRIMARY KEY (`ucm_id`),
+  ADD KEY `idx_ucm_item_id` (`ucm_item_id`),
+  ADD KEY `idx_ucm_type_id` (`ucm_type_id`),
+  ADD KEY `idx_ucm_language_id` (`ucm_language_id`);
+
+--
+-- Indexes for table `b6jei_ucm_content`
+--
+ALTER TABLE `b6jei_ucm_content`
+  ADD PRIMARY KEY (`core_content_id`),
+  ADD KEY `tag_idx` (`core_state`,`core_access`),
+  ADD KEY `idx_access` (`core_access`),
+  ADD KEY `idx_alias` (`core_alias`(100)),
+  ADD KEY `idx_language` (`core_language`),
+  ADD KEY `idx_title` (`core_title`(100)),
+  ADD KEY `idx_modified_time` (`core_modified_time`),
+  ADD KEY `idx_created_time` (`core_created_time`),
+  ADD KEY `idx_content_type` (`core_type_alias`(100)),
+  ADD KEY `idx_core_modified_user_id` (`core_modified_user_id`),
+  ADD KEY `idx_core_checked_out_user_id` (`core_checked_out_user_id`),
+  ADD KEY `idx_core_created_user_id` (`core_created_user_id`),
+  ADD KEY `idx_core_type_id` (`core_type_id`);
+
+--
+-- Indexes for table `b6jei_ucm_history`
+--
+ALTER TABLE `b6jei_ucm_history`
+  ADD PRIMARY KEY (`version_id`),
+  ADD KEY `idx_ucm_item_id` (`ucm_type_id`,`ucm_item_id`),
+  ADD KEY `idx_save_date` (`save_date`);
+
+--
+-- Indexes for table `b6jei_unidades_passagemcomando`
+--
+ALTER TABLE `b6jei_unidades_passagemcomando`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `b6jei_unidades_ufs`
+--
+ALTER TABLE `b6jei_unidades_ufs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `b6jei_unidades_unidade`
+--
+ALTER TABLE `b6jei_unidades_unidade`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `b6jei_updates`
+--
+ALTER TABLE `b6jei_updates`
+  ADD PRIMARY KEY (`update_id`);
+
+--
+-- Indexes for table `b6jei_update_sites`
+--
+ALTER TABLE `b6jei_update_sites`
+  ADD PRIMARY KEY (`update_site_id`);
+
+--
+-- Indexes for table `b6jei_update_sites_extensions`
+--
+ALTER TABLE `b6jei_update_sites_extensions`
+  ADD PRIMARY KEY (`update_site_id`,`extension_id`);
+
+--
+-- Indexes for table `b6jei_usergroups`
+--
+ALTER TABLE `b6jei_usergroups`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`),
+  ADD KEY `idx_usergroup_title_lookup` (`title`),
+  ADD KEY `idx_usergroup_adjacency_lookup` (`parent_id`),
+  ADD KEY `idx_usergroup_nested_set_lookup` (`lft`,`rgt`) USING BTREE;
+
+--
+-- Indexes for table `b6jei_users`
+--
+ALTER TABLE `b6jei_users`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_name` (`name`(100)),
+  ADD KEY `idx_block` (`block`),
+  ADD KEY `username` (`username`),
+  ADD KEY `email` (`email`);
+
+--
+-- Indexes for table `b6jei_user_keys`
+--
+ALTER TABLE `b6jei_user_keys`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `series` (`series`),
+  ADD UNIQUE KEY `series_2` (`series`),
+  ADD UNIQUE KEY `series_3` (`series`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `b6jei_user_notes`
+--
+ALTER TABLE `b6jei_user_notes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_user_id` (`user_id`),
+  ADD KEY `idx_category_id` (`catid`);
+
+--
+-- Indexes for table `b6jei_user_profiles`
+--
+ALTER TABLE `b6jei_user_profiles`
+  ADD UNIQUE KEY `idx_user_id_profile_key` (`user_id`,`profile_key`);
+
+--
+-- Indexes for table `b6jei_user_usergroup_map`
+--
+ALTER TABLE `b6jei_user_usergroup_map`
+  ADD PRIMARY KEY (`user_id`,`group_id`);
+
+--
+-- Indexes for table `b6jei_viewlevels`
+--
+ALTER TABLE `b6jei_viewlevels`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_assetgroup_title_lookup` (`title`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `b6jei_assets`
+--
+ALTER TABLE `b6jei_assets`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=68;
+--
+-- AUTO_INCREMENT for table `b6jei_banners`
+--
+ALTER TABLE `b6jei_banners`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_banner_clients`
+--
+ALTER TABLE `b6jei_banner_clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_categories`
+--
+ALTER TABLE `b6jei_categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `b6jei_concursos_concurso`
+--
+ALTER TABLE `b6jei_concursos_concurso`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `b6jei_concursos_icas`
+--
+ALTER TABLE `b6jei_concursos_icas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `b6jei_contact_details`
+--
+ALTER TABLE `b6jei_contact_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_content`
+--
+ALTER TABLE `b6jei_content`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_content_types`
+--
+ALTER TABLE `b6jei_content_types`
+  MODIFY `type_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `b6jei_extensions`
+--
+ALTER TABLE `b6jei_extensions`
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10003;
+--
+-- AUTO_INCREMENT for table `b6jei_finder_filters`
+--
+ALTER TABLE `b6jei_finder_filters`
+  MODIFY `filter_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_finder_links`
+--
+ALTER TABLE `b6jei_finder_links`
+  MODIFY `link_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_finder_taxonomy`
+--
+ALTER TABLE `b6jei_finder_taxonomy`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `b6jei_finder_terms`
+--
+ALTER TABLE `b6jei_finder_terms`
+  MODIFY `term_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_finder_types`
+--
+ALTER TABLE `b6jei_finder_types`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_helloworld`
+--
+ALTER TABLE `b6jei_helloworld`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `b6jei_languages`
+--
+ALTER TABLE `b6jei_languages`
+  MODIFY `lang_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `b6jei_menu`
+--
+ALTER TABLE `b6jei_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+--
+-- AUTO_INCREMENT for table `b6jei_menu_types`
+--
+ALTER TABLE `b6jei_menu_types`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `b6jei_messages`
+--
+ALTER TABLE `b6jei_messages`
+  MODIFY `message_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_modules`
+--
+ALTER TABLE `b6jei_modules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+--
+-- AUTO_INCREMENT for table `b6jei_newsfeeds`
+--
+ALTER TABLE `b6jei_newsfeeds`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_overrider`
+--
+ALTER TABLE `b6jei_overrider`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
+--
+-- AUTO_INCREMENT for table `b6jei_postinstall_messages`
+--
+ALTER TABLE `b6jei_postinstall_messages`
+  MODIFY `postinstall_message_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `b6jei_redirect_links`
+--
+ALTER TABLE `b6jei_redirect_links`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_tags`
+--
+ALTER TABLE `b6jei_tags`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `b6jei_template_styles`
+--
+ALTER TABLE `b6jei_template_styles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `b6jei_ucm_content`
+--
+ALTER TABLE `b6jei_ucm_content`
+  MODIFY `core_content_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_ucm_history`
+--
+ALTER TABLE `b6jei_ucm_history`
+  MODIFY `version_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_unidades_passagemcomando`
+--
+ALTER TABLE `b6jei_unidades_passagemcomando`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `b6jei_unidades_ufs`
+--
+ALTER TABLE `b6jei_unidades_ufs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9725;
+--
+-- AUTO_INCREMENT for table `b6jei_unidades_unidade`
+--
+ALTER TABLE `b6jei_unidades_unidade`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `b6jei_updates`
+--
+ALTER TABLE `b6jei_updates`
+  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+--
+-- AUTO_INCREMENT for table `b6jei_update_sites`
+--
+ALTER TABLE `b6jei_update_sites`
+  MODIFY `update_site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `b6jei_usergroups`
+--
+ALTER TABLE `b6jei_usergroups`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `b6jei_users`
+--
+ALTER TABLE `b6jei_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=376;
+--
+-- AUTO_INCREMENT for table `b6jei_user_keys`
+--
+ALTER TABLE `b6jei_user_keys`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_user_notes`
+--
+ALTER TABLE `b6jei_user_notes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `b6jei_viewlevels`
+--
+ALTER TABLE `b6jei_viewlevels`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
