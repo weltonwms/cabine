@@ -80,7 +80,7 @@ class JTablePassagemcomando extends JTable
     public function check()
     {
         // check required fields
-        $required_fields = array('id_unidade' => 'Id Unidade', 'titular' => 'Titular', 'substituto' => 'Substituto', 'data' => 'Data');
+        $required_fields = array('id_unidade' => 'Id Unidade', 'titular' => 'Titular', 'substituto' => 'Substituto');
         foreach($required_fields as $field => $description) {
             if(!$this->get($field)) {
                 $this->setError(JText::_($description.' is required.'));
@@ -91,4 +91,4 @@ class JTablePassagemcomando extends JTable
         return true;
     }
 }
-?>
+

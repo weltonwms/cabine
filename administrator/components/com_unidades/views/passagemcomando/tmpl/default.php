@@ -15,9 +15,22 @@
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 JHTML::_('behavior.calendar');
-
+JHtml::_('behavior.formvalidation');
 
 ?>
+<script type="text/javascript">
+    Joomla.submitbutton = function (task)
+    {
+
+        if (task == 'passagemcomando.cancel' || document.formvalidator.isValid(document.id('adminForm')))
+        {
+
+            Joomla.submitform(task, document.getElementById('adminForm'));
+        }
+
+    }
+</script>
+
 
 <form action="index.php" method="post" name="adminForm" id="adminForm">
     <div class="col100">
@@ -25,10 +38,10 @@ JHTML::_('behavior.calendar');
         <table class="admintable">
             <tr>
                 <td width="100" align="right" class="key">
-                    <label for="id_unidade"> <?php echo JText::_('Id Unidade'); ?>:</label>
+                    <label for="id_unidade"> <?php echo JText::_('Unidade'); ?>:</label>
                 </td>
                 <td>
-                    <select name='id_unidade'>
+                    <select name='id_unidade' class="required" id="id_unidade">
                          <option value="">--Selecione--</option>
                         <?php foreach ($this->unidades as $unidade) : ?>
                        
@@ -45,20 +58,20 @@ JHTML::_('behavior.calendar');
             </tr>
             <tr>
                 <td width="100" align="right" class="key"><label for="titular"> <?php echo JText::_('Titular'); ?>:</label></td>
-                <td><input class="text_area" type="text" name="titular" id="titular" size="32" maxlength="250" value="<?php echo $this->item->titular;?>" /></td>
+                <td><input class="required" type="text" name="titular" id="titular" size="32" maxlength="250" value="<?php echo $this->item->titular;?>" /></td>
             </tr>
             <tr>
                 <td width="100" align="right" class="key"><label for="substituto"> <?php echo JText::_('Substituto'); ?>:</label></td>
-                <td><input class="text_area" type="text" name="substituto" id="substituto" size="32" maxlength="250" value="<?php echo $this->item->substituto;?>" /></td>
+                <td><input class="required" type="text" name="substituto" id="substituto" size="32" maxlength="250" value="<?php echo $this->item->substituto;?>" /></td>
             </tr>
             <tr>
                 <td width="100" align="right" class="key"><label for="data"> <?php echo JText::_('Data'); ?>:</label></td>
                 <td><?php echo JHtml::calendar($this->item->data,'data', 'data', '%Y-%m-%d', "readonly='readonly'");?></td>
             </tr>
              <tr>
-                <td width="100" align="right" class="key"><label for="status"> <?php echo JText::_('Status'); ?>:</label></td>
+                <td width="100" align="right" class="required"><label for="status"> <?php echo JText::_('Status'); ?>:</label></td>
                 <td>
-                   <select name='status'>
+                   <select name='status' class="required" id="status">
                          <option value="">--Selecione--</option>
                          <option <?php if ($this->item->status ==1) echo "selected='selected' "; ?>value="1"> Publicado</option>
                          <option <?php if ($this->item->status ==0) echo "selected='selected' "; ?>value="0"> Despublicado</option>

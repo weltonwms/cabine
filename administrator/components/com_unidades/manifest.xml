@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
-  <name>com_unidades</name>
-  <version>1.0.0</version>
-  <creationDate>Set 2015</creationDate>
-  <author>Caroline</author>
-  <authorEmail>carolinesantossin@gmail.com</authorEmail>
-  <authorUrl></authorUrl>
-  <copyright>2015 CCA-BR. All rights reserved.</copyright>
-  <license>GNU General Public License</license>
-  <description>Componente de Registro Passagem de Comando</description>
+    <name>com_unidades</name>
+    <version>1.0.0</version>
+    <creationDate>Set 2015</creationDate>
+    <author>Caroline</author>
+    <authorEmail>carolinesantossin@gmail.com</authorEmail>
+    <authorUrl></authorUrl>
+    <copyright>2015 CCA-BR. All rights reserved.</copyright>
+    <license>GNU General Public License</license>
+    <description>Componente de Registro Passagem de Comando</description>
 
     <install>
         <sql>
@@ -26,24 +26,24 @@
         <language tag="en-GB">en-GB/en-GB.com_unidades.ini</language>
     </languages>
 
-  <files folder="site">
-    <file>controller.php</file>
-    <file>unidades.php</file>
-
-    <folder>assets</folder>
-    <folder>controllers</folder>
-    <folder>helpers</folder>
-    <folder>models</folder>
-    <folder>views</folder>
-  </files>
+    <files folder="site">
+        <file>controller.php</file>
+        <file>unidades.php</file>
+        <file>router.php</file>
+        <folder>assets</folder>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+    </files>
 
     <administration>
-    <menu>unidades</menu>
+        <menu>unidades</menu>
 
-    <submenu>
-      <menu link='option=com_unidades&amp;layout=list'>unidade</menu>
-      <menu link='option=com_unidades&amp;view=passagemcomando&amp;layout=list'>passagemcomando</menu>
-    </submenu>
+        <submenu>
+            <menu link='option=com_unidades&amp;layout=list'>unidade</menu>
+            <menu link='option=com_unidades&amp;view=passagemcomando&amp;layout=list'>passagemcomando</menu>
+        </submenu>
 
 
         <languages folder="admin/language">
@@ -51,19 +51,19 @@
         </languages>
 
         <files folder="admin">
-      <file>config.xml</file>
-      <file>access.xml</file>
-      <file>controller.php</file>
-      <file>unidades.php</file>
+            <file>config.xml</file>
+            <file>access.xml</file>
+            <file>controller.php</file>
+            <file>unidades.php</file>
 
-      <folder>assets</folder>
-      <folder>controllers</folder>
-      <folder>help</folder>
-      <folder>helpers</folder>
-      <folder>install</folder>
-      <folder>models</folder>
-      <folder>tables</folder>
-      <folder>views</folder>
+            <folder>assets</folder>
+            <folder>controllers</folder>
+            <folder>help</folder>
+            <folder>helpers</folder>
+            <folder>install</folder>
+            <folder>models</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
         </files>
     </administration>
 </extension>

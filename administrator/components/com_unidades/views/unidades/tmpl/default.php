@@ -48,43 +48,47 @@ $listDirn = $this->escape($this->filter_order_Dir);
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-               
-                foreach ($this->items as $row):
-                    JFilterOutput::objectHTMLSafe($row);
-                    $checked = JHTML::_('grid.id', $row->id, $row->id);
-                    $link = JRoute::_('index.php?option=com_unidades&task=unidade.edit&id=' . $row->id);
-                    ?>
-                    <tr class="">
-                        <td><?php echo $row->id; ?></td>
-                        <td><?php echo $checked; ?></td>
-                        <td><?php echo "<a href='$link'>" . $row->nome_om . "</a>"; ?></td>
-                        <td><?php echo $row->sigla; ?></td>
-                        <td><img src="<?php echo "../" . $row->logo_om; ?>" alt="<?php echo $row->logo_om; ?>" style="height: 50px" > </td>
-                            <?php $data_aniversario = new DateTime($row->data_aniversario); ?>
-                        <td><?php echo $data_aniversario->format("d/m/Y"); ?></td>
-                        <td><?php echo $row->categoria; ?></td>
-                        <td><?php echo $row->cidade; ?></td>
-                        <td><?php echo $row->uf; ?></td>   
+                    <?php
+                    foreach ($this->items as $row):
+                        JFilterOutput::objectHTMLSafe($row);
+                        $checked = JHTML::_('grid.id', $row->id, $row->id);
+                        $link = JRoute::_('index.php?option=com_unidades&task=unidade.edit&id=' . $row->id);
+                        ?>
+                        <tr class="">
+                            <td><?php echo $row->id; ?></td>
+                            <td><?php echo $checked; ?></td>
+                            <td><?php echo "<a href='$link'>" . $row->nome_om . "</a>"; ?></td>
+                            <td><?php echo $row->sigla; ?></td>
+                            <td><img src="<?php echo "../" . $row->logo_om; ?>" alt="<?php echo $row->logo_om; ?>" style="height: 50px" > </td>
+                            <td>
+                                <?php
+                                if ($row->data_aniversario):
+                                    echo JHtml::_('date', $row->data_aniversario, JText::_('DATE_FORMAT_LC4'));
+                                endif;
+                                ?>
+                            </td>
+                            <td><?php echo $row->categoria; ?></td>
+                            <td><?php echo $row->cidade; ?></td>
+                            <td><?php echo $row->uf; ?></td>   
 
 
-                    </tr>
-                    <?php  endforeach; ?>
-                    </tbody>
+                        </tr>
+    <?php endforeach; ?>
+                </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="5">
-                            <?php echo $this->pagination->getListFooter(); ?>
+                        <td colspan="9">
+    <?php echo $this->pagination->getListFooter(); ?>
                         </td>
                     </tr>
                 </tfoot>
             </table>
-        <?php endif; ?>
+<?php endif; ?>
         <input type="hidden" name="task" value="" />
         <input type="hidden" name="boxchecked" value="0" />
         <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>"/>
-	<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>"/>
-        <?php echo JHtml::_('form.token'); ?>
+        <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>"/>
+<?php echo JHtml::_('form.token'); ?>
     </div>
 </form>
 

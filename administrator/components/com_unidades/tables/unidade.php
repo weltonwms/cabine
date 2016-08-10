@@ -20,7 +20,6 @@ defined('_JEXEC') or die('Restricted access');
 class JTableUnidade extends JTable
 {
     
-    
   
    
     public function __construct(&$db)
@@ -63,6 +62,12 @@ class JTableUnidade extends JTable
         public function store($updateNulls = false) {
             $user=  JFactory::getUser();
             
+            if(empty($this->data_aniversario)){
+                $this->data_aniversario=NULL;
+            }
+             
+            
+            //var_dump($this->data_aniversario); exit();
                 if(empty($this->created_by)){
                     $this->created_by=$user->get('id');
                 }

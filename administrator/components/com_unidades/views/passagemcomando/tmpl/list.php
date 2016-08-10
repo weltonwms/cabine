@@ -68,11 +68,7 @@ jimport('joomla.filter.filteroutput');
                         <td><?php echo "<a href='$link'>" . $row->nome_om . "</a>"; ?></td>
                         <td><?php echo $row->titular; ?></td>
                         <td><?php echo $row->substituto; ?></td>
-                        <td>
-                            <?php $data = new DateTime($row->data);
-                            echo $data->format("d-m-Y");
-                            ?>
-                        </td>
+                       <td><?php echo JHtml::_('date', $row->data_aniversario, JText::_('DATE_FORMAT_LC4')); ?></td>
                         <td><?php
                             if ($row->status) {
                                 echo 'Publicado';
