@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="content" method="upgrade">
+    <name>plg_content_notimpe</name>
+    <author>Welton Moreira dos Santos</author>
+    <creationDate>Set 2015</creationDate>
+    <copyright>CCABR 2015.</copyright>
+    <license>GNU General Public License</license>
+    <authorEmail>weltonwms@gmail.com</authorEmail>
+    <version>2.5.0</version>
+    <description>Este Plugin adiciona campos extras aos artigos para vicular com Notimpe</description>
+
+    <files>
+        <filename plugin="notimpe">notimpe.php</filename>
+        <filename>index.html</filename>
+        <folder>assets</folder>
+        <folder>forms</folder>
+    </files>
+  
+        
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="Plugin Parameters" description="Configure Plugin">
+                <field 
+                    name="notimp_category" 
+                    type="category" extension="com_content" 
+                    label="Selecione a categoria do NOTIMP" 
+                    description="" 
+                    published="0,1,2"
+                />
+                <field name="command_usergroup" type="usergrouplist"
+                       label="Grupo de usuários com perfil de leitura do comando"
+                       description="Os usuários deste grupo poderão visualizar os destaques aplicados ao texto do NOTIMP." 
+                       multiple="true" />
+            </fieldset>										
+        </fields>	
+    </config>
+
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.plg_content_notimpe.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.plg_content_notimpe.sys.ini</language>
+            
+    </languages>
+    <administration>
+        <languages >
+            <language tag="en-GB">language/en-GB/en-GB.plg_content_notimpe.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.plg_content_notimpe.sys.ini</language>
+          
+        </languages>
+    </administration>
+
+</extension>

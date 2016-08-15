@@ -1,0 +1,66 @@
+body{
+    color: #001 !important;
+}
+
+.notimpe_nr_notimpe{
+    border-bottom: solid #6E6E6E 2px;
+    border-top: groove 4px;
+    padding: 12px 4px 20px 4px ;
+}
+
+.notimpe_ancoras p{
+    line-height:70%;
+    text-indent: 1em;;
+}
+
+.grupo_veiculo{
+    border-top: groove #F5F5F5 6px;
+}
+
+.titulo_veiculo{
+    text-align: center;
+    border-bottom: solid #6E6E6E 2px;
+    padding: 4px 4px 8px 4px;
+}
+
+.titulo_artigo{
+    color:#0F4098;
+}
+
+.titulo_artigo_ancora a{
+    color:#001;
+    text-decoration: underline;
+}
+
+.notimpe_subtitulo{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.edicoes_anteriores{
+    background: none repeat scroll 0 0 #EEEFF1;
+    border-top: 5px solid #E0E0E0;
+    min-height: 40px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.edicoes_anteriores a{
+    
+    color:black;
+}
+
+.formulario_anteriores{
+     background: none repeat scroll 0 0 #EEEFF1;
+     text-align: left;
+     min-height: 40px;
+     padding-top: 9px;
+     padding-left: 8px;
+}
+
+.titulo_edicoes_anteriores{
+        border-bottom: 2px solid #6E6E6E;
+    border-top: 4px groove;
+    padding: 19px 4px 20px;
+}
+

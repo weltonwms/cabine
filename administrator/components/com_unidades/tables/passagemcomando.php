@@ -16,16 +16,6 @@
 // Check to ensure this file is within the rest of the framework
 defined('_JEXEC') or die('Restricted access');
 
-/**
- * Passagemcomando Table Class
- *
- * @category  Table_Class
- * @package   passagemcomando
- * @author    Caroline <carolinesantossin@gmail.com>
- * @copyright 2015 CCA-BR. All rights reserved.
- * @license   GNU General Public License
- * @version   1.0.0
- */
 class JTablePassagemcomando extends JTable
 {
     /**
@@ -90,5 +80,16 @@ class JTablePassagemcomando extends JTable
 
         return true;
     }
+    
+     public function store($updateNulls = false) {
+           
+            
+            if(empty($this->data)){
+                $this->data=NULL;
+            }
+             
+            
+            return parent::store($updateNulls);
+        }
 }
 

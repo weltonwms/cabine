@@ -38,7 +38,13 @@ defined('_JEXEC') or die('Restricted access');
             </td>
             <td><?php echo $passagem->titular?></td>
             <td><?php echo $passagem->substituto?></td>
-            <td><?php echo JHtml::_('date', $passagem->data_aniversario, JText::_('DATE_FORMAT_LC4')); ?></td>
+            <td>
+                <?php 
+                if(!empty($passagem->data)):
+                echo JHtml::_('date', $passagem->data, JText::_('DATE_FORMAT_LC4')); 
+                endif;
+                ?>
+            </td>
             
             
             

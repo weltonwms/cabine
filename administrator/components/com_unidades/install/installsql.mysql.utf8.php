@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS `#__unidades_unidade` (
   `pabx` varchar(45) NOT NULL,
   `fax` varchar(45) NOT NULL,
   `lista_ramais` mediumtext NOT NULL,
-  `secao` varchar(60) NOT NULL,
   `created_by` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
@@ -32,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `#__unidades_passagemcomando` (
   `id_unidade` int(11) NOT NULL,
   `titular` varchar(255) NOT NULL,
   `substituto` varchar(255) NOT NULL,
-  `data` date NOT NULL,
+  `data` date NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

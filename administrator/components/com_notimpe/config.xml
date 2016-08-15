@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset
+        name="grupo_servico"
+        label="Grupo de Serviço do Notimp"
+        description="Gerencie Grupos de Serviço do NOTIMP"
+    >
+        <field
+            name="grupo_oficiais"
+            type="usergrouplist"
+            label="Grupo de Oficiais"
+            description="Grupo de Oficiais"
+			
+        />
+        <field
+            name="grupo_graduados"
+            type="usergrouplist"
+            label="Grupo de Graduados"
+            description="Grupo de Graduados"
+			
+        />
+			
+    </fieldset>
+    <fieldset
+        name="diretorio_imagens"
+        label="Diretório de Imagens"
+        description="Organização de Imagens do NOTIMP"
+    >
+        <field
+            name="criacao_automatica"
+            type="radio"
+            class="btn-group btn-group-yesno"
+            label="Habilitar Criação Automática"
+            default="0"
+            description="Habilita a criação de pasta para o NOTIMP ao criar NOTIMP"
+        >
+            <option
+                value="1">JYES</option>
+            <option
+                value="0">JNO</option>
+        </field>
+        <field
+            name="path_diretorio_imagens"
+            type="text"
+            label="Caminho do Diretório de Imagens do Notimp"
+            default="images"
+            description="Especifica o caminho da estrutura de diretórios de imagens do NOTIMP"
+			
+        />
+			
+    </fieldset>
+	
+    <fieldset
+        name="permissions"
+        label="Permissões"
+		
+    >
+        <field
+            name="rules"
+            type="rules"
+            label="JCONFIG_PERMISSIONS_LABEL"
+            class="inputbox"
+            validate="rules"
+            filter="rules"
+            component="com_notimpe"
+            section="component"
+        />
+    </fieldset>
+</config>

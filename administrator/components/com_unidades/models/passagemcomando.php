@@ -16,18 +16,7 @@
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.model');
 
-/**
- * passagemcomando Component Passagemcomando Model
- *
- * @category Model
- * @package  passagemcomando
- * @author   Caroline <carolinesantossin@gmail.com>
- * @license  GNU General Public License
- * @link     
- * @since    1.0
- */
 class unidadesModelPassagemcomando extends JModelLegacy
 {
     /**
@@ -69,7 +58,7 @@ class unidadesModelPassagemcomando extends JModelLegacy
     {
         $cid = JRequest::getVar('cid');
         $id = (int)$cid[0];
-        $row =& $this->getTable('Passagemcomando', 'JTable');
+        $row = $this->getTable('Passagemcomando', 'JTable');
         $row->load($id);
         return $row;
     }

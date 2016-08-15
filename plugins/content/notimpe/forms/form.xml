@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="notimpe">
+        <fieldset name="notimpe" label="PLG_CONTENT_NOTIMPE_SLIDER_LABEL">
+            
+            
+             <field
+                name="veiculo"
+                type="sql"
+                id="veiculo"
+                
+                description="PLG_CONTENT_NOTIMPE_FIELD_VEICULO_DESC"
+                label="PLG_CONTENT_NOTIMPE_FIELD_VEICULO_LABEL"
+                message="PLG_CONTENT_NOTIMPE_FIELD_VEICULO_MESSAGE"
+                query="SELECT * FROM #__notimpe_veiculo"
+                 key_field="id"
+                 value_field="nome"
+            >
+                 <option value="">--Selecione--</option>
+             </field>
+            
+             <field
+                name="nr_notimpe"
+                type="sql"
+                id="nr_notimpe"
+                
+                description="PLG_CONTENT_NOTIMPE_FIELD_NR_NOTIMPE_DESC"
+                label="PLG_CONTENT_NOTIMPE_FIELD_NR_NOTIMPE_LABEL"
+                message="PLG_CONTENT_NOTIMPE_FIELD_NR_NOTIMPE_MESSAGE"
+                query="SELECT ID, concat(nr_notimpe, ' (',ano, ')') as titulo FROM #__notimpe_notimpe where estado=0"
+                 key_field="ID"
+                 value_field="titulo"
+            >
+                 <option value="">--Selecione--</option>
+             </field>
+             
+             
+                         
+             
+
+        </fieldset>
+        
+        
+        
+       
+        
+        
+        
+        
+        
+        
+    </fields>
+		
+</form>
