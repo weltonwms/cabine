@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+  <name>com_aeronaves</name>
+  <version>1.0.0</version>
+  <creationDate>OUT 2016</creationDate>
+  <author>Caroline</author>
+  <authorEmail>carolinesantossin@gmail.com</authorEmail>
+  <authorUrl></authorUrl>
+  <copyright>2016 CCA-BR. All rights reserved.</copyright>
+  <license>GNU General Public License</license>
+  <description>Componente de Registro de Aeronaves</description>
+
+    <install>
+        <sql>
+            <file charset="utf8" driver="mysql">install/installsql.mysql.utf8.php</file>
+        </sql>
+    </install>
+
+    <uninstall>
+        <sql>
+            <file charset="utf8" driver="mysql">install/uninstallsql.mysql.utf8.php</file>
+        </sql>
+    </uninstall>
+
+    <languages folder="site/language">
+        <language tag="pt-BR">pt-BR/pt-BR.com_aeronaves.ini</language>
+    </languages>
+
+  <files folder="site">
+    <file>controller.php</file>
+    <file>aeronaves.php</file>
+    <file>router.php</file>
+    <folder>assets</folder>
+    <folder>controllers</folder>
+    <folder>helpers</folder>
+    <folder>models</folder>
+    <folder>views</folder>
+  </files>
+
+    <administration>
+    <menu>COM_AERONAVES</menu>
+
+    <submenu>
+      <menu link='option=com_aeronaves&amp;view=aeronaves'>COM_AERONAVES</menu>
+      
+    </submenu>
+
+
+        <languages folder="admin/language">
+            <language tag="pt-BR">pt-BR/pt-BR.com_aeronaves.ini</language>
+        </languages>
+
+        <files folder="admin">
+      <file>config.xml</file>
+      <file>access.xml</file>
+      <file>controller.php</file>
+      <file>aeronaves.php</file>
+
+      <folder>assets</folder>
+      <folder>controllers</folder>
+      <folder>help</folder>
+      <folder>helpers</folder>
+      <folder>install</folder>
+      <folder>models</folder>
+      <folder>tables</folder>
+      <folder>views</folder>
+        </files>
+    </administration>
+</extension>
+

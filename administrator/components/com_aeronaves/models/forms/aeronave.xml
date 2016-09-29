@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="details1">
+        <field
+            name="id"
+            type="hidden"
+        />
+        <field
+            name="imagem"
+            id="imagem"
+            type="media"
+            label="Imagem"
+            description="Imagem da Aeronave"
+            class="required"
+            required="true"
+                                
+        />
+        <field
+            name="tipo_aviacao"
+            id="tipo_aviacao"
+            type="list"
+            label="Tipo de Aviação"
+            description="Tipo de Aviação"
+            required="true"
+        >
+            <option value=''>Selecione</option>
+            <option value='Caça'>Caça</option>
+            <option value='Transporte'>Transporte</option>
+            <option value='Treinamento'>Treinamento</option>
+            <option value='Transporte de Carga'>Transporte de Carga</option>
+            <option value='Asas Rotativas'>Asas Rotativas</option>
+            <option value='Ataque'>Ataque</option>
+            <option value='Patrulha'>Patrulha</option>
+            <option value='Reconhecimento'>Reconhecimento</option>
+            <option value='Transporte de Autoridades'>Transporte de Autoridades</option>
+            <option value='Transporte de Pessoal'>Transporte de Pessoal</option>
+                    
+                                    
+        </field> 
+               
+        <field
+            name="aeronave"
+            id="aeronave"
+            type="text"
+            label="Aeronave"
+            description="Aeronave"
+            class="required"
+            required="true"
+                                
+        />
+        <field
+            name="pais_origem"
+            id="pais_origem"
+            type="text"
+            label="País de Origem"
+            description="País de Origem"
+				
+				
+                                
+        />
+        <field
+            name="paises_operacao"
+            id="paises_operacao"
+            type="text"
+            label="Países de Operação"
+            description="Países de Operação"
+				
+				
+                                
+        />
+        <field
+            name="tripulacao"
+            id="tripulacao"
+            type="text"
+            label="Tripulacao"
+            description="Tripulação"
+				
+				
+                                
+        />
+        <field
+            name="armamento"
+            id="armamento"
+            type="text"
+            label="Armamento"
+            description="Armamento"
+            class="required"
+				
+                                
+        />
+                
+        <field
+            name="envergadura"
+            id="envergadura"
+            type="text"
+            label="Envergadura"
+            description="Envergadura"
+				
+                                
+        />
+        <field
+            name="comprimento"
+            id="comprimento"
+            type="text"
+            label="Comprimento (Metros)"
+            description="Comprimento"
+				
+                                
+        />
+        
+        <field
+            name="altura"
+            id="altura"
+            type="text"
+            label="Altura (Metros)"
+            description="Altura"
+				
+                                
+        />
+        <field
+            name="peso"
+            id="peso"
+            type="text"
+            label="Peso Vazio (KG)"
+            description="Peso "
+            required="true"
+				
+                                
+        />
+        <field
+            name="peso_maximo"
+            id="peso_maximo"
+            type="text"
+            label="Peso Máximo (KG)"
+            description="Peso Máximo"
+				
+                                
+        />
+                
+                
+		
+                  
+                
+               
+    </fieldset >
+        
+    <fieldset name="details2">
+        
+        <field
+            name="decolagem"
+            id="decolagem"
+            type="text"
+            label="Decolagem"
+            description="Decolagem"
+				
+                                
+        />
+        <field
+            name="motor"
+            id="motor"
+            type="text"
+            label="Motor"
+            description="Motor"
+				
+                                
+        />
+        <field
+            name="velocidade_maxima"
+            id="velocidade_maxima"
+            type="text"
+            label="Velocidade Máxima (KM/h)"
+            description="Velocidade Máxima"
+				
+                                
+        />
+        <field
+            name="teto_servico"
+            id="teto_servico"
+            type="text"
+            label="Teto Servico"
+            description="Teto Servico"
+				
+                                
+        />
+        <field
+            name="missoes"
+            id="missoes"
+            type="text"
+            label="Missões"
+            description="Missões"
+				
+                                
+        />
+		
+         
+        <field
+            name="versoes_brasil"
+            id="versoes_brasil"
+            type="text"
+            label="Versões Brasil"
+            description="Versões Brasil"
+				
+                                
+        />
+        <field
+            name="link"
+            id="link"
+            type="text"
+            label="Link Flickr"
+            description="Link Flickr"
+            class="required"
+            required="true"
+				
+                                
+        />
+               
+       
+        
+                      
+		
+            
+    </fieldset>
+</form>

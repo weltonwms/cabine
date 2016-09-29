@@ -48,7 +48,7 @@ class NotimpeModelVeiculo extends JModelList {
     public function getItem() {
         $cid = JRequest::getVar('cid');
         $id = (int) $cid[0];
-        $row = & $this->getTable('Veiculo', 'JTable');
+        $row = $this->getTable('Veiculo', 'JTable');
         $row->load($id);
         return $row;
     }
@@ -61,7 +61,7 @@ class NotimpeModelVeiculo extends JModelList {
      * @since  1.0
      */
     public function save($data) {
-        $row = & $this->getTable('Veiculo', 'JTable');
+        $row = $this->getTable('Veiculo', 'JTable');
         if (!$data['id']) {
             $data['ordem'] = $this->getUltimaOrdem();
         }
@@ -160,7 +160,7 @@ class NotimpeModelVeiculo extends JModelList {
     }
 
     public function delete() {
-        $row = & $this->getTable('Veiculo', 'JTable');
+        $row = $this->getTable('Veiculo', 'JTable');
         $cids = JRequest::getVar('cid', array(0), 'post', 'array');
 
         if (!$this->canDelete($row)) {

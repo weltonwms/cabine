@@ -62,7 +62,7 @@ class NotimpeViewNotimpe extends JViewLegacy {
     function display_default() {
         $this->assign('items', $this->get('Items'));
         if ($this->canDo->get('core.create')):
-            JToolBarHelper::addNew();
+            JToolBarHelper::addNew('notimps.add');
         endif;
         if ($this->canDo->get('core.edit')):
             JToolBarHelper::editList();

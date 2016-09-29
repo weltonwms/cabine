@@ -52,7 +52,7 @@ class JTableUnidade extends JTable
 		return $this->sigla;
 	}
         
-        protected function _getAssetParentId($table = null, $id = null)
+        protected function _getAssetParentId(JTable $table = NULL, $id = NULL)
 	{
 		$asset = JTable::getInstance('Asset');
 		$asset->loadByName('com_unidades');

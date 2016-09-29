@@ -66,7 +66,7 @@ defined('_JEXEC') or die;
 <p><?php echo nl2br($this->item->lista_ramais) ?></p>  
 <br>
 <?php
-$link_voltar = JRoute::_("index.php?option=com_unidades&amp;view=unidades");
+$link_voltar = JRoute::_("index.php?option=com_unidades");
 ?>
 <a class="btn btn-default" href="<?php echo $link_voltar ?>">Voltar</a>
 

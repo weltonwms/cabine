@@ -19,15 +19,9 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.controller');
 
 
-class NotimpeControllerNotimpe extends NotimpeController
+class NotimpeControllerNotimp extends JControllerLegacy
 {
-    /**
-     * Constructor
-     *
-     * @return void
-     * @access public
-     * @since  1.0
-     */
+    
     public function __construct()
     {
            
@@ -36,13 +30,7 @@ class NotimpeControllerNotimpe extends NotimpeController
         
     }
 
-    /**
-     * Method to edit an object
-     *
-     * @return void
-     * @access public
-     * @since  1.0
-     */
+    
     public function add()
     {
        if (!$this->allowAdd()) {

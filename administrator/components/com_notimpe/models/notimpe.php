@@ -45,7 +45,7 @@ class NotimpeModelNotimpe extends JModelList {
     public function getItem() {
         $cid = JRequest::getVar('cid');
         $id = (int) $cid[0];
-        $row = & $this->getTable('Notimpe', 'JTable');
+        $row = $this->getTable('Notimpe', 'JTable');
         $row->load($id);
         return $row;
     }
@@ -124,7 +124,7 @@ class NotimpeModelNotimpe extends JModelList {
     }
 
     public function delete() {
-        $row = & $this->getTable('Notimpe', 'JTable');
+        $row = $this->getTable('Notimpe', 'JTable');
         $cids = JRequest::getVar('cid', array(0), 'post', 'array');
         if (!$this->canDelete($row)) {
             $this->setError(JText::_('JLIB_APPLICATION_ERROR_DELETE_NOT_PERMITTED'));
@@ -289,7 +289,7 @@ class NotimpeModelNotimpe extends JModelList {
     }
 
     public function getUsers() {
-        $db = & JFactory::getDBO();
+        $db = JFactory::getDBO();
         $query = "SELECT * FROM #__users";
         $db->setQuery($query);
         $rows = $db->loadObjectList();
@@ -297,7 +297,7 @@ class NotimpeModelNotimpe extends JModelList {
     }
 
     public function getGrupos() {
-        $db = & JFactory::getDBO();
+        $db = JFactory::getDBO();
         $query = "SELECT * FROM #__usergroups";
         $db->setQuery($query);
         $rows = $db->loadObjectList();
