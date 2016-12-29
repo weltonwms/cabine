@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name='detalhes'>
+        <field
+            name="id"
+            type="hidden"
+        />
+        
+        <field
+            name="ano"
+            type="hidden"
+        />
+        
+         
+        <field
+            name="nr_notimpe"
+            id="nr_notimpe"
+            type="text"
+            label="Nº Notimp"
+            description="Número do Notimp"
+            required="true"
+            class="required"
+        />
+        <field
+            name="data"
+            id="data"
+            type="calendar"
+            label="Data"
+            description="Data do Notimp"
+           default="NOW"
+                                
+        />
+        <field
+            name="estado"
+            id="estado"
+            type="list"
+            label="Status"
+            description="Status do Notimp"
+           
+        >
+            <option value="0">Em edição</option>
+            <option value="1">Publicado</option>
+            <option value="2">Arquivado</option>
+        </field>
+        
+          <field
+            name="oficial_servico"
+            id="oficial_servico"
+            type="oficiaisgrp"
+            label="Oficial de Serviço"
+            description="Oficial de Serviço"
+           
+        />
+           <field
+            name="graduado_servico"
+            id="graduado_servico"
+            type="graduadosgrp"
+            label="Graduado de Serviço"
+            description="Graduado de Serviço"
+           
+        />
+        
+        
+        
+       
+       
+               
+    </fieldset>
+</form>

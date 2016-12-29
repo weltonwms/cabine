@@ -180,7 +180,7 @@ class plgContentNotimpe extends JPlugin {
     /*
      * método customizado para atender somente o Notimp
      */
-    public function onContentPrepareNotimp(&$artigos_notimpe) {
+    public function onContentPrepareNotimp(&$item) {
         //grupos autorizados a ver NOTIMP de comando na configuração de plugin
         $command_usergroups = $this->params->get('command_usergroup', array());
 
@@ -192,8 +192,8 @@ class plgContentNotimpe extends JPlugin {
 
         $intersecao = array_intersect($command_usergroups, $user_groups);
         if (empty($intersecao)) :
-            foreach ($artigos_notimpe as $grupo):
-                foreach ($grupo->artigos_veiculo as $artigo):
+            foreach ($item->veiculos as $veiculo):
+                foreach ($veiculo->artigos as $artigo):
                     $this->retirar_styles($artigo->introtext);
                     $this->retirar_styles($artigo->fulltext);
                 endforeach;

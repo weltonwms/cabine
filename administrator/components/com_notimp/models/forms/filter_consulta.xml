@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_BANNERS_SEARCH_IN_TITLE"
+            hint="JSEARCH_FILTER"
+            class="js-stools-search-string"
+        />
+        <field 
+            name="nr_notimpe"
+            type="text"
+            label="Nº Notimp"
+            class="input-mini"
+            hint="Nº Notimp"
+            
+        />
+        <field
+			name="state"
+			type="list"
+			label="Status"
+			description="Descrição"
+			onchange="this.form.submit();"
+			>
+			<option value="">--Status--</option>
+                        <option value="1">Publicado</option>
+                        <option value="0">Despublicado</option>
+                        <option value="2">Arquivado</option>
+                        <option value="-2">Lixeira</option>
+	</field>
+        <field
+                name="id_veiculo"
+                type="sql"
+                id="id_veiculo"
+                label="Veículo"
+                query="SELECT * FROM #__notimpe_veiculo"
+                 key_field="id"
+                 value_field="nome"
+                 onchange="this.form.submit();"
+            >
+                 <option value="">--Veículo--</option>
+             </field>
+             
+        <field name="created_ini" 
+               type="calendar" 
+               label="Select a date" 
+               description="" 
+               hint="Período Início"
+        />
+        <field name="created_fim" 
+               type="calendar" 
+               label="Select a date" 
+               description="" 
+               hint="Período Término"
+                
+        />
+
+            
+     
+        
+        
+        
+        
+    </fields>
+    
+    <fields name="list">
+		
+		<field
+			name="limit"
+			type="limitbox"
+			label="COM_BANNERS_LIST_LIMIT"
+			description="COM_BANNERS_LIST_LIMIT_DESC"
+			class="input-mini"
+			default="25"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+</form>

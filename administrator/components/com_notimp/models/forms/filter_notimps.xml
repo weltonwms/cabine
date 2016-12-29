@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="Pesquisa"
+            description="Pesquisa por Nº Notimp"
+            hint="Nº Notimpe"
+            class="js-stools-search-string"
+        />
+        <field
+            name="data"
+            type="calendar"
+            label="Data Notimp"
+            description="Data do Notimp"
+                       
+            hint="Data Notimpe"
+        >
+			
+        </field>
+        
+          <field
+            name="ano"
+            type="text"
+            label="Ano"
+            description="Pesquisa por Ano Notimp"
+            hint="Ano"
+            class="input-small"
+        />
+                
+        <field
+            name="status"
+            type="list"
+            label="Status"
+            description="Status do Notimp"
+            hint="Status Notimpe"
+            onchange="this.form.submit();"
+        >
+            <option value="">--Status--</option>
+            <option value="0">Em Edição</option>
+            <option value="1">Publicado</option>
+            <option value="2">Arquivado</option>
+			
+        </field>
+      
+        
+        <field
+            name="oficial_servico"
+            type="sql"
+            label="Oficiais de Serviço"
+            description="Pesquisa por oficiais de serviço"
+            query="SELECT DISTINCT u.name, n.oficial_servico from #__notimpe_notimpe n INNER JOIN #__users u ON(n.oficial_servico=u.id)"
+            key_field="oficial_servico"
+            value_field="name"
+            onchange="this.form.submit();"
+        >
+            <option value="">--Oficial de Serviço--</option>
+        </field>
+        
+         <field
+            name="graduado_servico"
+            type="sql"
+            label="Graduados de Serviço"
+            description="Pesquisa por graduados de serviço"
+            query="SELECT DISTINCT u.name, n.graduado_servico from #__notimpe_notimpe n INNER JOIN #__users u ON(n.graduado_servico=u.id)"
+            key_field="graduado_servico"
+            value_field="name"
+            onchange="this.form.submit();"
+        >
+            <option value="">--Graduado de Serviço--</option>
+        </field>
+        
+		
+    </fields>
+    
+     <fields name="list">
+		
+		<field
+			name="limit"
+			type="limitbox"
+			label="COM_BANNERS_LIST_LIMIT"
+			description="COM_BANNERS_LIST_LIMIT_DESC"
+			class="input-mini"
+			default="25"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+	
+</form>

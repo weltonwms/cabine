@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="Pesquisa"
+            description="Pesquisa por Nº Notimp"
+            hint="Nome Veículo"
+            class="js-stools-search-string"
+        />
+        <field
+            name="cidade"
+            type="sql"
+            label="Cidade"
+            description="Cidade do Veículo"
+            query="SELECT DISTINCT cidade FROM #__notimpe_veiculo WHERE cidade is not null"
+            key_field="cidade" 
+            value_field="cidade"
+              hint="Nome Veículo"          
+           onchange="this.form.submit();"
+         >
+            <option value="">--Cidade--</option>
+        </field>
+        
+        <field
+            name="estado"
+            type="sql"
+            label="Estado"
+            description="Estado do Veículo"
+            query="SELECT DISTINCT estado FROM #__notimpe_veiculo WHERE estado is not null"
+            key_field="estado" 
+            value_field="estado"          
+           onchange="this.form.submit();"
+         >
+            <option value="">--Estado--</option>
+        </field>
+			
+      
+		
+    </fields>
+    
+     <fields name="list">
+		
+		<field
+			name="limit"
+			type="limitbox"
+			label="COM_BANNERS_LIST_LIMIT"
+			description="COM_BANNERS_LIST_LIMIT_DESC"
+			class="input-mini"
+			default="25"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+	
+</form>
